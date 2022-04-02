@@ -1,3 +1,5 @@
+Program? sistem? k?rimas. Komandos "Nežaidi? Parduok. Eneba.com" sistemos frontas.
+
 # PskEnebaFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
