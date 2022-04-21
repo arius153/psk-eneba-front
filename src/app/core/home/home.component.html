@@ -1,2 +1,7 @@
-<p>home works!</p>
-<button (click)="alertResponse()">Click Me!</button>
+<button class="btn btn-primary">{{'translate.example' | translate}} : {{AppConfigService.config.version}}</button>
+<select (change)="changeLanguage($event)">
+  <option value="lt">lt</option>
+  <option value="en">en</option>
+</select>
+<br>
+<button class="btn btn-danger" (click)="alertResponse()">{{'translate.example.api' | translate}}</button>
