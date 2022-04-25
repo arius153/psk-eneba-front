@@ -1,4 +1,15 @@
 {
+  "component.login.button.continueUnauthenticated": "Continue without logging in",
+  "component.login.button.signIn": "Sign in",
+  "component.login.button.signUpFree": "Sign up for free",
+  "component.login.continueUnauthenticated.helpText": "You will only be able to look at available listings",
+  "component.login.dontHaveAnAccount": "Don't have an account?",
+  "component.login.recoverPassword": "Recover password",
+  "component.login.signIn": "Sign in",
+  "placeholder.email": "Email",
+  "placeholder.password": "Password",
   "translate.example": "Current version of application",
-  "translate.example.api": "Click me!"
+  "translate.example.api": "Click me!",
+  "validation.error.noAccount": "The email or password is incorrect",
+  "validation.error.required": "This field is required"
 }

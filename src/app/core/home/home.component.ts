@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {InitialService} from '../../shared/services/initial.service';
 import {AppConfigService} from '../../shared/services/app-config.service';
-import {TranslateService} from '@ngx-translate/core';
+import {AuthenticationService} from '../../shared/services/authentication.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private initialService: InitialService,
-    private translateService: TranslateService
+    public authenticationService: AuthenticationService
   ) {
   }
 
@@ -28,8 +28,5 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  changeLanguage(event: any): void {
-    this.translateService.use(event.target.value);
-  }
 
 }

@@ -8,6 +8,7 @@ export function initializeAppConfig(appConfig: AppConfigService) {
 
 export interface IAppConfig {
   version: string;
+  backUrl: string;
 }
 
 @Injectable({

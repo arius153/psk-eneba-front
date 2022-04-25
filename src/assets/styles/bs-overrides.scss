@@ -1,0 +1,18 @@
+.btn {
+  &:focus, &:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  &.btn-basic {
+    background: white;
+    border: solid 1px #888888;
+    border-radius: 13px !important;
+    font-weight: 600;
+    color: black;
+
+    &:hover {
+      background-color: lightblue;
+    }
+  }
+}
