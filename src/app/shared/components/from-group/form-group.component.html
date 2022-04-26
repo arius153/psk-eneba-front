@@ -1,0 +1,11 @@
+<div class="form-group my-2" [class.has-error]="hasError() || invalidPresent() || invalidTouched()">
+  <div class="d-flex justify-content-between align-items-center" *ngIf="!hideLabel">
+    <label>{{label}}<span class="ps-1" *ngIf="required">*</span></label>
+<!--    <span *ngIf="displayHelp" [matTooltip]="helpLabel" [matTooltipPosition]="helpLabelPosition" class="fal fa-question-circle fa-lg me-auto ms-2"></span>-->
+    <span class="counter" *ngIf="displayCounter">{{counter}}</span>
+  </div>
+  <ng-content></ng-content>
+  <div [class]="errorBlockCssClass">
+    <span class="text-break" *ngIf="hasError() || invalidPresent() || invalidTouched()" [class]="errorCssClass">{{getErrorLabel()}}</span>
+  </div>
+</div>

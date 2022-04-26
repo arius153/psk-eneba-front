@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="text-center">
+    <h1 class="my-5">Nežaidi? Parduok. Eneba.com</h1>
+  </div>
+  <div class="d-flex align-items-center">
+    <div class="card modal-background login-card text-center shadow px-3">
+      <div class="card-body">
+        <h1 class="card-title mt-2 mb-4">{{'component.login.signIn' | translate}}</h1>
+        <form #form="ngForm" (ngSubmit)="doLogin(form)">
+          <div class="text-start">
+            <app-form-group
+              [hideLabel]="true"
+              controlId="email"
+              [form]="form">
+              <input class="w-100"
+                     type="text"
+                     placeholder="{{'placeholder.email' | translate}}"
+                     [(ngModel)]="model.email"
+                     name="email"
+                     [required]="true">
+            </app-form-group>
+            <app-form-group
+              [hideLabel]="true"
+              controlId="password"
+              [form]="form">
+              <input class="w-100"
+                     type="password"
+                     placeholder="{{'placeholder.password' | translate}}"
+                     [(ngModel)]="model.password"
+                     name="password"
+                     [required]="true">
+            </app-form-group>
+            <a class="link-as-text" href="https://www.google.lt">{{'component.login.recoverPassword' | translate}}</a>
+          </div>
+          <button type="submit"
+                  class="btn btn-basic active-border-color">{{'component.login.button.signIn' | translate}}</button>
+        </form>
+        <hr>
+        <div class="my-3">
+          <h4>{{'component.login.dontHaveAnAccount' | translate}}</h4>
+          <button type="button"
+                  class="btn btn-basic active-border-color">{{'component.login.button.signUpFree' | translate}}</button>
+        </div>
+        <hr>
+        <div>
+          <button class="btn btn-basic">{{'component.login.button.continueUnauthenticated' | translate}}</button>
+          <p class="fst-italic mt-2">{{'component.login.continueUnauthenticated.helpText' | translate}}</p>
+        </div>
+      </div>
+    </div>
+    <h1 class="m-auto">[Nice logo/graphic here]</h1>
+  </div>
+
+  <select (change)="changeLanguage($event)">
+    <option value="lt">lt</option>
+    <option value="en">en</option>
+  </select>
+</div>

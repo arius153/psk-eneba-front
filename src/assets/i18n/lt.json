@@ -1,4 +1,15 @@
 {
+  "component.login.button.continueUnauthenticated": "Tęskite neprisijungę",
+  "component.login.button.signIn": "Prisijungti",
+  "component.login.button.signUpFree": "Prisijunk nemokamai",
+  "component.login.continueUnauthenticated.helpText": "Galėsite peržiūrėti tik turimus sąrašus",
+  "component.login.dontHaveAnAccount": "Neturite paskyros?",
+  "component.login.recoverPassword": "Atstatyti slaptažodį",
+  "component.login.signIn": "Prisijungti",
+  "placeholder.email": "El. paštas",
+  "placeholder.password": "Slaptažodis",
   "translate.example": "Dabartinė programos versija",
-  "translate.example.api": "Paspausk mane!"
+  "translate.example.api": "Paspausk mane!",
+  "validation.error.noAccount": "El. pašto adresas arba slaptažodis neteisingi",
+  "validation.error.required": "Laukas privalomas"
 }

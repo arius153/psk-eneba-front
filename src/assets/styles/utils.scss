@@ -1,0 +1,11 @@
+$background-color: #F0F0F0;
+$modal-background: #EEEEEE;
+$active-outline: #FF774C;
+
+.card.modal-background {
+  background-color: $modal-background;
+}
+
+.active-border-color {
+  border-color: $active-outline !important;
+}

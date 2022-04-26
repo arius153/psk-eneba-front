@@ -1,8 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {InitialService} from '../../shared/services/initial.service';
-import {AppConfigService} from '../../shared/services/app-config.service';
-import {TranslateService} from '@ngx-translate/core';
-
+import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
 
 @Component({
   selector: 'app-home',
@@ -11,25 +8,21 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class HomeComponent implements OnInit {
 
-  AppConfigService = AppConfigService;
+  options: google.maps.MapOptions = {
+    zoom: 12,
+    center: {lat: 54.700859, lng: 25.247475},
+    fullscreenControl: false,
+    streetViewControl: false,
+    mapTypeControl: false,
+    styles: GoogleMapsStyle.style
+  };
+
 
   constructor(
-    private initialService: InitialService,
-    private translateService: TranslateService
   ) {
   }
 
   ngOnInit(): void {
-  }
-
-  alertResponse(): void {
-    this.initialService.getInitialMessage().subscribe(message => {
-      alert(message);
-    });
-  }
-
-  changeLanguage(event: any): void {
-    this.translateService.use(event.target.value);
   }
 
 }
