@@ -16,7 +16,7 @@ select {
   }
 }
 
-input[type="text"], input[type="password"], input[type="number"], select, input[type="date"], textarea {
+input[type="text"], input[type="password"], input[type="number"], select, input[type="date"], textarea, input[type="email"] {
   border-radius: 0;
   border: black solid 1px;
   height: 40px;

@@ -1,6 +1,6 @@
 export class NewListingRequest {
   name: string;
-  category: string;
+  category: number;
   price: number;
   daysAvailable: string;
   assistedTransportation: boolean;

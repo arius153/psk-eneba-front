@@ -5,7 +5,7 @@
   </app-form-group>
   <app-form-group [form]="form" controlId="category" label="Category">
     <select name="category" [(ngModel)]="model.category" class="w-100">
-      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
     </select>
   </app-form-group>
   <app-form-group [form]="form" controlId="price" label="Price">

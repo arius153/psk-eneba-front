@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {CategoryResponse} from '../models/category-response';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class InitialService {
     return this.httpClient.get('http://localhost:8080', {responseType: 'text'});
   }
 
-  getCategories(): Observable<string[]> {
-    return this.httpClient.get<string[]>('http://localhost:8080/categories');
+  getCategories(): Observable<CategoryResponse[]> {
+    return this.httpClient.get<CategoryResponse[]>('http://localhost:8080/tool/categories');
   }
 }
