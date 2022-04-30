@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms';
 import {NewListingRequest} from '../../../../shared/models/new-listing-request';
 import {InitialService} from '../../../../shared/services/initial.service';
 import {CategoryResponse} from '../../../../shared/models/category-response';
+import {GoogleMapsStyle} from '../../../../shared/utils/google-maps-style';
 
 @Component({
   selector: 'app-new-listing',
@@ -10,6 +11,15 @@ import {CategoryResponse} from '../../../../shared/models/category-response';
   styleUrls: ['./new-listing.component.scss']
 })
 export class NewListingComponent implements OnInit {
+
+  options: google.maps.MapOptions = {
+    zoom: 12,
+    center: {lat: 54.700859, lng: 25.247475},
+    fullscreenControl: false,
+    streetViewControl: false,
+    mapTypeControl: false,
+    styles: GoogleMapsStyle.style
+  };
 
   model: NewListingRequest = new NewListingRequest();
   categories: CategoryResponse[];

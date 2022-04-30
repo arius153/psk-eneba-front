@@ -3,7 +3,7 @@ export class NewListingRequest {
   category: number;
   price: number;
   daysAvailable: string;
-  assistedTransportation: boolean;
+  assistedTransportation: string;
   description: string;
   address: string;
   // Image upload komponentas neemitina reikšmės nepadavus inicijuotuos reikšmės
