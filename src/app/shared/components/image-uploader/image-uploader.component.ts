@@ -1,48 +1,64 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, forwardRef, Input} from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 @Component({
   selector: 'app-image-uploader',
   templateUrl: './image-uploader.component.html',
-  styleUrls: ['./image-uploader.component.scss']
+  styleUrls: ['./image-uploader.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ImageUploaderComponent),
+      multi: true
+    }
+  ]
 })
-export class ImageUploaderComponent implements OnInit {
+export class ImageUploaderComponent implements ControlValueAccessor {
 
   @Input()
   name: string;
   @Input()
   required: boolean;
 
-  imagesToDisplay: {index: number, imageString: string, file: File}[] = [];
-  imagesToSaveInternal: {index: number, image: File}[] = [];
+  imagesToDisplay: { index: number, imageString: string, file: File }[] = [];
   imagesToSaveExternal: File[] = [];
 
-  constructor() {
+  propagateChange = (_: any) => {
   }
 
-  ngOnInit(): void {
+  writeValue(value: File[]): void {
+    if (value) {
+      this.imagesToSaveExternal = value;
+    }
   }
 
-  // tslint:disable-next-line:typedef
-  onFileChange(event) {
-    console.log('CIA FILE UPLOADAS');
-    console.log(event.target.files);
+  registerOnChange(fn: any): void {
+    console.log(fn);
+    this.propagateChange(fn);
+  }
+
+  registerOnTouched(fn: any): void {
+  }
+
+  onFileChange(event): void {
     if (event.target.files && event.target.files.length) {
       this.readAsDataURL(event.target).then(results => {
         results.forEach(result => {
           this.imagesToDisplay.push({index: this.generateIndex(), imageString: result.imageString, file: result.image});
+          this.imagesToSaveExternal.push(result.image);
         });
         event.target.value = '';
-        console.log(this.imagesToDisplay);
+        this.registerOnChange(this.imagesToSaveExternal);
       });
     }
   }
 
-  readAsDataURL(target): Promise<{imageString: string, image: File}[]> {
+  readAsDataURL(target): Promise<{ imageString: string, image: File }[]> {
     const filesArray = Array.prototype.slice.call(target.files);
     return Promise.all(filesArray.map(this.fileToDataURL));
   }
 
-  fileToDataURL(file): Promise<{imageString: string, image: File}> {
+  fileToDataURL(file): Promise<{ imageString: string, image: File }> {
     const reader = new FileReader();
     return new Promise((resolve, _) => {
       reader.onload = (event) => {
@@ -53,9 +69,11 @@ export class ImageUploaderComponent implements OnInit {
   }
 
   removeImage(index: number): void {
-    const image = this.imagesToDisplay.findIndex(obj => obj.index === index);
-    if (image !== -1) {
-      this.imagesToDisplay.splice(image, 1);
+    const image = this.imagesToDisplay.find(obj => obj.index === index);
+    if (image !== undefined) {
+      this.imagesToDisplay.splice(this.imagesToDisplay.indexOf(image), 1);
+      this.imagesToSaveExternal.splice(this.imagesToSaveExternal.indexOf(image.file), 1);
+      this.registerOnChange(this.imagesToSaveExternal);
     }
   }
 

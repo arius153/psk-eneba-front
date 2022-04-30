@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {CategoryResponse} from '../models/category-response';
+import {AppConfigService} from './app-config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class InitialService {
   }
 
   getCategories(): Observable<CategoryResponse[]> {
-    return this.httpClient.get<CategoryResponse[]>('http://localhost:8080/tool/categories');
+    const url = AppConfigService.config.backUrl + '/tool/categories';
+    return this.httpClient.get<CategoryResponse[]>(url);
   }
 }

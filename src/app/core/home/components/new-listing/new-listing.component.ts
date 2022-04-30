@@ -13,7 +13,6 @@ export class NewListingComponent implements OnInit {
 
   model: NewListingRequest = new NewListingRequest();
   categories: CategoryResponse[];
-  imageSrc: string;
 
   constructor(private initialService: InitialService) {
   }
@@ -25,24 +24,7 @@ export class NewListingComponent implements OnInit {
   }
 
   doSave(form: NgForm): void {
-
+    console.log(this.model);
   }
 
-  // tslint:disable-next-line:typedef
-  onFileChange(event) {
-    console.log('CIA FILE UPLOADAS');
-    console.log(event);
-    const reader = new FileReader();
-
-    if (event.target.files && event.target.files.length) {
-      const [file] = event.target.files;
-      reader.readAsDataURL(file);
-
-      reader.onload = () => {
-
-        this.imageSrc = reader.result as string;
-      };
-
-    }
-  }
 }

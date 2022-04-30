@@ -4,7 +4,8 @@ export class NewListingRequest {
   price: number;
   daysAvailable: string;
   assistedTransportation: boolean;
-  files: any;
   description: string;
   address: string;
+  // Image upload komponentas neemitina reikšmės nepadavus inicijuotuos reikšmės
+  files: File[] = [];
 }
