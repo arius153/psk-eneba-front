@@ -13,4 +13,8 @@ export class InitialService {
   getInitialMessage(): Observable<string> {
     return this.httpClient.get('http://localhost:8080', {responseType: 'text'});
   }
+
+  getCategories(): Observable<string[]> {
+    return this.httpClient.get<string[]>('http://localhost:8080/categories');
+  }
 }

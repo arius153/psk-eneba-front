@@ -6,10 +6,10 @@
   "component.login.dontHaveAnAccount": "Neturite paskyros?",
   "component.login.recoverPassword": "Atstatyti slaptažodį",
   "component.login.signIn": "Prisijungti",
+  "component.newListing.button.add": "Pridėti",
+  "component.newListing.title": "Pridėti naują elementą?",
   "placeholder.email": "El. paštas",
   "placeholder.password": "Slaptažodis",
-  "translate.example": "Dabartinė programos versija",
-  "translate.example.api": "Paspausk mane!",
   "validation.error.noAccount": "El. pašto adresas arba slaptažodis neteisingi",
   "validation.error.required": "Laukas privalomas"
 }

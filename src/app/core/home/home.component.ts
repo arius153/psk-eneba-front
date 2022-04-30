@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
+import {MatDialog} from '@angular/material/dialog';
+import {NewListingComponent} from './components/new-listing/new-listing.component';
+import {AppConstants} from '../../shared/constants/app-constants';
 
 @Component({
   selector: 'app-home',
@@ -19,10 +22,14 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
+    private matDialog: MatDialog,
   ) {
   }
 
   ngOnInit(): void {
   }
 
+  clickMe(): void {
+    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig());
+  }
 }

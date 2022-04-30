@@ -9,3 +9,12 @@ $active-outline: #FF774C;
 .active-border-color {
   border-color: $active-outline !important;
 }
+
+.px-6rem {
+  padding-left: 6rem !important;
+  padding-right: 6rem !important;
+}
+
+.z-index-1 {
+  z-index: 1
+}

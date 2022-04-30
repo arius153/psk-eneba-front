@@ -1,0 +1,40 @@
+<h1 class="text-center">{{'component.newListing.title' | translate}}</h1>
+<form #form="ngForm" (ngSubmit)="doSave(form)">
+  <app-form-group [form]="form" controlId="name" label="Name">
+    <input type="text" name="name" [(ngModel)]="model.name" class="w-100">
+  </app-form-group>
+  <app-form-group [form]="form" controlId="category" label="Category">
+    <select name="category" [(ngModel)]="model.category" class="w-100">
+      <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+    </select>
+  </app-form-group>
+  <app-form-group [form]="form" controlId="price" label="Price">
+    <input type="number" name="price" min="0.00" max="10000.00" step="0.01" [(ngModel)]="model.price" class="w-100"/>
+  </app-form-group>
+  <app-form-group [form]="form" controlId="daysAvailable" label="Days available">
+    <input type="date" name="daysAvailable" [(ngModel)]="model.name" class="w-100">
+  </app-form-group>
+  <app-form-group [form]="form" controlId="assistedTransportation" label="Assisted transportation">
+    <input type="text" name="assistedTransportation" [(ngModel)]="model.name" class="w-100">
+  </app-form-group>
+<!--  <app-form-group [form]="form" controlId="file">-->
+<!--    <input-->
+<!--      name="file"-->
+<!--      id="file"-->
+<!--      type="file"-->
+<!--      class="form-control"-->
+<!--      (change)="onFileChange($event)">-->
+<!--  </app-form-group>-->
+<!--  <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px">-->
+  <app-image-uploader></app-image-uploader>
+  <app-form-group [form]="form" controlId="description" label="Description">
+    <textarea name="description" [(ngModel)]="model.name" class="w-100"> </textarea>
+  </app-form-group>
+  <app-form-group [form]="form" controlId="address" label="Address">
+    <input type="text" name="address" [(ngModel)]="model.name" class="w-100">
+  </app-form-group>
+  <div class="text-center mt-3">
+    <button type="button"
+            class="btn btn-basic active-border-color">{{'component.newListing.button.add' | translate}}</button>
+  </div>
+</form>

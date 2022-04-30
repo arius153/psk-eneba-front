@@ -1,0 +1,10 @@
+<input type="file" [name]="name" [required]="required" (change)="onFileChange($event)">
+<div class="row ">
+  <div *ngFor="let image of images" class="col-4 mt-3">
+    <div  class="border border-dark position-relative">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" class="close-icon">close</mat-icon>
+      <img [src]="image" class="w-100">
+    </div>
+  </div>
+</div>
+

@@ -6,10 +6,10 @@
   "component.login.dontHaveAnAccount": "Don't have an account?",
   "component.login.recoverPassword": "Recover password",
   "component.login.signIn": "Sign in",
+  "component.newListing.button.add": "Add",
+  "component.newListing.title": "Add a new listing",
   "placeholder.email": "Email",
   "placeholder.password": "Password",
-  "translate.example": "Current version of application",
-  "translate.example.api": "Click me!",
   "validation.error.noAccount": "The email or password is incorrect",
   "validation.error.required": "This field is required"
 }

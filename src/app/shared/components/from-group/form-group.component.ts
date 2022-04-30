@@ -34,6 +34,7 @@ export class FormGroupComponent implements OnInit {
   @Input() errorCssClass = '';
   @Input() errorBlockCssClass = 'help-block';
   @Input() validateInnerFormGroup: boolean;
+  @Input() labelLeft: boolean;
 
   constructor(private translateService: TranslateService,
               @Optional() private parentForm: NgForm) {
