@@ -5,6 +5,7 @@ import {JwtRequest} from '../../shared/models/jwt-request';
 import {AuthenticationService} from '../../shared/services/authentication.service';
 import {FormUtils} from '../../shared/utils/form-utils';
 import {Router} from '@angular/router';
+import {UserRegistrationDto} from '../../shared/models/user-registration-dto';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,10 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  model = new JwtRequest();
+  loginModel = new JwtRequest();
+  registrationModel = new UserRegistrationDto();
+
+  registration: boolean;
 
   constructor(
     private translateService: TranslateService,
@@ -30,14 +34,30 @@ export class LoginComponent implements OnInit {
 
 
   doLogin(form: NgForm): void {
+    this.router.navigate(['/']);
     if (!form.valid) {
       return;
     }
-    this.authenticationService.login(this.model).subscribe(result => {
+    this.authenticationService.login(this.loginModel).subscribe(result => {
       this.authenticationService.setJwtToken(result.jwtToken);
       this.router.navigate(['/']);
     }, () => {
       FormUtils.handleFormErrors(form, 'password', 'noAccount');
     });
+  }
+
+  doRegister(form: NgForm): void {
+    if (!form.valid) {
+      return;
+    }
+    this.authenticationService.register(this.registrationModel).subscribe(() => {
+      this.registration = false;
+    }, () => {
+      FormUtils.handleFormErrors(form, 'registerPassword', 'couldNotRegistrate');
+    });
+  }
+
+  toggleRegistration(): void {
+    this.registration = !this.registration;
   }
 }

@@ -4,11 +4,13 @@ import {SharedModule} from '../shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
 import {LoginComponent} from './login/login.component';
 import {GoogleMapsModule} from '@angular/google-maps';
+import { NewListingComponent } from './home/components/new-listing/new-listing.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    NewListingComponent
   ],
     imports: [
         SharedModule,
