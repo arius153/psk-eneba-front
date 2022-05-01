@@ -50,6 +50,12 @@ input[type="text"], input[type="password"], input[type="number"], select, input[
   width: 100% !important;
 }
 
+.google-maps .map-container {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+
 .modal-base-panel-class .mat-dialog-container {
   @extend .px-6rem;
   background-color: $modal-background;

@@ -12,6 +12,7 @@ import {SharedModule} from './shared/shared.module';
 import {JwtInterceptor} from './shared/interceptors/jwt.interceptor';
 import {GoogleMapsModule} from '@angular/google-maps';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
 
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
@@ -38,7 +39,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     }),
     GoogleMapsModule,
     HttpClientJsonpModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    FormsModule
   ],
   providers: [
     {provide: APP_INITIALIZER, useFactory: initializeAppConfig, deps: [AppConfigService], multi: true},

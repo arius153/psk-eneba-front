@@ -6,6 +6,9 @@ export class NewListingRequest {
   assistedTransportation: string;
   description: string;
   address: string;
+  date: string;
   // Image upload komponentas neemitina reikšmės nepadavus inicijuotuos reikšmės
   files: File[] = [];
+  lat: number;
+  lng: number;
 }

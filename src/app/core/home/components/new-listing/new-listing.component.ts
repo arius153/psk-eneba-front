@@ -14,12 +14,15 @@ export class NewListingComponent implements OnInit {
 
   options: google.maps.MapOptions = {
     zoom: 12,
-    center: {lat: 54.700859, lng: 25.247475},
+    center: {lat: 54.687378, lng: 25.278306},
     fullscreenControl: false,
     streetViewControl: false,
     mapTypeControl: false,
     styles: GoogleMapsStyle.style
   };
+
+  markerOptions: google.maps.MarkerOptions = {draggable: false};
+  markerPosition: google.maps.LatLngLiteral;
 
   model: NewListingRequest = new NewListingRequest();
   categories: CategoryResponse[];
@@ -35,6 +38,12 @@ export class NewListingComponent implements OnInit {
 
   doSave(form: NgForm): void {
     console.log(this.model);
+  }
+
+  addMarker(event: google.maps.MapMouseEvent): void {
+    this.markerPosition = event.latLng.toJSON();
+    this.model.lat = this.markerPosition.lat;
+    this.model.lng = this.markerPosition.lng;
   }
 
 }
