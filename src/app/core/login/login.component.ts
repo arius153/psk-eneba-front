@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
 
 
   doLogin(form: NgForm): void {
-    this.router.navigate(['/']);
     if (!form.valid) {
       return;
     }
