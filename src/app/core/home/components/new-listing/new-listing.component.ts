@@ -24,7 +24,6 @@ export class NewListingComponent implements OnInit {
   }
 
   doSave(form: NgForm): void {
-    console.log(this.model);
   }
 
 }

@@ -33,7 +33,6 @@ export class ImageUploaderComponent implements ControlValueAccessor {
   }
 
   registerOnChange(fn: any): void {
-    console.log(fn);
     this.propagateChange(fn);
   }
 
