@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
 import {MatDialog} from '@angular/material/dialog';
 import {NewListingComponent} from './components/new-listing/new-listing.component';
+import {ProfileComponent} from '../profile/profile.component';
 import {AppConstants} from '../../shared/constants/app-constants';
 import {Observable} from 'rxjs';
 import {ToolResponse} from '../../shared/models/tool-response';
@@ -26,10 +27,13 @@ export class HomeComponent implements OnInit {
 
   tools: ToolResponse[];
 
+  showProfile: boolean;
+
   constructor(
     private matDialog: MatDialog,
     private httpClient: HttpClient
   ) {
+    this.showProfile = false;
   }
 
   ngOnInit(): void {
@@ -40,6 +44,15 @@ export class HomeComponent implements OnInit {
 
   clickMe(): void {
     this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig());
+  }
+
+  clickMe2(): void {
+    if (this.showProfile === false) {
+      this.showProfile = true;
+    }
+    else {
+      this.showProfile = false;
+    }
   }
 
   getCategories(): Observable<ToolResponse[]> {

@@ -1,6 +1,11 @@
-<button class="btn btn-primary position-absolute z-index-1" (click)="clickMe()">Spausk mane</button>
+<button class="btn btn-primary position-absolute" style="z-index: 2;" (click)="clickMe()">Spausk mane</button>
+<button class="btn btn-primary position-absolute" style="z-index: 2; top: 40px;" (click)="clickMe2()">Arba mane</button>
 
-<google-map [options]="options" class="fullscreen">
+<app-profile *ngIf="showProfile">
+
+</app-profile>
+
+<google-map [options]="options" class="fullscreen" *ngIf="!showProfile">
   <div class="listings-panel" id="listings-panel">
     <div class="panel-header">
       <span style="width: 100%; height: 100%;"> Nearest tech </span>
