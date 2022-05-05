@@ -7,7 +7,6 @@ import {FormGroupComponent} from './components/from-group/form-group.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ImageUploaderComponent} from './components/image-uploader/image-uploader.component';
 import {MatIconModule} from '@angular/material/icon';
-import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
 import {GoogleMapsModule} from '@angular/google-maps';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { WeekdaySelectorComponent } from './components/weekday-selector/weekday-selector.component';
@@ -25,7 +24,6 @@ import { WeekdaySelectorComponent } from './components/weekday-selector/weekday-
     ModalModule,
     MatDialogModule,
     MatIconModule,
-    GooglePlaceModule,
     GoogleMapsModule,
     MatDatepickerModule
   ],
@@ -37,7 +35,6 @@ import { WeekdaySelectorComponent } from './components/weekday-selector/weekday-
     MatDialogModule,
     ImageUploaderComponent,
     MatIconModule,
-    GooglePlaceModule,
     GoogleMapsModule,
     MatDatepickerModule,
     WeekdaySelectorComponent

@@ -13,7 +13,6 @@ import {JwtInterceptor} from './shared/interceptors/jwt.interceptor';
 import {GoogleMapsModule} from '@angular/google-maps';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
-import {GooglePlaceModule} from 'ngx-google-places-autocomplete';
 import {MatNativeDateModule} from '@angular/material/core';
 
 
@@ -43,7 +42,6 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     HttpClientJsonpModule,
     NoopAnimationsModule,
     FormsModule,
-    GooglePlaceModule,
     MatNativeDateModule
   ],
   providers: [

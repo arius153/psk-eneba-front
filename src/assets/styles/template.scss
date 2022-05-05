@@ -140,11 +140,13 @@ input[type="number"] {
 .listing {
   height: 45px;
   width: 300px;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   background: #B2E8FA;
   margin: 20px;
   display: table-cell;
   vertical-align: middle;
+  border-right: 1px solid black;
 }
 
 .category-icon {
@@ -194,4 +196,6 @@ input[type="number"] {
 
 .listing-row {
   display: inline-table;
+  border: 1px solid black;
+  border-radius: 10px;
 }
