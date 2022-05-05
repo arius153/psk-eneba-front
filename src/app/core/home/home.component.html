@@ -1,2 +1,37 @@
-<google-map  (mapClick)="mapClick($event)" [options]="options" class="fullscreen">
+<google-map [options]="options" (mapClick)="mapClick($event)" class="fullscreen">
+  <div class="listings-panel" id="listings-panel">
+    <div class="panel-header">
+      <span style="width: 100%; height: 100%;"> Nearest tech </span>
+    </div>
+    <div class="searchOptionsRow">
+      <button id="sort" class="horizontal icon filter">
+        Sort
+      </button>
+      <button id="filter" class="horizontal icon sort">
+        Filter
+      </button>
+    </div>
+    <div class="tool-list">
+
+      <ul *ngFor="let tool of tools" >
+        <div  class="listing-row">
+          <div class="listing">
+            <span class="circle" [ngClass]="{'available': tool.available}"></span>
+
+            <img src="../assets/icons/{{tool.toolCategory}}.png" alt="Category" class="category-icon"/>
+            <div class="listing-name">
+            <span >
+              {{tool.name}}
+            </span>
+              <div class="listing-price">
+                {{tool.price}}€/d.
+              </div>
+            </div>
+
+          </div>
+          <a class="open-arrow" href="/"></a> <!--TODO: change the href to go to the specific description page-->
+        </div>
+      </ul>
+    </div>
+  </div>
 </google-map>
