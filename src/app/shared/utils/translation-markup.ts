@@ -5,3 +5,13 @@ marker([
   'validation.error.required',
   'validation.error.noAccount'
 ]);
+
+marker([
+  'component.weekdaySelector.monday',
+  'component.weekdaySelector.tuesday',
+  'component.weekdaySelector.wednesday',
+  'component.weekdaySelector.thursday',
+  'component.weekdaySelector.friday',
+  'component.weekdaySelector.saturday',
+  'component.weekdaySelector.sunday'
+]);

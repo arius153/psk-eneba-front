@@ -1,31 +1,43 @@
 <h1 class="text-center">{{'component.newListing.title' | translate}}</h1>
 <form #form="ngForm" (ngSubmit)="doSave(form)">
-  <app-form-group [form]="form" controlId="name" label="Name">
+  <app-form-group [form]="form" controlId="name" [label]="'component.newListing.label.name' | translate">
     <input type="text" name="name" [(ngModel)]="model.name" class="w-100" required>
   </app-form-group>
-  <app-form-group [form]="form" controlId="category" label="Category">
+  <app-form-group [form]="form" controlId="category" [label]="'component.newListing.label.category' | translate">
     <select name="category" [(ngModel)]="model.category" class="w-100" required>
       <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
     </select>
   </app-form-group>
-  <app-form-group [form]="form" controlId="price" label="Price">
+  <app-form-group [form]="form" controlId="price" [label]="'component.newListing.label.price' | translate">
     <input type="number" name="price" min="0.00" max="10000.00" step="0.01" [(ngModel)]="model.price" class="w-100"
            required/>
   </app-form-group>
-  <app-form-group [form]="form" controlId="daysAvailable" label="Days available">
-    <input type="date" name="daysAvailable" [(ngModel)]="model.date" class="w-100" required>
+  <app-form-group [form]="form" controlId="daysAvailables"
+                  [label]="'component.newListing.label.daysAvailable' | translate">
+    <app-weekday-selector name="daysAvailables" [(ngModel)]="model.daysAvailable"></app-weekday-selector>
   </app-form-group>
-  <app-form-group [form]="form" controlId="assistedTransportation" label="Assisted transportation">
+  <app-form-group [form]="form" controlId="pickWorkDay"
+                  [label]="'component.newListing.label.pickWorkDay' | translate">
+    <input type="text" name="pickWorkDay" class="w-100" [(ngModel)]="model.pickUpTimeWorkDay"
+           [placeholder]="'component.newListing.placeholder.time' | translate">
+  </app-form-group>
+  <app-form-group [form]="form" controlId="pickWeekend"
+                  [label]="'component.newListing.label.pickWeekend' | translate">
+    <input type="text" name="pickWeekend" class="w-100" [(ngModel)]="model.pickUpTimeWeekend"
+           [placeholder]="'component.newListing.placeholder.time' | translate">
+  </app-form-group>
+  <app-form-group [form]="form" controlId="assistedTransportation"
+                  [label]="'component.newListing.label.assistedTransportation' | translate">
     <input type="text" name="assistedTransportation" [(ngModel)]="model.assistedTransportation" class="w-100" required>
   </app-form-group>
-  <app-form-group [form]="form" controlId="files" label="Images">
+  <app-form-group [form]="form" controlId="files" [label]="'component.newListing.label.images' | translate">
     <app-image-uploader [(ngModel)]="model.files" name="files"></app-image-uploader>
   </app-form-group>
-  <app-form-group [form]="form" controlId="description" label="Description">
+  <app-form-group [form]="form" controlId="description" [label]="'component.newListing.label.description' | translate">
     <textarea name="description" [(ngModel)]="model.description" class="w-100" required> </textarea>
   </app-form-group>
-  <app-form-group [form]="form" controlId="address" label="Address">
-    <input type="text" name="address" [(ngModel)]="model.address" class="w-100" required>
+  <app-form-group [form]="form" controlId="address" [label]="'component.newListing.label.address' | translate">
+    <input id="pac-input" name="address" [(ngModel)]="model.address" type="text" class="w-100" required>
   </app-form-group>
   <google-map [options]="options" (mapClick)="addMarker($event)" class="google-maps">
     <map-marker [position]="markerPosition"

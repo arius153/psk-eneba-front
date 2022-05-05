@@ -2,13 +2,14 @@ export class NewListingRequest {
   name: string;
   category: number;
   price: number;
-  daysAvailable: string;
+  daysAvailable: number[] = [];
   assistedTransportation: string;
   description: string;
   address: string;
-  date: string;
   // Image upload komponentas neemitina reikšmės nepadavus inicijuotuos reikšmės
   files: File[] = [];
   lat: number;
   lng: number;
+  pickUpTimeWeekend: string;
+  pickUpTimeWorkDay: string;
 }

@@ -1,9 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
-import {MatDialog} from '@angular/material/dialog';
-import {NewListingComponent} from './components/new-listing/new-listing.component';
-import {AppConstants} from '../../shared/constants/app-constants';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,14 +18,13 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
-    private matDialog: MatDialog,
   ) {
   }
 
   ngOnInit(): void {
   }
 
-  clickMe(): void {
-    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig());
+  mapClick($event: google.maps.MapMouseEvent | google.maps.IconMouseEvent): void {
+    console.log($event.latLng.toJSON());
   }
 }
