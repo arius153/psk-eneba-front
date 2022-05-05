@@ -1,12 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
-import {MatDialog} from '@angular/material/dialog';
-import {NewListingComponent} from './components/new-listing/new-listing.component';
-import {AppConstants} from '../../shared/constants/app-constants';
-import {Observable} from 'rxjs';
 import {ToolResponse} from '../../shared/models/tool-response';
-import {AppConfigService} from '../../shared/services/app-config.service';
-import {HttpClient} from '@angular/common/http';
+import {ToolService} from '../../shared/services/tool.service';
 
 @Component({
   selector: 'app-home',
@@ -27,23 +22,17 @@ export class HomeComponent implements OnInit {
   tools: ToolResponse[];
 
   constructor(
-    private matDialog: MatDialog,
-    private httpClient: HttpClient
+    private toolService: ToolService
   ) {
   }
 
   ngOnInit(): void {
-    this.getCategories().subscribe(data => {
+    this.toolService.getAllTools().subscribe(data => {
       this.tools = data;
     });
   }
 
-  clickMe(): void {
-    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig());
-  }
-
-  getCategories(): Observable<ToolResponse[]> {
-    const url = AppConfigService.config.backUrl + '/tool/all';
-    return this.httpClient.get<ToolResponse[]>(url);
+  mapClick($event: google.maps.MapMouseEvent | google.maps.IconMouseEvent): void {
+    console.log($event.latLng.toJSON());
   }
 }

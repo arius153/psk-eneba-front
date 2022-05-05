@@ -50,6 +50,12 @@ input[type="text"], input[type="password"], input[type="number"], select, input[
   width: 100% !important;
 }
 
+.google-maps .map-container {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+
 .modal-base-panel-class .mat-dialog-container {
   @extend .px-6rem;
   background-color: $modal-background;
@@ -134,11 +140,13 @@ input[type="number"] {
 .listing {
   height: 45px;
   width: 300px;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   background: #B2E8FA;
   margin: 20px;
   display: table-cell;
   vertical-align: middle;
+  border-right: 1px solid black;
 }
 
 .category-icon {
@@ -188,4 +196,6 @@ input[type="number"] {
 
 .listing-row {
   display: inline-table;
+  border: 1px solid black;
+  border-radius: 10px;
 }
