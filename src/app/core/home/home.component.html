@@ -6,23 +6,80 @@
       <span style="width: 100%; height: 100%;"> Nearest tech </span>
     </div>
     <div class="searchOptionsRow">
-      <button id="sort" class="horizontal icon filter">
+      <button id="sort" class="horizontal icon filter" (click)="toggleSort()">
         Sort
       </button>
-      <button id="filter" class="horizontal icon sort">
+      <button id="filter" class="horizontal icon sort" (click)="toggleFilters()">
         Filter
       </button>
     </div>
-    <div class="tool-list">
+    <ng-container *ngIf="showSort">
+      <div class="search-container">
+        <span class="search-header searchOptionsRow">Sort</span>
 
-      <ul *ngFor="let tool of tools" >
-        <div  class="listing-row">
+        <span class="searchOptionsRow">
+          <input type="radio" value="false" name="sortReversed" [(ngModel)]="sortReversed"> Ascending
+          <input type="radio" value="true" name="sortReversed" checked [(ngModel)]="sortReversed"> Descending
+        </span>
+
+        <hr/>
+
+        <span class="optionsList">
+          <span>
+            <input type="radio" value="price" name="sort" [(ngModel)]="sortBy"> Price
+          </span>
+          <span>
+            <input type="radio" value="category" name="sort" [(ngModel)]="sortBy"> Category
+          </span>
+          <span>
+            <input type="radio" value="name" name="sort" [(ngModel)]="sortBy"> Name
+          </span>
+        </span>
+
+        <span class="searchOptionsRow">
+          <button id="submitSort" class="submitButton" (click)="submitSort()">
+            Sort
+          </button>
+        </span>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="showFilters">
+      <div class="search-container ">
+        <span class="search-header searchOptionsRow">Filter</span>
+
+        <span class="searchOptionsRow">
+          <h2>Price</h2>
+          <span>
+            <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From" [(ngModel)]="minPrice">
+          </span>
+          <span>
+            <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To" [(ngModel)]="maxPrice">
+          </span>
+        </span>
+        <hr/>
+        <span class="searchOptionsRow">
+          <h2>Category</h2>
+          <ul class="categoryOption" *ngFor="let category of categories">
+            <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event)"/>{{category.name}}
+          </ul>
+        </span>
+        <span class="searchOptionsRow">
+          <button id="submitFilter" class="submitButton" (click)="submitSort()">
+            Filter
+          </button>
+        </span>
+      </div>
+    </ng-container>
+    <div class="tool-list">
+      <ul *ngFor="let tool of tools">
+        <div class="listing-row">
           <div class="listing">
             <span class="circle" [ngClass]="{'available': tool.available}"></span>
 
             <img src="../assets/icons/{{tool.toolCategory}}.png" alt="Category" class="category-icon"/>
             <div class="listing-name">
-            <span >
+            <span>
               {{tool.name}}
             </span>
               <div class="listing-price">
@@ -35,5 +92,5 @@
         </div>
       </ul>
     </div>
-  </div>
+      </div>
 </google-map>

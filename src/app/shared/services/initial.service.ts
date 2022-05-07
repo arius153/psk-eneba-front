@@ -17,7 +17,7 @@ export class InitialService {
   }
 
   getCategories(): Observable<CategoryResponse[]> {
-    const url = AppConfigService.config.backUrl + '/tool/categories';
+    const url = AppConfigService.config.backUrl + '/category/';
     return this.httpClient.get<CategoryResponse[]>(url);
   }
 }

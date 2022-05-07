@@ -5,6 +5,7 @@ import {TranslateModule} from '@ngx-translate/core';
 import {LoginComponent} from './login/login.component';
 import {GoogleMapsModule} from '@angular/google-maps';
 import { NewListingComponent } from './home/components/new-listing/new-listing.component';
+import {IgxButtonModule, IgxToggleModule} from 'igniteui-angular';
 
 @NgModule({
   declarations: [
@@ -12,11 +13,13 @@ import { NewListingComponent } from './home/components/new-listing/new-listing.c
     LoginComponent,
     NewListingComponent
   ],
-    imports: [
-        SharedModule,
-        TranslateModule,
-        GoogleMapsModule
-    ],
+  imports: [
+    SharedModule,
+    TranslateModule,
+    GoogleMapsModule,
+    IgxButtonModule,
+    IgxToggleModule,
+  ],
   exports: []
 })
 
