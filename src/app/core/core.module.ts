@@ -14,6 +14,7 @@ import {SiteSettingsComponent} from './profile/components/site-settings/site-set
 import {HelpPageComponent} from './profile/components/help-page/help-page.component';
 import {IgxButtonModule, IgxToggleModule} from 'igniteui-angular';
 import {HomeComponent} from './home/home.component';
+import {HmmComponent} from './hmm/hmm.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {HomeComponent} from './home/home.component';
     MyReviewsComponent,
     AccountPageComponent,
     SiteSettingsComponent,
-    HelpPageComponent
+    HelpPageComponent,
+    HmmComponent
   ],
   imports: [
     SharedModule,
