@@ -50,6 +50,12 @@ input[type="text"], input[type="password"], input[type="number"], select, input[
   width: 100% !important;
 }
 
+.google-maps .map-container {
+  width: 100% !important;
+  height: 300px !important;
+}
+
+
 .modal-base-panel-class .mat-dialog-container {
   @extend .px-6rem;
   background-color: $modal-background;
@@ -134,11 +140,13 @@ input[type="number"] {
 .listing {
   height: 45px;
   width: 300px;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   background: #B2E8FA;
   margin: 20px;
   display: table-cell;
   vertical-align: middle;
+  border-right: 1px solid black;
 }
 
 .category-icon {
@@ -188,4 +196,118 @@ input[type="number"] {
 
 .listing-row {
   display: inline-table;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.toggle-section {
+  background-color: white;
+}
+
+.hidden-overflow {
+  overflow: hidden;
+}
+
+.search-container {
+  margin-top: 20px;
+  padding: 15px;
+  width: 350px;
+  background-color: #DFF7FF;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-container > .search-header {
+  font-size: 30px;
+}
+
+.search-container > span {
+  margin-top:10px;
+}
+
+.submitButton {
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.optionsList {
+  display: inline-grid;
+  text-align:left;
+  margin-left: 50px;
+  font-size: 17px;
+}
+
+.optionsList > span {
+  margin-top: 5px;
+}
+
+.priceInput {
+  width: 120px;
+  height: 30px !important;
+  margin-top: 0;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.categoryOption {
+  text-align: left;
+}
+
+.toggle-section {
+  background-color: white;
+}
+
+.hidden-overflow {
+  overflow: hidden;
+}
+
+.search-container {
+  margin-top: 20px;
+  padding: 15px;
+  width: 350px;
+  background-color: #DFF7FF;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-container > .search-header {
+  font-size: 30px;
+}
+
+.search-container > span {
+  margin-top:10px;
+}
+
+.submitButton {
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.optionsList {
+  display: inline-grid;
+  text-align:left;
+  margin-left: 50px;
+  font-size: 17px;
+}
+
+.optionsList > span {
+  margin-top: 5px;
+}
+
+.priceInput {
+  width: 120px;
+  height: 30px !important;
+  margin-top: 0;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.categoryOption {
+  text-align: left;
 }

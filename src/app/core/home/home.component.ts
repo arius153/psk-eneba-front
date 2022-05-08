@@ -1,13 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
+
 import {MatDialog} from '@angular/material/dialog';
 import {NewListingComponent} from './components/new-listing/new-listing.component';
 import {ProfileComponent} from '../profile/profile.component';
 import {AppConstants} from '../../shared/constants/app-constants';
 import {Observable} from 'rxjs';
 import {ToolResponse} from '../../shared/models/tool-response';
-import {AppConfigService} from '../../shared/services/app-config.service';
-import {HttpClient} from '@angular/common/http';
+import {CategoryResponse} from '../../shared/models/category-response';
+import {FormGroup} from '@angular/forms';
+import {ToolService} from '../../shared/services/tool.service';
+import {ToolsRequest} from '../../shared/models/tools-request';
 
 @Component({
   selector: 'app-home',
@@ -25,25 +28,46 @@ export class HomeComponent implements OnInit {
     styles: GoogleMapsStyle.style
   };
 
+  form: FormGroup;
+
   tools: ToolResponse[];
+  categories: CategoryResponse[];
+  toolsRequest = new ToolsRequest();
+  showSort: boolean;
+  showFilters: boolean;
 
   showProfile: boolean;
 
   constructor(
-    private matDialog: MatDialog,
-    private httpClient: HttpClient
+    private toolService: ToolService
   ) {
     this.showProfile = false;
   }
 
   ngOnInit(): void {
-    this.getCategories().subscribe(data => {
+    this.toolService.getTools().subscribe(data => {
       this.tools = data;
+    });
+
+    this.toolService.getCategories().subscribe(data => {
+      this.categories = data;
     });
   }
 
-  clickMe(): void {
-    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig());
+  toggleFilters(): void {
+    this.showSort = false;
+    this.showFilters = !this.showFilters;
+  }
+
+  toggleSort(): void {
+    this.showFilters = false;
+    this.showSort = !this.showSort;
+  }
+
+  submitSort(): void {
+    this.toolService.getSortedTools(this.toolsRequest).subscribe(data => {
+      this.tools = data;
+    });
   }
 
   clickMe2(): void {
@@ -55,8 +79,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getCategories(): Observable<ToolResponse[]> {
-    const url = AppConfigService.config.backUrl + '/tool/all';
-    return this.httpClient.get<ToolResponse[]>(url);
+  onCheckboxChange(event: any): void {
+    if (event.target.checked) {
+      this.toolsRequest.selectedCategories.push(event.target.value);
+    } else {
+      const index = this.toolsRequest.selectedCategories.findIndex(x => x === event.target.value);
+      this.toolsRequest.selectedCategories.splice(index, 1);
+    }
   }
 }
