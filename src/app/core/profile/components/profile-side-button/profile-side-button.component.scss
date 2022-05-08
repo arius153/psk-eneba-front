@@ -1,0 +1,25 @@
+div {
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  transition: background-color 0.1s;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+div:hover {
+  background-color: #01A6B00F;
+}
+
+// omit 'div' to add animation to hovering a selected button
+div.selected {
+  border-right: 5px solid #00A0C3;
+  background-color: #01A6B025;
+  cursor: default;
+}
+
+span {
+  line-height: 40px;
+  font-size: 14pt;
+}
