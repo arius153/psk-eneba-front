@@ -35,4 +35,8 @@ export class AuthenticationService {
     localStorage.setItem('jwtToken', jwtToken);
     this.jwtToken = jwtToken;
   }
+
+  logout(): void {
+    localStorage.removeItem('jwtToken');
+  }
 }
