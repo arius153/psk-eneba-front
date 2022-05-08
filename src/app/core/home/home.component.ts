@@ -8,8 +8,6 @@ import {ToolsRequest} from '../../shared/models/tools-request';
 import {AuthenticationService} from '../../shared/services/authentication.service';
 import {Router} from '@angular/router';
 import {GoogleMap} from '@angular/google-maps';
-import {MatDialog} from '@angular/material/dialog';
-import {RatingComponent} from './components/rating/rating.component';
 
 @Component({
   selector: 'app-home',
@@ -43,8 +41,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private toolService: ToolService,
     private authenticationService: AuthenticationService,
-    private router: Router,
-    private matDialog: MatDialog
+    private router: Router
   ) {
     this.showProfile = false;
   }
@@ -103,9 +100,5 @@ export class HomeComponent implements OnInit {
   centerTool(tool): void {
     this.map.panTo({lat: tool.geoCordX, lng: tool.geoCordY});
 
-  }
-
-  openRatingModal(): void {
-    this.matDialog.open(RatingComponent, {data: {userToRateId: 1}});
   }
 }

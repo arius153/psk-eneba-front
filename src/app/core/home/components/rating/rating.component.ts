@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {RatingRequest} from '../../../../shared/models/rating-request';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {ToolService} from '../../../../shared/services/tool.service';
+import {UserReviewService} from '../../../../shared/services/user-review.service';
 
 @Component({
   selector: 'app-rating',
@@ -18,7 +18,7 @@ export class RatingComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<RatingComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private toolService: ToolService
+    private userReviewService: UserReviewService
   ) {
   }
 
@@ -30,7 +30,7 @@ export class RatingComponent implements OnInit {
     if (!this.ratingRequest.rating) {
       return;
     }
-    this.toolService.ratePerson(this.ratingRequest).subscribe(() => {
+    this.userReviewService.rateUser(this.ratingRequest).subscribe(() => {
       this.dialogRef.close();
     });
   }
