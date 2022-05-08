@@ -1,4 +1,4 @@
-<google-map [options]="options" (mapClick)="mapClick($event)" class="fullscreen">
+<google-map [options]="options" class="fullscreen">
   <div class="listings-panel" id="listings-panel">
     <div class="panel-header">
       <span style="width: 100%; height: 100%;"> Nearest tech </span>
@@ -16,21 +16,21 @@
         <span class="search-header searchOptionsRow">Sort</span>
 
         <span class="searchOptionsRow">
-          <input type="radio" value="false" name="sortReversed" [(ngModel)]="sortReversed"> Ascending
-          <input type="radio" value="true" name="sortReversed" checked [(ngModel)]="sortReversed"> Descending
+          <input type="radio" value="false" name="sortReversed" [(ngModel)]="toolsRequest.sortReversed"> Ascending
+          <input type="radio" value="true" name="sortReversed" checked [(ngModel)]="toolsRequest.sortReversed"> Descending
         </span>
 
         <hr/>
 
         <span class="optionsList">
           <span>
-            <input type="radio" value="price" name="sort" [(ngModel)]="sortBy"> Price
+            <input type="radio" value="price" name="sort" [(ngModel)]="toolsRequest.sortBy"> Price
           </span>
           <span>
-            <input type="radio" value="category" name="sort" [(ngModel)]="sortBy"> Category
+            <input type="radio" value="category" name="sort" [(ngModel)]="toolsRequest.sortBy"> Category
           </span>
           <span>
-            <input type="radio" value="name" name="sort" [(ngModel)]="sortBy"> Name
+            <input type="radio" value="name" name="sort" [(ngModel)]="toolsRequest.sortBy"> Name
           </span>
         </span>
 
@@ -49,10 +49,10 @@
         <span class="searchOptionsRow">
           <h2>Price</h2>
           <span>
-            <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From" [(ngModel)]="minPrice">
+            <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From" [(ngModel)]="toolsRequest.minPrice">
           </span>
           <span>
-            <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To" [(ngModel)]="maxPrice">
+            <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To" [(ngModel)]="toolsRequest.maxPrice">
           </span>
         </span>
         <hr/>
