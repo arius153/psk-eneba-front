@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
+
 import {ToolResponse} from '../../shared/models/tool-response';
 import {CategoryResponse} from '../../shared/models/category-response';
 import {ToolService} from '../../shared/services/tool.service';
@@ -37,12 +38,15 @@ export class HomeComponent implements OnInit {
   showSort: boolean;
   showFilters: boolean;
 
+  showProfile: boolean;
+
   constructor(
     private toolService: ToolService,
     private authenticationService: AuthenticationService,
     private router: Router,
     private matDialog: MatDialog
   ) {
+    this.showProfile = false;
   }
 
   ngOnInit(): void {
@@ -70,6 +74,10 @@ export class HomeComponent implements OnInit {
     this.toolService.getSortedTools(this.toolsRequest).subscribe(data => {
       this.tools = data;
     });
+  }
+
+  clickMe2(): void {
+    this.showProfile = this.showProfile === false;
   }
 
   onCheckboxChange(event: any): void {
