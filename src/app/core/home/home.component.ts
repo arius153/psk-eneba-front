@@ -1,15 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {IgxToggleDirective} from 'igniteui-angular';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
-import {MatDialog} from '@angular/material/dialog';
-import {NewListingComponent} from './components/new-listing/new-listing.component';
-import {AppConstants} from '../../shared/constants/app-constants';
-import {Observable} from 'rxjs';
 import {ToolResponse} from '../../shared/models/tool-response';
 import {AppConfigService} from '../../shared/services/app-config.service';
 import {HttpClient} from '@angular/common/http';
 import {CategoryResponse} from '../../shared/models/category-response';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {ToolService} from '../../shared/services/tool.service';
 
 @Component({
   selector: 'app-home',
@@ -47,6 +44,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private httpClient: HttpClient,
+    private toolService: ToolService
   ) {
   }
 
@@ -61,13 +59,16 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  clickMe(): void {
-    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig());
-  }
-
   getTools(): Observable<ToolResponse[]> {
     const url = AppConfigService.config.backUrl + '/tool/';
     return this.httpClient.get<ToolResponse[]>(url);
+    this.toolService.getAllTools().subscribe(data => {
+      this.tools = data;
+    });
+  }
+
+  mapClick($event: google.maps.MapMouseEvent | google.maps.IconMouseEvent): void {
+    console.log($event.latLng.toJSON());
   }
 
   getCategories(): Observable<CategoryResponse[]> {

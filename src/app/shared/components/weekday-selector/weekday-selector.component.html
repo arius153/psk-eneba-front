@@ -1,0 +1,6 @@
+<!--<input type="hidden" [name]="name">-->
+<div class="days" [id]="name">
+  <button *ngFor="let day of weekDays" type="button" class="selection-button" [class.active]="day.selected" (click)="daySelected($event, day)">
+    {{day.name | translate}}
+  </button>
+</div>
