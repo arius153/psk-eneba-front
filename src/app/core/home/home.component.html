@@ -1,4 +1,4 @@
-<google-map [options]="options" (mapClick)="mapClick($event)" class="fullscreen">
+<google-map [options]="options" class="fullscreen">
   <map-marker *ngFor="let markerPosition of markerPositions"
               [position]="markerPosition"
               [options]="markerOptions"></map-marker>
@@ -54,10 +54,12 @@
         <span class="searchOptionsRow">
           <h2>Price</h2>
           <span>
-            <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From" [(ngModel)]="toolsRequest.minPrice">
+            <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From"
+                   [(ngModel)]="toolsRequest.minPrice">
           </span>
           <span>
-            <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To" [(ngModel)]="toolsRequest.maxPrice">
+            <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To"
+                   [(ngModel)]="toolsRequest.maxPrice">
           </span>
         </span>
         <hr/>
@@ -74,24 +76,23 @@
         </span>
       </div>
     </ng-container>
-    <div class="tool-list">
-      <ul *ngFor="let tool of tools">
-        <div class="listing-row">
-          <div class="listing">
-            <span class="circle" [ngClass]="{'available': tool.available}"></span>
-            <img src="../assets/icons/{{tool.toolCategory}}.png" alt="Category" class="category-icon"/>
-            <div class="listing-name">
+    <ul class="tool-list">
+      <li *ngFor="let tool of tools" class="listing-row mt-1">
+        <div class="listing" (click)="centerTool(tool)">
+
+          <span class="circle" [ngClass]="{'available': tool.available}"></span>
+          <img src="../assets/icons/{{tool.toolCategory}}.png" alt="Category" class="category-icon"/>
+          <div class="listing-name">
             <span>
               {{tool.name}}
             </span>
-              <div class="listing-price">
-                {{tool.price}}€/d.
-              </div>
+            <div class="listing-price">
+              {{tool.price}}€/d.
             </div>
           </div>
-          <a class="open-arrow" href="/"></a> <!--TODO: change the href to go to the specific description page-->
         </div>
-      </ul>
-    </div>
-      </div>
+        <a class="open-arrow" href="/"></a> <!--TODO: change the href to go to the specific description page-->
+      </li>
+    </ul>
+  </div>
 </google-map>
