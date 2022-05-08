@@ -76,23 +76,26 @@
         </span>
       </div>
     </ng-container>
-    <ul class="tool-list">
-      <li *ngFor="let tool of tools" class="listing-row mt-1">
-        <div class="listing" (click)="centerTool(tool)">
+    <div>
+      <ul class="tool-list">
+        <li *ngFor="let tool of tools" class="listing-row mt-1">
+          <div class="listing" (click)="centerTool(tool)">
 
-          <span class="circle" [ngClass]="{'available': tool.available}"></span>
-          <img src="../assets/icons/{{tool.toolCategory}}.png" alt="Category" class="category-icon"/>
-          <div class="listing-name">
+            <span class="circle" [ngClass]="{'available': tool.available}"></span>
+            <img src="../assets/icons/{{tool.toolCategory}}.png" alt="Category" class="category-icon"/>
+            <div class="listing-name">
             <span>
               {{tool.name}}
             </span>
-            <div class="listing-price">
-              {{tool.price}}€/d.
+              <div class="listing-price">
+                {{tool.price}}€/d.
+              </div>
             </div>
           </div>
-        </div>
-        <a class="open-arrow" href="/"></a> <!--TODO: change the href to go to the specific description page-->
-      </li>
-    </ul>
+          <a class="open-arrow" href="/"></a> <!--TODO: change the href to go to the specific description page-->
+        </li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" (click)="openRatingModal()">click me!</button>
   </div>
 </google-map>

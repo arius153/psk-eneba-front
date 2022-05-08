@@ -7,6 +7,7 @@ import {NewListingRequest} from '../models/new-listing-request';
 import {ObjectUtils} from '../utils/object-utils';
 import {ToolResponse} from '../models/tool-response';
 import {ToolsRequest} from '../models/tools-request';
+import {RatingRequest} from '../models/rating-request';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +54,10 @@ export class ToolService {
       });
     }
     return this.httpClient.get<ToolResponse[]>(url);
+  }
+
+  ratePerson(ratingRequest: RatingRequest): Observable<any> {
+    const url = AppConfigService.config.backUrl + '/';
+    return this.httpClient.post(url, ratingRequest);
   }
 }

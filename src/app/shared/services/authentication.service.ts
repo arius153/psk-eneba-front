@@ -4,7 +4,7 @@ import {JwtRequest} from '../models/jwt-request';
 import {Observable} from 'rxjs';
 import {JwtResponse} from '../models/jwt-response';
 import {AppConfigService} from './app-config.service';
-import {UserRegistrationDto} from '../models/user-registration-dto';
+import {UserRegistrationRequest} from '../models/user-registration-request';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class AuthenticationService {
     return this.httpClient.post<JwtResponse>(url, jwtRequest);
   }
 
-  register(registrationModel: UserRegistrationDto): Observable<number> {
+  register(registrationModel: UserRegistrationRequest): Observable<number> {
     const url = AppConfigService.config.backUrl + '/register';
     return this.httpClient.post<number>(url, registrationModel);
   }
