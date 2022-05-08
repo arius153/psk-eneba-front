@@ -1,5 +1,15 @@
-<ul>
-  <li *ngFor="let userReview of userReviews; let i = index"> (1)
-    {{ i + 1 }} - {{ userReview.comments }} (2)
-  </li>
-</ul>
+<div class="review-container">
+  <h1>My reviews</h1>
+  <div class="review-card" *ngFor="let userReview of userReviews">
+    <div class="review-card-stars">
+      <span class="fa fa-star checked" *ngFor="let item of [].constructor(userReview.rating); let i = index"></span>
+      <span class="fa fa-star" *ngFor="let item of [].constructor(5 - userReview.rating); let i = index"></span>
+    </div>
+    <br>
+    <span class="review-card-comments">"{{userReview.comments}}"</span>
+    <hr class="review-card-hr-space">
+    <div class="review-card-footer">
+      <span class="flex-item">{{userReview.reviewedBy}}, {{userReview.reviewedAt | date}}</span>
+    </div>
+  </div>
+</div>
