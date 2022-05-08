@@ -14,4 +14,8 @@ export class InitialService {
     return this.httpClient.get('http://localhost:8080', {responseType: 'text'});
   }
 
+  getCategories(): Observable<CategoryResponse[]> {
+    const url = AppConfigService.config.backUrl + '/category/';
+    return this.httpClient.get<CategoryResponse[]>(url);
+  }
 }
