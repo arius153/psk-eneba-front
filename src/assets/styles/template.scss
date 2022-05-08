@@ -203,3 +203,115 @@ input[type="number"] {
   border: 1px solid black;
   border-radius: 3px;
 }
+
+.toggle-section {
+  background-color: white;
+}
+
+.hidden-overflow {
+  overflow: hidden;
+}
+
+.search-container {
+  margin-top: 20px;
+  padding: 15px;
+  width: 350px;
+  background-color: #DFF7FF;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-container > .search-header {
+  font-size: 30px;
+}
+
+.search-container > span {
+  margin-top:10px;
+}
+
+.submitButton {
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.optionsList {
+  display: inline-grid;
+  text-align:left;
+  margin-left: 50px;
+  font-size: 17px;
+}
+
+.optionsList > span {
+  margin-top: 5px;
+}
+
+.priceInput {
+  width: 120px;
+  height: 30px !important;
+  margin-top: 0;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.categoryOption {
+  text-align: left;
+}
+
+.toggle-section {
+  background-color: white;
+}
+
+.hidden-overflow {
+  overflow: hidden;
+}
+
+.search-container {
+  margin-top: 20px;
+  padding: 15px;
+  width: 350px;
+  background-color: #DFF7FF;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-container > .search-header {
+  font-size: 30px;
+}
+
+.search-container > span {
+  margin-top:10px;
+}
+
+.submitButton {
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+.optionsList {
+  display: inline-grid;
+  text-align:left;
+  margin-left: 50px;
+  font-size: 17px;
+}
+
+.optionsList > span {
+  margin-top: 5px;
+}
+
+.priceInput {
+  width: 120px;
+  height: 30px !important;
+  margin-top: 0;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.categoryOption {
+  text-align: left;
+}

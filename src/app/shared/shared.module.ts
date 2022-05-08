@@ -9,7 +9,8 @@ import {ImageUploaderComponent} from './components/image-uploader/image-uploader
 import {MatIconModule} from '@angular/material/icon';
 import {GoogleMapsModule} from '@angular/google-maps';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { WeekdaySelectorComponent } from './components/weekday-selector/weekday-selector.component';
+import {WeekdaySelectorComponent} from './components/weekday-selector/weekday-selector.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { WeekdaySelectorComponent } from './components/weekday-selector/weekday-
     MatDialogModule,
     MatIconModule,
     GoogleMapsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatFormFieldModule
   ],
   exports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { WeekdaySelectorComponent } from './components/weekday-selector/weekday-
     MatIconModule,
     GoogleMapsModule,
     MatDatepickerModule,
-    WeekdaySelectorComponent
+    WeekdaySelectorComponent,
+    MatFormFieldModule
   ]
 })
 export class SharedModule {
