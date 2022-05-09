@@ -1,12 +1,11 @@
-<button class="btn btn-primary position-absolute" style="z-index: 2; top: 40px;" (click)="clickMe2()">Arba mane</button>
-
 <app-profile *ngIf="showProfile">
-
 </app-profile>
 
 <google-map [options]="options" class="fullscreen" *ngIf="!showProfile">
-  <mat-icon (click)="logout()" class="logout-btn">logout</mat-icon>
-
+  <div class="side-menu">
+    <mat-icon (click)="clickMe2()" class="logout-btn mb-3">account_circle</mat-icon>
+    <mat-icon (click)="logout()" class="logout-btn">logout</mat-icon>
+  </div>
   <map-marker *ngFor="let markerPosition of markerPositions"
               [position]="markerPosition"
               [options]="markerOptions"></map-marker>
