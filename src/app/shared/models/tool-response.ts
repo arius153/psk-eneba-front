@@ -22,4 +22,8 @@ export class ToolResponse {
   images: string[];
 
   formattedAddress: string;
+
+  pickUpTimeWorkDay: string;
+
+  pickUpTimeWeekend: string;
 }
