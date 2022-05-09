@@ -11,12 +11,15 @@ import {GoogleMapsModule} from '@angular/google-maps';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {WeekdaySelectorComponent} from './components/weekday-selector/weekday-selector.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {RouterModule} from '@angular/router';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
     FormGroupComponent,
     ImageUploaderComponent,
-    WeekdaySelectorComponent
+    WeekdaySelectorComponent,
+    SafeHtmlPipe
   ],
   imports: [
     CommonModule,
@@ -27,7 +30,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatIconModule,
     GoogleMapsModule,
     MatDatepickerModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    RouterModule,
   ],
   exports: [
     CommonModule,
@@ -40,7 +44,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     GoogleMapsModule,
     MatDatepickerModule,
     WeekdaySelectorComponent,
-    MatFormFieldModule
+    MatFormFieldModule,
+    RouterModule,
+    SafeHtmlPipe
   ]
 })
 export class SharedModule {

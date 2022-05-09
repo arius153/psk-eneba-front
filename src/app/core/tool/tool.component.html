@@ -1,0 +1,28 @@
+<ng-container *ngIf="tool">
+
+  <div class="text-center">
+    <h1>{{tool.name}}</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm">
+      <h2>{{tool.formattedAddress}}</h2>
+      <google-map [options]="options" class="google-maps">
+        <map-marker [position]="markerPosition"
+                    [options]="markerOptions"></map-marker>
+      </google-map>
+    </div>
+    <div class="col-sm">
+      <h2>{{tool.toolCategory}}</h2>
+      <h2>{{tool.assistedTransportation}}</h2>
+      <h2>{{tool.price}}€/24h</h2>
+
+      <p>{{tool.description}}</p>
+    </div>
+    <div class="col-sm">
+      <div *ngFor="let image of tool.images">
+        <img [src]="'data:image/png;base64, ' + image | safeHtml" alt="image" class="img-container"/>
+      </div>
+    </div>
+  </div>
+
+</ng-container>

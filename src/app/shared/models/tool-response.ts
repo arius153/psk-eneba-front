@@ -16,4 +16,10 @@ export class ToolResponse {
   price: number;
 
   available: boolean;
+
+  assistedTransportation: string;
+
+  images: string[];
+
+  formattedAddress: string;
 }

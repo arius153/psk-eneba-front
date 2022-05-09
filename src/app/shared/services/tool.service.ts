@@ -54,4 +54,9 @@ export class ToolService {
     }
     return this.httpClient.get<ToolResponse[]>(url);
   }
+
+  getToolDetailed(id: any): Observable<ToolResponse> {
+    const url = AppConfigService.config.backUrl + '/tool/' + id;
+    return this.httpClient.get<ToolResponse>(url);
+  }
 }
