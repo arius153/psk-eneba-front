@@ -1,5 +1,8 @@
-<ul>
-  <li *ngFor="let userReview of userReviews; let i = index"> (1)
-    {{ i + 1 }} - {{ userReview.comments }} (2)
-  </li>
-</ul>
+<div>
+  <h1>Reviews</h1>
+  <ul>
+    <li *ngFor="let userReview of userReviews; let i = index"> (1)
+      {{ i + 1 }} - {{ userReview.comments }} (2)
+    </li>
+  </ul>
+</div>

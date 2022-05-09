@@ -72,6 +72,7 @@ export class ProfileComponent implements OnInit {
     this.showMyListings = false;
     this.showMyLocations = false;
     this.showAccount = false;
+    this.showMyReviews = false;
     this.showSiteSettings = false;
     this.showHelp = false;
   }
