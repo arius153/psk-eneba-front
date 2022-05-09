@@ -9,6 +9,7 @@
     <div class="panel-header">
       <span style="width: 100%; height: 100%;"> Nearest tech </span>
     </div>
+    <hr>
     <div class="searchOptionsRow">
       <button id="sort" class="horizontal icon filter" (click)="toggleSort()">
         Sort
@@ -55,10 +56,12 @@
         <span class="searchOptionsRow">
           <h2>Price</h2>
           <span>
-            <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From" [(ngModel)]="toolsRequest.minPrice">
+            <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From"
+                   [(ngModel)]="toolsRequest.minPrice">
           </span>
           <span>
-            <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To" [(ngModel)]="toolsRequest.maxPrice">
+            <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To"
+                   [(ngModel)]="toolsRequest.maxPrice">
           </span>
         </span>
         <hr/>
@@ -75,12 +78,12 @@
         </span>
       </div>
     </ng-container>
-    <div class="tool-list">
-      <ul *ngFor="let tool of tools">
-        <div class="listing-row">
-          <div class="listing">
-            <span class="circle" [ngClass]="{'available': tool.available}"></span>
+    <div>
+      <ul class="tool-list">
+        <li *ngFor="let tool of tools" class="listing-row mt-1">
+          <div class="listing" (click)="centerTool(tool)">
 
+            <span class="circle" [ngClass]="{'available': tool.available}"></span>
             <img src="../assets/icons/{{tool.toolCategory}}.png" alt="Category" class="category-icon"/>
             <div class="listing-name">
             <span>
@@ -90,11 +93,10 @@
                 {{tool.price}}€/d.
               </div>
             </div>
-
           </div>
           <a class="open-arrow" href="/"></a> <!--TODO: change the href to go to the specific description page-->
-        </div>
+        </li>
       </ul>
     </div>
-      </div>
+  </div>
 </google-map>

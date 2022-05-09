@@ -1,11 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
 
 import {ToolResponse} from '../../shared/models/tool-response';
 import {CategoryResponse} from '../../shared/models/category-response';
-import {FormGroup} from '@angular/forms';
 import {ToolService} from '../../shared/services/tool.service';
 import {ToolsRequest} from '../../shared/models/tools-request';
+import {AuthenticationService} from '../../shared/services/authentication.service';
+import {Router} from '@angular/router';
+import {GoogleMap} from '@angular/google-maps';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +25,10 @@ export class HomeComponent implements OnInit {
     styles: GoogleMapsStyle.style
   };
 
-  form: FormGroup;
+  @ViewChild(GoogleMap, {static: false}) map: GoogleMap;
+
+  markerOptions: google.maps.MarkerOptions = {draggable: false};
+  markerPositions: google.maps.LatLngLiteral[] = [];
 
   tools: ToolResponse[];
   categories: CategoryResponse[];
@@ -34,7 +39,9 @@ export class HomeComponent implements OnInit {
   showProfile: boolean;
 
   constructor(
-    private toolService: ToolService
+    private toolService: ToolService,
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
     this.showProfile = false;
   }
@@ -42,6 +49,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.toolService.getTools().subscribe(data => {
       this.tools = data;
+      this.initMarkers();
     });
 
     this.toolService.getCategories().subscribe(data => {
@@ -76,5 +84,21 @@ export class HomeComponent implements OnInit {
       const index = this.toolsRequest.selectedCategories.findIndex(x => x === event.target.value);
       this.toolsRequest.selectedCategories.splice(index, 1);
     }
+  }
+
+  logout(): void {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+  }
+
+  private initMarkers(): void {
+    this.tools.forEach(tool => {
+      this.markerPositions.push({lat: tool.geoCordX, lng: tool.geoCordY});
+    });
+  }
+
+  centerTool(tool): void {
+    this.map.panTo({lat: tool.geoCordX, lng: tool.geoCordY});
+
   }
 }

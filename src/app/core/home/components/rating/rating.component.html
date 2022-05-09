@@ -1,0 +1,13 @@
+<mat-dialog-content class="min-height-6rem text-center">
+  <h1>How it went?</h1>
+  <rating class="font-size-4rem" [(ngModel)]="ratingRequest.rating" [max]="max"
+          [readonly]="isReadonly">
+  </rating>
+  <hr>
+  <h2>Leave a comment:</h2>
+  <textarea class="w-100" [(ngModel)]="ratingRequest.comment"></textarea>
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex justify-content-between">
+  <button class="btn btn-secondary" mat-dialog-close>Cancel</button>
+  <button class="btn btn-primary" (click)="doRate()">Confirm</button>
+</mat-dialog-actions>

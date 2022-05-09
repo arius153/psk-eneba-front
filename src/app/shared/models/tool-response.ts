@@ -9,9 +9,9 @@ export class ToolResponse {
 
   description: string;
 
-  geoCordX: string;
+  geoCordX: number;
 
-  geoCordY: string;
+  geoCordY: number;
 
   price: number;
 

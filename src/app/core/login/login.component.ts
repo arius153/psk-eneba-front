@@ -5,7 +5,7 @@ import {JwtRequest} from '../../shared/models/jwt-request';
 import {AuthenticationService} from '../../shared/services/authentication.service';
 import {FormUtils} from '../../shared/utils/form-utils';
 import {Router} from '@angular/router';
-import {UserRegistrationDto} from '../../shared/models/user-registration-dto';
+import {UserRegistrationRequest} from '../../shared/models/user-registration-request';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ import {UserRegistrationDto} from '../../shared/models/user-registration-dto';
 export class LoginComponent implements OnInit {
 
   loginModel = new JwtRequest();
-  registrationModel = new UserRegistrationDto();
+  registrationModel = new UserRegistrationRequest();
 
   registration: boolean;
 
