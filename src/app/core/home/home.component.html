@@ -1,14 +1,6 @@
 <app-profile *ngIf="showProfile">
 </app-profile>
-
-<google-map [options]="options" class="fullscreen" *ngIf="!showProfile">
-  <div class="side-menu">
-    <mat-icon (click)="clickMe2()" class="logout-btn mb-3">account_circle</mat-icon>
-    <mat-icon (click)="logout()" class="logout-btn">logout</mat-icon>
-  </div>
-  <map-marker *ngFor="let markerPosition of markerPositions"
-              [position]="markerPosition"
-              [options]="markerOptions"></map-marker>
+<div class="d-flex h-100">
   <div class="listings-panel" id="listings-panel">
     <div class="panel-header">
       <span style="width: 100%; height: 100%;"> Nearest tech </span>
@@ -103,4 +95,15 @@
       </ul>
     </div>
   </div>
-</google-map>
+  <div class="flex-grow-1">
+    <google-map [options]="options" class="fullscreen" *ngIf="!showProfile">
+      <div class="side-menu">
+        <mat-icon (click)="clickMe2()" class="logout-btn mb-3">account_circle</mat-icon>
+        <mat-icon (click)="logout()" class="logout-btn">logout</mat-icon>
+      </div>
+      <map-marker *ngFor="let markerPosition of markerPositions"
+                  [position]="markerPosition"
+                  [options]="markerOptions"></map-marker>
+    </google-map>
+  </div>
+</div>

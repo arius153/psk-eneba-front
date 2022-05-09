@@ -46,8 +46,8 @@ input[type="text"], input[type="password"], input[type="number"], select, input[
 }
 
 .fullscreen .map-container {
-  height: 100% !important;
   width: 100% !important;
+  height: 100% !important;
 }
 
 .google-maps .map-container {
@@ -71,16 +71,12 @@ input[type="number"] {
 }
 
 .listings-panel {
-  height: 95%;
   width: 464px;
-  top: 20px;
-  left: 20px;
-  position: absolute;
   background-color: white;
-  border-radius: 3px;
   padding: 1rem 2rem;
-  border: 1px solid black;
+  border-right: 1px solid black;
   box-shadow: 0 1px 4px rgb(0 0 0 / 30%);
+  overflow-y: auto;
 }
 
 .panel-header {
