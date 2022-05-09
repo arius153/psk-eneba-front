@@ -1,1 +1,5 @@
-<div><h1>My listings</h1></div>
+<div>
+  <h1>Listings</h1>
+  <div class="my-listings-separator"></div>
+  <app-my-listings-item *ngFor="let listing of listings" [listing]="listing"></app-my-listings-item>
+</div>

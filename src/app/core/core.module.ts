@@ -12,6 +12,7 @@ import { MyLocationsComponent } from './profile/components/my-locations/my-locat
 import { AccountPageComponent } from './profile/components/account-page/account-page.component';
 import { SiteSettingsComponent } from './profile/components/site-settings/site-settings.component';
 import { HelpPageComponent } from './profile/components/help-page/help-page.component';
+import { MyListingsItemComponent } from './profile/components/my-listings-item/my-listings-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HelpPageComponent } from './profile/components/help-page/help-page.comp
     MyLocationsComponent,
     AccountPageComponent,
     SiteSettingsComponent,
-    HelpPageComponent
+    HelpPageComponent,
+    MyListingsItemComponent
   ],
     imports: [
         SharedModule,
