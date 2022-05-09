@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   @ViewChild('profile_my_listings') myListingsButton: ProfileSideButtonComponent;
   @ViewChild('profile_my_locations') myLocationsButton: ProfileSideButtonComponent;
   @ViewChild('profile_account') accountButton: ProfileSideButtonComponent;
+  @ViewChild('profile_my_reviews') myReviewsButton: ProfileSideButtonComponent;
   @ViewChild('profile_site_settings') siteSettingsButton: ProfileSideButtonComponent;
   @ViewChild('profile_help') helpButton: ProfileSideButtonComponent;
   @ViewChildren(ProfileSideButtonComponent) sideButtons: QueryList<ProfileSideButtonComponent>;
@@ -21,6 +22,7 @@ export class ProfileComponent implements OnInit {
   showMyListings = true;
   showMyLocations = false;
   showAccount = false;
+  showMyReviews = false;
   showSiteSettings = false;
   showHelp = false;
 
@@ -43,6 +45,13 @@ export class ProfileComponent implements OnInit {
     this.hideAll();
     this.deselectAllExcept(this.accountButton);
     this.showAccount = true;
+  }
+
+  myReviewsSelected(): void
+  {
+    this.hideAll();
+    this.deselectAllExcept(this.myReviewsButton);
+    this.showMyReviews = true;
   }
 
   siteSettingsSelected(): void
