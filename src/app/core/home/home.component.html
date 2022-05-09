@@ -49,7 +49,7 @@
       <div class="search-container ">
         <span class="search-header searchOptionsRow">Filter</span>
 
-        <span class="searchOptionsRow">
+        <div class="searchOptionsRow">
           <h2>Price</h2>
           <span>
             <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From"
@@ -59,14 +59,16 @@
             <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To"
                    [(ngModel)]="toolsRequest.maxPrice">
           </span>
-        </span>
+        </div>
         <hr/>
-        <span class="searchOptionsRow">
+        <div class="searchOptionsRow">
           <h2>Category</h2>
-          <ul class="categoryOption" *ngFor="let category of categories">
-            <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event)"/>{{category.name}}
+          <ul class="no-list-style-type">
+            <li class="categoryOption" *ngFor="let category of categories">
+              <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event)"/>{{category.name}}
+            </li>
           </ul>
-        </span>
+        </div>
         <span class="searchOptionsRow">
           <button id="submitFilter" class="submitButton" (click)="submitSort()">
             Filter
