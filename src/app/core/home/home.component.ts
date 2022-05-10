@@ -73,10 +73,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  clickMe2(): void {
-    this.showProfile = this.showProfile === false;
-  }
-
   onCheckboxChange(event: any): void {
     if (event.target.checked) {
       this.toolsRequest.selectedCategories.push(event.target.value);
