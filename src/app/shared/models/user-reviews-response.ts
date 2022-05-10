@@ -1,4 +1,4 @@
-export class UserReviewDto {
+export class UserReviewsResponse {
   id: number;
   rating: number;
   comments: string;

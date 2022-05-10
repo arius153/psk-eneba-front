@@ -1,4 +1,3 @@
-<button class="btn btn-primary position-absolute" style="z-index: 2;" (click)="clickMe()">Spausk mane</button>
 <button class="btn btn-primary position-absolute" style="z-index: 2; top: 40px;" (click)="clickMe2()">Arba mane</button>
 
 <app-profile *ngIf="showProfile">
@@ -6,38 +5,102 @@
 </app-profile>
 
 <google-map [options]="options" class="fullscreen" *ngIf="!showProfile">
+  <mat-icon (click)="logout()" class="logout-btn">logout</mat-icon>
+
+  <map-marker *ngFor="let markerPosition of markerPositions"
+              [position]="markerPosition"
+              [options]="markerOptions"></map-marker>
   <div class="listings-panel" id="listings-panel">
     <div class="panel-header">
       <span style="width: 100%; height: 100%;"> Nearest tech </span>
     </div>
+    <hr>
     <div class="searchOptionsRow">
-      <button id="sort" class="horizontal icon filter">
+      <button id="sort" class="horizontal icon filter" (click)="toggleSort()">
         Sort
       </button>
-      <button id="filter" class="horizontal icon sort">
+      <button id="filter" class="horizontal icon sort" (click)="toggleFilters()">
         Filter
       </button>
     </div>
-    <div class="tool-list">
+    <ng-container *ngIf="showSort">
+      <div class="search-container">
+        <span class="search-header searchOptionsRow">Sort</span>
 
-      <ul *ngFor="let tool of tools" >
-        <div  class="listing-row">
-          <div class="listing">
+        <span class="searchOptionsRow">
+          <input type="radio" value="false" name="sortReversed" [(ngModel)]="toolsRequest.sortReversed"> Ascending
+          <input type="radio" value="true" name="sortReversed" checked [(ngModel)]="toolsRequest.sortReversed"> Descending
+        </span>
+
+        <hr/>
+
+        <span class="optionsList">
+          <span>
+            <input type="radio" value="price" name="sort" [(ngModel)]="toolsRequest.sortBy"> Price
+          </span>
+          <span>
+            <input type="radio" value="category" name="sort" [(ngModel)]="toolsRequest.sortBy"> Category
+          </span>
+          <span>
+            <input type="radio" value="name" name="sort" [(ngModel)]="toolsRequest.sortBy"> Name
+          </span>
+        </span>
+
+        <span class="searchOptionsRow">
+          <button id="submitSort" class="submitButton" (click)="submitSort()">
+            Sort
+          </button>
+        </span>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="showFilters">
+      <div class="search-container ">
+        <span class="search-header searchOptionsRow">Filter</span>
+
+        <span class="searchOptionsRow">
+          <h2>Price</h2>
+          <span>
+            <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From"
+                   [(ngModel)]="toolsRequest.minPrice">
+          </span>
+          <span>
+            <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To"
+                   [(ngModel)]="toolsRequest.maxPrice">
+          </span>
+        </span>
+        <hr/>
+        <span class="searchOptionsRow">
+          <h2>Category</h2>
+          <ul class="categoryOption" *ngFor="let category of categories">
+            <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event)"/>{{category.name}}
+          </ul>
+        </span>
+        <span class="searchOptionsRow">
+          <button id="submitFilter" class="submitButton" (click)="submitSort()">
+            Filter
+          </button>
+        </span>
+      </div>
+    </ng-container>
+    <div>
+      <ul class="tool-list">
+        <li *ngFor="let tool of tools" class="listing-row mt-1">
+          <div class="listing" (click)="centerTool(tool)">
+
             <span class="circle" [ngClass]="{'available': tool.available}"></span>
-
             <img src="../assets/icons/{{tool.toolCategory}}.png" alt="Category" class="category-icon"/>
             <div class="listing-name">
-            <span >
+            <span>
               {{tool.name}}
             </span>
               <div class="listing-price">
                 {{tool.price}}€/d.
               </div>
             </div>
-
           </div>
           <a class="open-arrow" href="/"></a> <!--TODO: change the href to go to the specific description page-->
-        </div>
+        </li>
       </ul>
     </div>
   </div>

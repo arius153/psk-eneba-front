@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
-import {MatDialog} from '@angular/material/dialog';
-import {NewListingComponent} from './components/new-listing/new-listing.component';
-import {ProfileComponent} from '../profile/profile.component';
-import {AppConstants} from '../../shared/constants/app-constants';
-import {Observable} from 'rxjs';
+
 import {ToolResponse} from '../../shared/models/tool-response';
-import {AppConfigService} from '../../shared/services/app-config.service';
-import {HttpClient} from '@angular/common/http';
+import {CategoryResponse} from '../../shared/models/category-response';
+import {ToolService} from '../../shared/services/tool.service';
+import {ToolsRequest} from '../../shared/models/tools-request';
+import {AuthenticationService} from '../../shared/services/authentication.service';
+import {Router} from '@angular/router';
+import {GoogleMap} from '@angular/google-maps';
 
 @Component({
   selector: 'app-home',
@@ -25,38 +25,80 @@ export class HomeComponent implements OnInit {
     styles: GoogleMapsStyle.style
   };
 
+  @ViewChild(GoogleMap, {static: false}) map: GoogleMap;
+
+  markerOptions: google.maps.MarkerOptions = {draggable: false};
+  markerPositions: google.maps.LatLngLiteral[] = [];
+
   tools: ToolResponse[];
+  categories: CategoryResponse[];
+  toolsRequest = new ToolsRequest();
+  showSort: boolean;
+  showFilters: boolean;
 
   showProfile: boolean;
 
   constructor(
-    private matDialog: MatDialog,
-    private httpClient: HttpClient
+    private toolService: ToolService,
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
     this.showProfile = false;
   }
 
   ngOnInit(): void {
-    this.getCategories().subscribe(data => {
+    this.toolService.getTools().subscribe(data => {
+      this.tools = data;
+      this.initMarkers();
+    });
+
+    this.toolService.getCategories().subscribe(data => {
+      this.categories = data;
+    });
+  }
+
+  toggleFilters(): void {
+    this.showSort = false;
+    this.showFilters = !this.showFilters;
+  }
+
+  toggleSort(): void {
+    this.showFilters = false;
+    this.showSort = !this.showSort;
+  }
+
+  submitSort(): void {
+    this.toolService.getSortedTools(this.toolsRequest).subscribe(data => {
       this.tools = data;
     });
   }
 
-  clickMe(): void {
-    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig());
-  }
-
   clickMe2(): void {
-    if (this.showProfile === false) {
-      this.showProfile = true;
-    }
-    else {
-      this.showProfile = false;
+    this.showProfile = this.showProfile === false;
+  }
+
+  onCheckboxChange(event: any): void {
+    if (event.target.checked) {
+      this.toolsRequest.selectedCategories.push(event.target.value);
+    } else {
+      const index = this.toolsRequest.selectedCategories.findIndex(x => x === event.target.value);
+      this.toolsRequest.selectedCategories.splice(index, 1);
     }
   }
 
-  getCategories(): Observable<ToolResponse[]> {
-    const url = AppConfigService.config.backUrl + '/tool/all';
-    return this.httpClient.get<ToolResponse[]>(url);
+  logout(): void {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
+  }
+
+  private initMarkers(): void {
+    this.tools.forEach(tool => {
+      this.markerPositions.push({lat: tool.geoCordX, lng: tool.geoCordY});
+    });
+  }
+
+  centerTool(tool): void {
+    this.map.panTo({lat: tool.geoCordX, lng: tool.geoCordY});
+
   }
 }

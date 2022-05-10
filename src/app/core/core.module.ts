@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {HomeComponent} from './home/home.component';
 import {SharedModule} from '../shared/shared.module';
-import {TranslateModule} from '@ngx-translate/core';
 import {LoginComponent} from './login/login.component';
 import {GoogleMapsModule} from '@angular/google-maps';
 import { NewListingComponent } from './home/components/new-listing/new-listing.component';
@@ -14,12 +13,15 @@ import { AccountPageComponent } from './profile/components/account-page/account-
 import { SiteSettingsComponent } from './profile/components/site-settings/site-settings.component';
 import { HelpPageComponent } from './profile/components/help-page/help-page.component';
 import { MyListingsItemComponent } from './profile/components/my-listings-item/my-listings-item.component';
+import { RatingComponent } from './home/components/rating/rating.component';
+import {RatingModule} from 'ngx-bootstrap/rating';
 
 @NgModule({
   declarations: [
     HomeComponent,
     LoginComponent,
     NewListingComponent,
+    RatingComponent,
     ProfileComponent,
     ProfileSideButtonComponent,
     MyListingsComponent,
@@ -32,8 +34,8 @@ import { MyListingsItemComponent } from './profile/components/my-listings-item/m
   ],
     imports: [
         SharedModule,
-        TranslateModule,
-        GoogleMapsModule
+        GoogleMapsModule,
+        RatingModule,
     ],
   exports: []
 })

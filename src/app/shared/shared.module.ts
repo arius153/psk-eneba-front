@@ -7,11 +7,16 @@ import {FormGroupComponent} from './components/from-group/form-group.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ImageUploaderComponent} from './components/image-uploader/image-uploader.component';
 import {MatIconModule} from '@angular/material/icon';
+import {GoogleMapsModule} from '@angular/google-maps';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {WeekdaySelectorComponent} from './components/weekday-selector/weekday-selector.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     FormGroupComponent,
-    ImageUploaderComponent
+    ImageUploaderComponent,
+    WeekdaySelectorComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +24,10 @@ import {MatIconModule} from '@angular/material/icon';
     TranslateModule,
     ModalModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    GoogleMapsModule,
+    MatDatepickerModule,
+    MatFormFieldModule
   ],
   exports: [
     CommonModule,
@@ -28,7 +36,11 @@ import {MatIconModule} from '@angular/material/icon';
     FormGroupComponent,
     MatDialogModule,
     ImageUploaderComponent,
-    MatIconModule
+    MatIconModule,
+    GoogleMapsModule,
+    MatDatepickerModule,
+    WeekdaySelectorComponent,
+    MatFormFieldModule
   ]
 })
 export class SharedModule {

@@ -4,7 +4,7 @@ import {ToolResponse} from '../../../../shared/models/tool-response';
 import {AppConfigService} from '../../../../shared/services/app-config.service';
 import {UserReviewService} from '../../../../shared/services/user-review.service';
 import {CategoryResponse} from '../../../../shared/models/category-response';
-import {UserReviewDto} from '../../../../shared/models/user-reviews-response';
+import {UserReviewsResponse} from '../../../../shared/models/user-reviews-response';
 
 @Component({
   selector: 'app-my-reviews',
@@ -14,7 +14,7 @@ import {UserReviewDto} from '../../../../shared/models/user-reviews-response';
 
 export class MyReviewsComponent implements OnInit {
 
-  userReviews: UserReviewDto[];
+  userReviews: UserReviewsResponse[];
 
   constructor(private userReviewService: UserReviewService) {
   }
