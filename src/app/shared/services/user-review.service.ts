@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {UserReviewsResponse} from '../models/user-reviews-response';
 import {RatingRequest} from '../models/rating-request';
+import {UserReviewAnswerResponse} from '../models/user-review-answer-response';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,10 @@ export class UserReviewService {
   rateUser(ratingRequest: RatingRequest): Observable<any> {
     const url = AppConfigService.config.backUrl + '/user-reviews/rate';
     return this.httpClient.post(url, ratingRequest);
+  }
+
+  addReply(userReviewId: number, answer: string): Observable<UserReviewAnswerResponse>  {
+    const url = AppConfigService.config.backUrl + '/user-reviews/answer';
+    return this.httpClient.post<UserReviewAnswerResponse>(url, {userReviewId, answer});
   }
 }

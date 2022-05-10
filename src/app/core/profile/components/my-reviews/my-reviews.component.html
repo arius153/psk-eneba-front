@@ -7,9 +7,20 @@
     </div>
     <br>
     <span class="review-card-comments">"{{userReview.comments}}"</span>
-    <hr class="review-card-hr-space">
     <div class="review-card-footer">
       <span class="flex-item">{{userReview.reviewedBy}}, {{userReview.reviewedAt | date}}</span>
+    </div>
+    <hr class="review-card-hr-space">
+    <div *ngFor="let answer of userReview.answers" class="ps-5">
+      <span class="review-card-comments">"{{answer.answer}}"</span>
+      <div class="review-card-footer">
+        <span class="flex-item">Answered by: {{answer.answeredBy}}, {{answer.answeredAt | date}}</span>
+      </div>
+      <hr class="review-card-hr-space">
+    </div>
+    <div class="mt-3">
+      <textarea class="w-100" [(ngModel)]="userReview.answer"></textarea>
+      <button class="btn btn-basic my-3" (click)="addReply(userReview)">Reply</button>
     </div>
   </div>
 </div>
