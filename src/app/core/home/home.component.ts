@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
 
 import {ToolResponse} from '../../shared/models/tool-response';
