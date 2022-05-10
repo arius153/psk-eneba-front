@@ -1,8 +1,6 @@
 .logout-btn {
-  position: absolute;
   font-size: 42px;
-  top: 1rem;
-  right: 10px;
+
   background: white;
   border-radius: 3px;
   height: 42px;
@@ -14,4 +12,12 @@
     cursor: pointer;
     color: #333333;
   }
+}
+
+.side-menu {
+  position: absolute;
+  top: 1rem;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
 }

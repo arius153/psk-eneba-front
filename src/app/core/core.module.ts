@@ -15,6 +15,7 @@ import { HelpPageComponent } from './profile/components/help-page/help-page.comp
 import { MyListingsItemComponent } from './profile/components/my-listings-item/my-listings-item.component';
 import { RatingComponent } from './home/components/rating/rating.component';
 import {RatingModule} from 'ngx-bootstrap/rating';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -30,12 +31,13 @@ import {RatingModule} from 'ngx-bootstrap/rating';
     AccountPageComponent,
     SiteSettingsComponent,
     HelpPageComponent,
-    MyListingsItemComponent
+    MyListingsItemComponent,
   ],
     imports: [
         SharedModule,
         GoogleMapsModule,
         RatingModule,
+        RouterModule,
     ],
   exports: []
 })

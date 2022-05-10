@@ -82,6 +82,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  openProfile(): void {
+    this.router.navigate(['/profile']);
+  }
+
   logout(): void {
     this.authenticationService.logout();
     this.router.navigate(['/login']);

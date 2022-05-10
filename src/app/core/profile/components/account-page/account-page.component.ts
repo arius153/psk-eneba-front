@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserFull} from '../../../../shared/models/user-full';
+import {UserService} from '../../../../shared/services/user.service';
 
 @Component({
   selector: 'app-account-page',
@@ -8,7 +9,8 @@ import {UserFull} from '../../../../shared/models/user-full';
 })
 export class AccountPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService) {
+  }
 
   user: UserFull;
 
@@ -20,8 +22,9 @@ export class AccountPageComponent implements OnInit {
     this.newPhoneNumber = '';
   }
   changeNumber(): void {
-    this.user.phoneNumber = this.newPhoneNumber;
     this.changingNumber = false;
+    this.userService.changePhoneNumber(this.newPhoneNumber).subscribe();
+    this.ngOnInit();
   }
   cancelNumberChange(): void {
     this.changingNumber = false;
@@ -38,8 +41,9 @@ export class AccountPageComponent implements OnInit {
   }
   changePassword(): void {
     if (this.newPassword === this.newPasswordRepeated) {
-      this.user.password = this.newPassword;
       this.changingPassword = false;
+      this.userService.changePassword(this.newPassword).subscribe();
+      this.ngOnInit();
     }
   }
   cancelPasswordChange(): void {
@@ -48,11 +52,13 @@ export class AccountPageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.user = new UserFull();
+    this.userService.getLoggedUser().subscribe(u => { this.user = u; });
+
+    /*this.user = new UserFull();
     this.user.fullName = 'Bronius Barzdauskas';
     this.user.natIdNumber = '59707271234';
     this.user.email = 'meskiukas@one.lt';
-    this.user.phoneNumber = '+37061234579';
+    this.user.phoneNumber = '+37061234579';*/
   }
 
 }
