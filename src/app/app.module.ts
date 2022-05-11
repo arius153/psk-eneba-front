@@ -14,6 +14,7 @@ import {GoogleMapsModule} from '@angular/google-maps';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
+import {RouterModule} from '@angular/router';
 
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
@@ -42,7 +43,8 @@ export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
     HttpClientJsonpModule,
     NoopAnimationsModule,
     FormsModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    RouterModule,
   ],
   providers: [
     {provide: APP_INITIALIZER, useFactory: initializeAppConfig, deps: [AppConfigService], multi: true},

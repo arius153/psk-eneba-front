@@ -1,0 +1,11 @@
+<div class="outer-div" [class.available]="listing.status == 1" [class.taken]="listing.status == 2">
+  <div class="item-name-div">
+    <h1>{{listing.name}}</h1>
+    <p>{{listing.category}}</p>
+  </div>
+  <div class="h-separator"></div>
+  <div class="item-price-div">
+    <h1>{{listing.price}}€</h1>
+    <p>{{listing.pricePeriod == 0 ? "per hour" : "per day"}}</p>
+  </div>
+</div>
