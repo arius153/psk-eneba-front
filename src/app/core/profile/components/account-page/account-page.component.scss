@@ -1,4 +1,89 @@
+// @import "src/assets/styles/template";
+
 div {
   width: 100%;
   height: 100%;
+}
+
+h1 {
+  width: 100%;
+  line-height: 80px;
+  font-size: 28pt;
+  color: #444444;
+  margin-left: 20px;
+  margin-bottom: 0;
+}
+
+.account-page-separator {
+  width: calc(100% - 40px);
+  height: 1px;
+  margin: auto;
+  background-color: #C4C4C4;
+}
+
+.account-page-entry {
+  width: calc(100% - 40px);
+  margin: 10px auto;
+  height: 40px;
+  display: flex;
+  color: #333333;
+}
+
+.account-page-entry .entry-name {
+  width: 250px;
+  line-height: 40px;
+  font-size: 16pt;
+}
+
+.account-page-entry .entry-name.entry-inverted {
+  width: 230px;
+  line-height: 40px;
+  font-size: 14pt;
+  font-style: italic;
+  text-align: end;
+  margin-right: 20px;
+}
+
+.account-page-entry .entry-data {
+  width: 250px;
+  line-height: 40px;
+  font-size: 14pt;
+  margin-right: 20px;
+}
+
+.account-page-entry .entry-data.phone-number-data {
+  width: auto;
+  margin-right: 20px;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  margin: auto 0;
+}
+
+input.number-change {
+  width: 220px;
+  height: 30px;
+  margin: auto 20px auto 0;
+  font-size: 14pt;
+}
+
+button.number-change {
+  width: 100px;
+  height: 30px;
+  margin: auto 20px auto 0;
+}
+
+input.password-change {
+  width: 220px;
+  height: 30px;
+  margin: auto 20px auto 0;
+  font-size: 14pt;
+}
+
+button.password-change {
+  width: 100px;
+  height: 30px;
+  margin: auto 20px auto 0;
 }

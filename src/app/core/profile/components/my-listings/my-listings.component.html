@@ -1,4 +1,5 @@
-<div class="text-center">
-  <button class="btn btn-basic active-border-color mt-3" (click)="openNewListingModal()"> Add listing</button>
-  <hr>
+<div>
+  <h1>Listings</h1>
+  <div class="my-listings-separator"></div>
+  <app-my-listings-item *ngFor="let listing of listings" [listing]="listing"></app-my-listings-item>
 </div>

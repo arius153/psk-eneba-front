@@ -17,8 +17,8 @@ select {
 }
 
 input[type="text"], input[type="password"], input[type="number"], select, input[type="date"], textarea, input[type="email"] {
-  border-radius: 0;
-  border: black solid 1px;
+  border-radius: 5px;
+  border: #333333 solid 1px;
   height: 40px;
   font-size: x-large;
   padding-left: 4px;
@@ -315,4 +315,20 @@ input[type="number"] {
 
 .categoryOption {
   text-align: left;
+}
+
+.styled-button {
+  border: 1px solid rgb(255, 119, 76);
+  border-radius: 5px;
+  background-color: #ffffff;
+  transition: background-color 50ms;
+  font-size: 14pt;
+
+  &:hover {
+    background-color: rgb(255, 239, 234);
+  }
+
+  &:active {
+    background-color: rgb(239, 224, 220);
+  }
 }

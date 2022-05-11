@@ -3,7 +3,7 @@
 
 <google-map [options]="options" class="fullscreen" *ngIf="!showProfile">
   <div class="side-menu">
-    <mat-icon (click)="clickMe2()" class="logout-btn mb-3">account_circle</mat-icon>
+    <mat-icon (click)="openProfile()" class="logout-btn mb-3">account_circle</mat-icon>
     <mat-icon (click)="logout()" class="logout-btn">logout</mat-icon>
   </div>
   <map-marker *ngFor="let markerPosition of markerPositions"

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {NewListingRequest} from '../../../../shared/models/new-listing-request';
 import {CategoryResponse} from '../../../../shared/models/category-response';

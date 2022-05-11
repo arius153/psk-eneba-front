@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {GoogleMapsStyle} from '../../shared/utils/google-maps-style';
 
 import {ToolResponse} from '../../shared/models/tool-response';
@@ -73,10 +73,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  clickMe2(): void {
-    this.showProfile = this.showProfile === false;
-  }
-
   onCheckboxChange(event: any): void {
     if (event.target.checked) {
       this.toolsRequest.selectedCategories.push(event.target.value);
@@ -84,6 +80,10 @@ export class HomeComponent implements OnInit {
       const index = this.toolsRequest.selectedCategories.findIndex(x => x === event.target.value);
       this.toolsRequest.selectedCategories.splice(index, 1);
     }
+  }
+
+  openProfile(): void {
+    this.router.navigate(['/profile']);
   }
 
   logout(): void {
