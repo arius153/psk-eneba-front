@@ -16,7 +16,6 @@ export class ToolComponent implements OnInit {
 
   options: google.maps.MapOptions = {
     zoom: 12,
-    center: {lat: 54.687378, lng: 25.278306},
     fullscreenControl: false,
     streetViewControl: false,
     mapTypeControl: false,
@@ -36,10 +35,9 @@ export class ToolComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.params.id;
 
     this.toolService.getToolDetailed(this.id).subscribe(data => {
-      this.tool = data;
+      this.options.center = {lat: data.geoCordX, lng: data.geoCordY};
 
-      console.log('labas');
-      console.log(this.tool);
+      this.tool = data;
 
       this.markerPosition = {lat: this.tool.geoCordX, lng: this.tool.geoCordY};
     });

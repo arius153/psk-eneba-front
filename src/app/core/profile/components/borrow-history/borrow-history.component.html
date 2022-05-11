@@ -1,0 +1,13 @@
+<div class="profile-outer-padding">
+  <h1>Rent history</h1>
+  <ul class="no-list-style-type list-items">
+    <li *ngFor="let borrowing of history">
+      <h2 class="mt-1">{{borrowing.toolName}}</h2>
+      <hr>
+      <h2>Owner full name: {{borrowing.ownerName}} {{borrowing.ownerLastName}}</h2>
+      <h2>Tool location: {{borrowing.toolPlace}}</h2>
+      <h2>Rent period: {{borrowing.borrowedAtDate}} - {{borrowing.returnedAtDate}}</h2>
+      <h2>Paid: {{borrowing.pricePaid}}€ ({{borrowing.toolPrice}}€/24h)</h2>
+    </li>
+  </ul>
+</div>
