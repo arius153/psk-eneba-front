@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MyListingBrief} from '../../../../shared/models/my-listing-brief';
+import {MatDialog} from '@angular/material/dialog';
+import {NewListingComponent} from '../../../home/components/new-listing/new-listing.component';
+import {AppConstants} from '../../../../shared/constants/app-constants';
 
 @Component({
   selector: 'app-my-listings',
@@ -8,7 +11,7 @@ import {MyListingBrief} from '../../../../shared/models/my-listing-brief';
 })
 export class MyListingsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private matDialog: MatDialog) { }
 
   listings: MyListingBrief[];
 
@@ -35,4 +38,7 @@ export class MyListingsComponent implements OnInit {
     this.listings = [listing1, listing2, listing3];
   }
 
+  addNewListing(): void {
+    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig());
+  }
 }

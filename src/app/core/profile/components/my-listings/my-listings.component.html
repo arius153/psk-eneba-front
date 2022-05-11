@@ -1,5 +1,8 @@
 <div>
-  <h1>Listings</h1>
+  <div class="d-flex justify-content-between my-listings-header">
+    <h1>Listings</h1>
+    <button class="add-listing-btn" (click)="addNewListing()">Add Listing</button>
+  </div>
   <div class="my-listings-separator"></div>
   <app-my-listings-item *ngFor="let listing of listings" [listing]="listing"></app-my-listings-item>
   <app-my-listings-item *ngFor="let listing of listings" [listing]="listing"></app-my-listings-item>
