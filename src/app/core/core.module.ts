@@ -17,6 +17,7 @@ import { RatingComponent } from './home/components/rating/rating.component';
 import {RatingModule} from 'ngx-bootstrap/rating';
 import {RouterModule} from '@angular/router';
 import { ToolComponent } from './tool/tool.component';
+import { BorrowHistoryComponent } from './profile/components/borrow-history/borrow-history.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ToolComponent } from './tool/tool.component';
     SiteSettingsComponent,
     HelpPageComponent,
     MyListingsItemComponent,
-    ToolComponent
+    ToolComponent,
+    BorrowHistoryComponent
   ],
   imports: [
     SharedModule,

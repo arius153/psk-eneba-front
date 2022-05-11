@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   @ViewChild('profile_my_locations') myLocationsButton: ProfileSideButtonComponent;
   @ViewChild('profile_account') accountButton: ProfileSideButtonComponent;
   @ViewChild('profile_my_reviews') myReviewsButton: ProfileSideButtonComponent;
+  @ViewChild('profile_borrowed_tools_history') borrowedToolsHistoryButton: ProfileSideButtonComponent;
   @ViewChild('profile_site_settings') siteSettingsButton: ProfileSideButtonComponent;
   @ViewChild('profile_help') helpButton: ProfileSideButtonComponent;
   @ViewChildren(ProfileSideButtonComponent) sideButtons: QueryList<ProfileSideButtonComponent>;
@@ -25,44 +26,39 @@ export class ProfileComponent implements OnInit {
   showMyReviews = false;
   showSiteSettings = false;
   showHelp = false;
+  showBorrowHistory = false;
 
-  myListingsSelected(): void
-  {
+  myListingsSelected(): void {
     this.hideAll();
     this.deselectAllExcept(this.myListingsButton);
     this.showMyListings = true;
   }
 
-  myLocationsSelected(): void
-  {
+  myLocationsSelected(): void {
     this.hideAll();
     this.deselectAllExcept(this.myLocationsButton);
     this.showMyLocations = true;
   }
 
-  accountSelected(): void
-  {
+  accountSelected(): void {
     this.hideAll();
     this.deselectAllExcept(this.accountButton);
     this.showAccount = true;
   }
 
-  myReviewsSelected(): void
-  {
+  myReviewsSelected(): void {
     this.hideAll();
     this.deselectAllExcept(this.myReviewsButton);
     this.showMyReviews = true;
   }
 
-  siteSettingsSelected(): void
-  {
+  siteSettingsSelected(): void {
     this.hideAll();
     this.deselectAllExcept(this.siteSettingsButton);
     this.showSiteSettings = true;
   }
 
-  helpSelected(): void
-  {
+  helpSelected(): void {
     this.hideAll();
     this.deselectAllExcept(this.helpButton);
     this.showHelp = true;
@@ -75,10 +71,11 @@ export class ProfileComponent implements OnInit {
     this.showMyReviews = false;
     this.showSiteSettings = false;
     this.showHelp = false;
+    this.showBorrowHistory = false;
+    this.showMyReviews = false;
   }
 
-  deselectAllExcept(exceptButton: ProfileSideButtonComponent): void
-  {
+  deselectAllExcept(exceptButton: ProfileSideButtonComponent): void {
     this.sideButtons.forEach((button) => {
       if (button !== exceptButton) {
         button.deselect();
@@ -87,5 +84,11 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  borrowedToolsHistorySelected(): void {
+    this.hideAll();
+    this.deselectAllExcept(this.borrowedToolsHistoryButton);
+    this.showBorrowHistory = true;
   }
 }
