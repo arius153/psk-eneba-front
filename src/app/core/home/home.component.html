@@ -1,14 +1,6 @@
 <app-profile *ngIf="showProfile">
 </app-profile>
-
-<google-map [options]="options" class="fullscreen" *ngIf="!showProfile">
-  <div class="side-menu">
-    <mat-icon (click)="openProfile()" class="logout-btn mb-3">account_circle</mat-icon>
-    <mat-icon (click)="logout()" class="logout-btn">logout</mat-icon>
-  </div>
-  <map-marker *ngFor="let markerPosition of markerPositions"
-              [position]="markerPosition"
-              [options]="markerOptions"></map-marker>
+<div class="d-flex h-100">
   <div class="listings-panel" id="listings-panel">
     <div class="panel-header">
       <span style="width: 100%; height: 100%;"> Nearest tech </span>
@@ -57,7 +49,7 @@
       <div class="search-container ">
         <span class="search-header searchOptionsRow">Filter</span>
 
-        <span class="searchOptionsRow">
+        <div class="searchOptionsRow">
           <h2>Price</h2>
           <span>
             <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From"
@@ -67,14 +59,16 @@
             <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To"
                    [(ngModel)]="toolsRequest.maxPrice">
           </span>
-        </span>
+        </div>
         <hr/>
-        <span class="searchOptionsRow">
+        <div class="searchOptionsRow">
           <h2>Category</h2>
-          <ul class="categoryOption" *ngFor="let category of categories">
-            <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event)"/>{{category.name}}
+          <ul class="no-list-style-type">
+            <li class="categoryOption" *ngFor="let category of categories">
+              <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event)"/>{{category.name}}
+            </li>
           </ul>
-        </span>
+        </div>
         <span class="searchOptionsRow">
           <button id="submitFilter" class="submitButton" (click)="submitSort()">
             Filter
@@ -103,4 +97,15 @@
       </ul>
     </div>
   </div>
-</google-map>
+  <div class="flex-grow-1">
+    <google-map [options]="options" class="fullscreen" *ngIf="!showProfile">
+      <div class="side-menu">
+        <mat-icon (click)="openProfile()" class="logout-btn mb-3">account_circle</mat-icon>
+        <mat-icon (click)="logout()" class="logout-btn">logout</mat-icon>
+      </div>
+      <map-marker *ngFor="let markerPosition of markerPositions"
+                  [position]="markerPosition"
+                  [options]="markerOptions"></map-marker>
+    </google-map>
+  </div>
+</div>
