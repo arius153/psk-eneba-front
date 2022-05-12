@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MyListingBrief} from '../../../../shared/models/my-listing-brief';
 import {MatDialog} from '@angular/material/dialog';
 import {NewListingComponent} from '../../../home/components/new-listing/new-listing.component';
@@ -11,7 +11,8 @@ import {AppConstants} from '../../../../shared/constants/app-constants';
 })
 export class MyListingsComponent implements OnInit {
 
-  constructor(private matDialog: MatDialog) { }
+  constructor(private matDialog: MatDialog) {
+  }
 
   listings: MyListingBrief[];
 
@@ -35,10 +36,24 @@ export class MyListingsComponent implements OnInit {
     listing3.price = 30;
     listing3.pricePeriod = 1;
     listing3.status = 1;
-    this.listings = [listing1, listing2, listing3];
+    this.listings = [listing1, listing2, listing3,
+      listing1, listing2, listing3,
+      listing1, listing2, listing3,
+      listing1, listing2, listing3,
+      listing1, listing2, listing3,
+      listing1, listing2, listing3,
+      listing1, listing2, listing3,
+      listing1, listing2, listing3,
+      listing1, listing2, listing3
+    ];
   }
 
   addNewListing(): void {
-    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig());
+    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig())
+      .afterClosed()
+      .subscribe(result => {
+        if (result === true) {
+        }
+      });
   }
 }
