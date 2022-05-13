@@ -13,6 +13,8 @@ import {WeekdaySelectorComponent} from './components/weekday-selector/weekday-se
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {RouterModule} from '@angular/router';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     ModalModule,
     MatDialogModule,
     MatIconModule,
+    MatNativeDateModule,
+    MatInputModule,
     GoogleMapsModule,
     MatDatepickerModule,
     MatFormFieldModule,
@@ -41,6 +45,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     MatDialogModule,
     ImageUploaderComponent,
     MatIconModule,
+    MatNativeDateModule,
+    MatInputModule,
     GoogleMapsModule,
     MatDatepickerModule,
     WeekdaySelectorComponent,

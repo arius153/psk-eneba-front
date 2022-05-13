@@ -8,6 +8,7 @@ import {ObjectUtils} from '../utils/object-utils';
 import {ToolResponse} from '../models/tool-response';
 import {ToolsRequest} from '../models/tools-request';
 import {BorrowLogEntryResponse} from 'src/app/shared/models/borrow-log-entry-response.module';
+import {BorrowRequest} from '../models/borrow-request';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,11 @@ export class ToolService {
     const url = AppConfigService.config.backUrl + '/tool';
     const formData = ObjectUtils.extractFormData(model, 'data', 'files');
     return this.httpClient.post<number>(url, formData);
+  }
+
+  borrow(model: BorrowRequest): Observable<void> {
+    const url = `${AppConfigService.config.backUrl}/tool/borrow`;
+    return this.httpClient.post<void>(url, model);
   }
 
   getTools(): Observable<ToolResponse[]> {

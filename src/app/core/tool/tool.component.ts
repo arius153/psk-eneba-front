@@ -3,6 +3,9 @@ import {ActivatedRoute} from '@angular/router';
 import {ToolResponse} from 'src/app/shared/models/tool-response';
 import {ToolService} from 'src/app/shared/services/tool.service';
 import {GoogleMapsStyle} from 'src/app/shared/utils/google-maps-style';
+import {NgForm} from '@angular/forms';
+import {FormUtils} from '../../shared/utils/form-utils';
+import {BorrowRequest} from '../../shared/models/borrow-request';
 
 @Component({
   selector: 'app-tool',
@@ -11,6 +14,7 @@ import {GoogleMapsStyle} from 'src/app/shared/utils/google-maps-style';
 })
 export class ToolComponent implements OnInit {
 
+  borrowModel = new BorrowRequest();
   tool: ToolResponse;
   id: number;
 
@@ -33,13 +37,20 @@ export class ToolComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params.id;
-
+    this.borrowModel.toolId = this.id;
     this.toolService.getToolDetailed(this.id).subscribe(data => {
       this.options.center = {lat: data.geoCordX, lng: data.geoCordY};
 
       this.tool = data;
 
       this.markerPosition = {lat: this.tool.geoCordX, lng: this.tool.geoCordY};
+    });
+  }
+
+  doBorrow(): void {
+
+    console.log(this.borrowModel);
+    this.toolService.borrow(this.borrowModel).subscribe(() => {
     });
   }
 }

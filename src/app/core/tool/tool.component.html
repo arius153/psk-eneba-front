@@ -25,6 +25,18 @@
       <h2>{{tool.price}}€/24h</h2>
 
       <p>{{tool.description}}</p>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+            <input name="borrowedAt" [(ngModel)]="borrowModel.borrowedAt" type="" matStartDate placeholder="Start date" disabled>
+            <input name="returnedAt" [(ngModel)]="borrowModel.returnedAt" type="" matEndDate placeholder="End date" disabled>
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+      </mat-form-field>
+      <button type="submit"
+              class="btn btn-basic active-border-color" (click)="doBorrow()">Borrow tool</button>
     </div>
     <div class="col-sm m-5">
       <div *ngFor="let image of tool.images">
