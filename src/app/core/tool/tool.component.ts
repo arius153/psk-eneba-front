@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ToolResponse} from 'src/app/shared/models/tool-response';
 import {ToolService} from 'src/app/shared/services/tool.service';
 import {GoogleMapsStyle} from 'src/app/shared/utils/google-maps-style';
-import {NgForm} from '@angular/forms';
-import {FormUtils} from '../../shared/utils/form-utils';
 import {BorrowRequest} from '../../shared/models/borrow-request';
+import {ToolUnavailableTimeResponse} from '../../shared/models/tool-unavailable-time-response';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-tool',
@@ -15,8 +15,11 @@ import {BorrowRequest} from '../../shared/models/borrow-request';
 export class ToolComponent implements OnInit {
 
   borrowModel = new BorrowRequest();
+  toolUnavailableTimeslots: ToolUnavailableTimeResponse[] = [];
   tool: ToolResponse;
   id: number;
+  minDate: Date;
+  maxDate: Date;
 
   options: google.maps.MapOptions = {
     zoom: 12,
@@ -30,8 +33,10 @@ export class ToolComponent implements OnInit {
   markerPosition: google.maps.LatLngLiteral;
 
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
-    private toolService: ToolService
+    private toolService: ToolService,
+    private toastr: ToastrService
   ) {
   }
 
@@ -45,12 +50,63 @@ export class ToolComponent implements OnInit {
 
       this.markerPosition = {lat: this.tool.geoCordX, lng: this.tool.geoCordY};
     });
+    this.toolService.getToolUnavailableTimeslots(this.id).subscribe(data => {
+      this.toolUnavailableTimeslots = data;
+      console.log(data);
+    });
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.maxDate.setDate(this.minDate.getDate() + 30);
   }
 
   doBorrow(): void {
 
-    console.log(this.borrowModel);
+    this.borrowModel.borrowedAt = new Date(this.borrowModel.borrowedAt.getFullYear(),
+      this.borrowModel.borrowedAt.getMonth(),
+      this.borrowModel.borrowedAt.getDate(),
+      this.borrowModel.borrowedAt.getHours(),
+      this.borrowModel.borrowedAt.getMinutes() - this.borrowModel.borrowedAt.getTimezoneOffset());
+    this.borrowModel.returnedAt = new Date(this.borrowModel.borrowedAt.getFullYear(),
+      this.borrowModel.returnedAt.getMonth(),
+      this.borrowModel.returnedAt.getDate(),
+      this.borrowModel.returnedAt.getHours(),
+      this.borrowModel.returnedAt.getMinutes() - this.borrowModel.returnedAt.getTimezoneOffset());
     this.toolService.borrow(this.borrowModel).subscribe(() => {
+      this.toastr.success('Successfuly borrowed tool!');
+      this.router.navigateByUrl('/');
     });
+  }
+
+  toolTimeslotFilter = (date: Date): boolean => {
+    for (const timeslot of this.toolUnavailableTimeslots) {
+      if (new Date(timeslot.unavailableFrom).getTime() <= date.getTime() && new Date(timeslot.unavailableTill).getTime() >= date.getTime()) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  setMinMax(): void{
+    this.minDate = this.borrowModel.borrowedAt;
+    let nextUnavailableStart = this.maxDate;
+    console.log(nextUnavailableStart);
+    for (const timeslot of this.toolUnavailableTimeslots) {
+      if (new Date(timeslot.unavailableFrom).getTime() > this.borrowModel.borrowedAt.getTime()) {
+        if (new Date(timeslot.unavailableFrom).getTime() <= nextUnavailableStart.getTime()) {
+          console.log('Something changed here');
+          nextUnavailableStart = new Date(timeslot.unavailableFrom);
+        }
+      }
+    }
+    this.maxDate =  nextUnavailableStart;
+    console.log(this.maxDate);
+  }
+
+  resetMinMax(): void{
+    if (this.borrowModel.returnedAt != null) {
+      this.minDate = new Date();
+      this.maxDate = new Date();
+      this.maxDate.setDate(this.minDate.getDate() + 30);
+    }
   }
 }
