@@ -3,45 +3,47 @@
   <div class="text-center">
     <h1 class="tool-name">{{tool.name}}</h1>
   </div>
-  <div class="row">
-    <div class="col-sm m-5">
-      <h2>{{tool.formattedAddress}}</h2>
+  <div class="container-fluid p-x-120">
+    <div class="row">
+      <div class="col-sm">
+        <h2>{{tool.formattedAddress}}</h2>
 
 
-      <google-map [options]="options" class="google-maps">
-        <map-marker [position]="markerPosition"
-                    [options]="markerOptions"></map-marker>
-      </google-map>
-      <div class="mt-3">
-        <h2>Work day pick up time: </h2>
-        <p>{{tool.pickUpTimeWorkDay}}</p>
-        <h2>Weekend pick up time: </h2>
-        <p>{{tool.pickUpTimeWeekend}}</p>
+        <google-map [options]="options" class="google-maps">
+          <map-marker [position]="markerPosition"
+                      [options]="markerOptions"></map-marker>
+        </google-map>
+        <div class="mt-3">
+          <h2>Work day pick up time: </h2>
+          <p>{{tool.pickUpTimeWorkDay}}</p>
+          <h2>Weekend pick up time: </h2>
+          <p>{{tool.pickUpTimeWeekend}}</p>
+        </div>
       </div>
-    </div>
-    <div class="col-sm m-5">
-      <h2>{{tool.toolCategory}}</h2>
-      <h2>{{tool.assistedTransportation}}</h2>
-      <h2>{{tool.price}}€/24h</h2>
+      <div class="col-sm">
+        <h2>{{tool.toolCategory}}</h2>
+        <h2>{{tool.assistedTransportation}}</h2>
+        <h2>{{tool.price}}€/24h</h2>
 
-      <p>{{tool.description}}</p>
-      <mat-form-field appearance="fill">
-        <mat-label>Enter a date range</mat-label>
-        <mat-date-range-input [rangePicker]="picker" [dateFilter]="toolTimeslotFilter" [min]="minDate" [max]="maxDate">
+        <p>{{tool.description}}</p>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [rangePicker]="picker" [dateFilter]="toolTimeslotFilter" [min]="minDate" [max]="maxDate">
             <input (dateChange)="setMinMax()" name="borrowedAt" [(ngModel)]="borrowModel.borrowedAt" type=""  matStartDate placeholder="Start date" disabled>
             <input (dateChange)="resetMinMax()" name="returnedAt" [(ngModel)]="borrowModel.returnedAt" type="" matEndDate placeholder="End date" disabled>
-        </mat-date-range-input>
-        <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
-      </mat-form-field>
-      <br>
-      <button type="submit"
-              class="btn btn-basic active-border-color" (click)="doBorrow()">Borrow tool</button>
-    </div>
-    <div class="col-sm m-5">
-      <div *ngFor="let image of tool.images">
-        <img [src]="'data:image/png;base64, ' + image | safeHtml" alt="image" class="img-container"/>
+          </mat-date-range-input>
+          <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+        </mat-form-field>
+        <br>
+        <button type="submit"
+                class="btn btn-basic active-border-color" (click)="doBorrow()">Borrow tool</button>
+      </div>
+      <div class="col-sm text-end">
+        <div *ngFor="let image of tool.images">
+          <img [src]="'data:image/png;base64, ' + image | safeHtml" alt="image" class="img-container  mb-2"/>
+        </div>
       </div>
     </div>
   </div>
