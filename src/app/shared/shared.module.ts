@@ -12,7 +12,11 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {WeekdaySelectorComponent} from './components/weekday-selector/weekday-selector.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {RouterModule} from '@angular/router';
-import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import {SafeHtmlPipe} from './pipes/safe-html.pipe';
+import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,10 +32,14 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     ModalModule,
     MatDialogModule,
     MatIconModule,
+    MatNativeDateModule,
+    MatInputModule,
     GoogleMapsModule,
     MatDatepickerModule,
     MatFormFieldModule,
     RouterModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   exports: [
     CommonModule,
@@ -41,12 +49,18 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     MatDialogModule,
     ImageUploaderComponent,
     MatIconModule,
+    MatNativeDateModule,
+    MatInputModule,
     GoogleMapsModule,
     MatDatepickerModule,
     WeekdaySelectorComponent,
     MatFormFieldModule,
     RouterModule,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    BrowserAnimationsModule
+  ],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
   ]
 })
 export class SharedModule {

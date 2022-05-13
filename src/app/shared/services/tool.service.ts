@@ -8,6 +8,8 @@ import {ObjectUtils} from '../utils/object-utils';
 import {ToolResponse} from '../models/tool-response';
 import {ToolsRequest} from '../models/tools-request';
 import {BorrowLogEntryResponse} from 'src/app/shared/models/borrow-log-entry-response.module';
+import {BorrowRequest} from '../models/borrow-request';
+import {ToolUnavailableTimeResponse} from '../models/tool-unavailable-time-response';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +28,16 @@ export class ToolService {
     const url = AppConfigService.config.backUrl + '/tool';
     const formData = ObjectUtils.extractFormData(model, 'data', 'files');
     return this.httpClient.post<number>(url, formData);
+  }
+
+  borrow(model: BorrowRequest): Observable<void> {
+    const url = `${AppConfigService.config.backUrl}/tool/borrow`;
+    return this.httpClient.post<void>(url, model);
+  }
+
+  getToolUnavailableTimeslots(toolId: number): Observable<ToolUnavailableTimeResponse[]> {
+    const url = `${AppConfigService.config.backUrl}/tool/tool-unavailable-timeslots/${toolId}`;
+    return this.httpClient.get<ToolUnavailableTimeResponse[]>(url);
   }
 
   getTools(): Observable<ToolResponse[]> {
