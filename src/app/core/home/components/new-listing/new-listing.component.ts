@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {NewListingRequest} from '../../../../shared/models/new-listing-request';
 import {CategoryResponse} from '../../../../shared/models/category-response';
@@ -52,7 +52,7 @@ export class NewListingComponent implements OnInit {
       return;
     }
     this.toolService.addTool(this.model).subscribe(result => {
-      this.dialogRef.close();
+      this.dialogRef.close(true);
     });
   }
 
