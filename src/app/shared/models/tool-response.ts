@@ -1,3 +1,5 @@
+import {SimplifiedUserDto} from './simplified-user-dto';
+
 export class ToolResponse {
   id: number;
 
@@ -26,4 +28,7 @@ export class ToolResponse {
   pickUpTimeWorkDay: string;
 
   pickUpTimeWeekend: string;
+
+  simplifiedUserDTO: SimplifiedUserDto;
+
 }

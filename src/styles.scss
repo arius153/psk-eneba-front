@@ -2,6 +2,7 @@
 @import "assets/styles/bs-overrides";
 @import "assets/styles/template";
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

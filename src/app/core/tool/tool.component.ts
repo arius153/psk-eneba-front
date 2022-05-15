@@ -14,6 +14,8 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class ToolComponent implements OnInit {
 
+  Math = Math;
+
   borrowModel = new BorrowRequest();
   toolUnavailableTimeslots: ToolUnavailableTimeResponse[] = [];
   tool: ToolResponse;
@@ -45,14 +47,13 @@ export class ToolComponent implements OnInit {
     this.borrowModel.toolId = this.id;
     this.toolService.getToolDetailed(this.id).subscribe(data => {
       this.options.center = {lat: data.geoCordX, lng: data.geoCordY};
-
       this.tool = data;
-
+      console.log(this.tool);
+      this.tool.simplifiedUserDTO.roundedReviewAverage = Math.round(this.tool.simplifiedUserDTO.reviewAverage);
       this.markerPosition = {lat: this.tool.geoCordX, lng: this.tool.geoCordY};
     });
     this.toolService.getToolUnavailableTimeslots(this.id).subscribe(data => {
       this.toolUnavailableTimeslots = data;
-      console.log(data);
     });
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -86,7 +87,7 @@ export class ToolComponent implements OnInit {
     return true;
   }
 
-  setMinMax(): void{
+  setMinMax(): void {
     this.minDate = this.borrowModel.borrowedAt;
     let nextUnavailableStart = this.maxDate;
     console.log(nextUnavailableStart);
@@ -98,15 +99,19 @@ export class ToolComponent implements OnInit {
         }
       }
     }
-    this.maxDate =  nextUnavailableStart;
+    this.maxDate = nextUnavailableStart;
     console.log(this.maxDate);
   }
 
-  resetMinMax(): void{
+  resetMinMax(): void {
     if (this.borrowModel.returnedAt != null) {
       this.minDate = new Date();
       this.maxDate = new Date();
       this.maxDate.setDate(this.minDate.getDate() + 30);
     }
+  }
+
+  openUserDialog(): void {
+    //  TODO: open user dialog
   }
 }

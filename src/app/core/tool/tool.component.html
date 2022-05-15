@@ -4,11 +4,23 @@
     <h1 class="tool-name">{{tool.name}}</h1>
   </div>
   <div class="container-fluid p-x-120">
+    <div class="user-info-window" (click)="openUserDialog()">
+      <h2 class="mb-0 text-end">{{tool.simplifiedUserDTO.fullName}}</h2>
+      <div class="review-card-stars text-end">
+        <span class="fa fa-star checked" *ngFor="let item of [].constructor(tool.simplifiedUserDTO.roundedReviewAverage); let i = index"></span>
+        <span class="fa fa-star" *ngFor="let item of [].constructor(5 - tool.simplifiedUserDTO.roundedReviewAverage); let i = index"></span>
+        <span>({{tool.simplifiedUserDTO.reviewAverage}})</span> |
+        <span class="fa fa-user"></span>
+        <span>{{tool.simplifiedUserDTO.reviewCount}}</span>
+      </div>
+      <div class="text-end">
+
+      </div>
+
+    </div>
     <div class="row">
       <div class="col-sm">
         <h2>{{tool.formattedAddress}}</h2>
-
-
         <google-map [options]="options" class="google-maps">
           <map-marker [position]="markerPosition"
                       [options]="markerOptions"></map-marker>
@@ -24,7 +36,6 @@
         <h2>{{tool.toolCategory}}</h2>
         <h2>{{tool.assistedTransportation}}</h2>
         <h2>{{tool.price}}€/24h</h2>
-
         <p>{{tool.description}}</p>
         <mat-form-field appearance="fill">
           <mat-label>Enter a date range</mat-label>
