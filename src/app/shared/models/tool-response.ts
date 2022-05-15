@@ -26,4 +26,6 @@ export class ToolResponse {
   pickUpTimeWorkDay: string;
 
   pickUpTimeWeekend: string;
+
+  availableDays: number[];
 }
