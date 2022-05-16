@@ -13,6 +13,9 @@ export class MyListingsItemComponent implements OnInit {
     private router: Router
   ) { }
 
+  @Input()
+  outerDivClass: string;
+
   @Input() listing: MyListingBrief;
 
   listingClicked(): void {

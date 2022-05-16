@@ -18,6 +18,11 @@ export class UserService {
     return this.httpClient.get<UserFull>(url);
   }
 
+  getUserById(userId: number): Observable<UserFull> {
+    const url = AppConfigService.config.backUrl + `/user/${userId}`;
+    return this.httpClient.get<UserFull>(url);
+  }
+
   changePassword(newPassword: string): Observable<string> {
     const url = AppConfigService.config.backUrl + '/user/password';
     return this.httpClient.patch<string>(url, newPassword);

@@ -1,9 +1,31 @@
 .img-container {
   width: 300px;
-  height: 300px;
+  object-fit: cover;
+  border: 1px solid black;
 }
 
 .tool-name {
   font-size: 5rem !important; /*😊*/
   margin-top: 3rem;
+}
+
+.p-x-120 {
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+.user-info-window {
+  border: 1px solid black;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 1rem;
+  background: white;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.checked {
+  color: orange;
 }

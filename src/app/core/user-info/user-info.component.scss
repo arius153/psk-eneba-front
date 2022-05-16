@@ -1,0 +1,85 @@
+
+.account-page-entry {
+  margin: 10px auto;
+  height: 40px;
+  display: flex;
+  line-height: 40px;
+  color: #333333;
+}
+
+.account-page-entry .entry-name {
+  width: 250px;
+  font-size: 16pt;
+}
+
+.account-page-entry .entry-data {
+  width: 250px;
+  font-size: 14pt;
+}
+
+.accordion-button {
+  font: 400 24px/32px Roboto, "Helvetica Neue", sans-serif;
+  letter-spacing: normal;
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+
+  &::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+  }
+
+  &:focus {
+    border: none;
+    box-shadow: none;
+  }
+
+  &:not(.collapsed) {
+    color: inherit;
+    background: none;
+    box-shadow: none;
+  }
+}
+
+.accordion-body {
+  padding: 0;
+}
+
+.accordion-item {
+  border: none
+}
+
+//.review-card {
+//  border-style: solid;
+//  border-width: 3px;
+//  border-color: gray;
+//  margin: 30px 0;
+//  border-radius: 25px;
+//  padding: 20px 10px 5px 20px;
+//  font-size: 20px;
+//}
+
+.review-card-hr-space {
+  margin-top: 0;
+}
+
+.review-card-comments {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.review-card-footer {
+  display: flex;
+}
+
+.checked {
+  color: orange;
+}
+
+.flex-item {
+  width: 100%;
+  text-align: right;
+  color: gray;
+  font-size: 14px;
+  padding: 0 15px
+}
+

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MyListingBrief} from '../../../../shared/models/my-listing-brief';
 import {MatDialog} from '@angular/material/dialog';
 import {NewListingComponent} from '../../../home/components/new-listing/new-listing.component';
@@ -47,6 +47,11 @@ export class MyListingsComponent implements OnInit {
   }
 
   addNewListing(): void {
-    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig());
+    this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig())
+      .afterClosed()
+      .subscribe(result => {
+        if (result === true) {
+        }
+      });
   }
 }
