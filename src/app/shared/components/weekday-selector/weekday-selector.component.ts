@@ -29,13 +29,13 @@ export class WeekdaySelectorComponent implements ControlValueAccessor {
   selectedDays: number[] = [];
 
   weekDays: Day[] = [
-    {name: 'component.weekdaySelector.monday', day: 0, selected: false},
-    {name: 'component.weekdaySelector.tuesday', day: 1, selected: false},
-    {name: 'component.weekdaySelector.wednesday', day: 2, selected: false},
-    {name: 'component.weekdaySelector.thursday', day: 3, selected: false},
-    {name: 'component.weekdaySelector.friday', day: 4, selected: false},
-    {name: 'component.weekdaySelector.saturday', day: 5, selected: false},
-    {name: 'component.weekdaySelector.sunday', day: 6, selected: false}
+    {name: 'component.weekdaySelector.monday', day: 1, selected: false},
+    {name: 'component.weekdaySelector.tuesday', day: 2, selected: false},
+    {name: 'component.weekdaySelector.wednesday', day: 3, selected: false},
+    {name: 'component.weekdaySelector.thursday', day: 4, selected: false},
+    {name: 'component.weekdaySelector.friday', day: 5, selected: false},
+    {name: 'component.weekdaySelector.saturday', day: 6, selected: false},
+    {name: 'component.weekdaySelector.sunday', day: 0, selected: false}
   ];
 
   propagateChange = (_: any) => {
