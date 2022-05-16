@@ -5,6 +5,9 @@
   background-color: #ffffff;
   border-radius: 5px;
   box-shadow: 0 0 2px #888888;
+
+  transition: background-color 0.1s;
+  cursor: pointer;
 }
 
 .outer-div.available {
@@ -13,6 +16,10 @@
 
 .outer-div.taken {
   border-right: 5px solid #F04000;
+}
+
+.outer-div:hover {
+  background-color: #01A6B00F;
 }
 
 .h-separator {

@@ -3,6 +3,7 @@ import {MyListingBrief} from '../../../../shared/models/my-listing-brief';
 import {MatDialog} from '@angular/material/dialog';
 import {NewListingComponent} from '../../../home/components/new-listing/new-listing.component';
 import {AppConstants} from '../../../../shared/constants/app-constants';
+import {ToolService} from '../../../../shared/services/tool.service';
 
 @Component({
   selector: 'app-my-listings',
@@ -11,13 +12,20 @@ import {AppConstants} from '../../../../shared/constants/app-constants';
 })
 export class MyListingsComponent implements OnInit {
 
-  constructor(private matDialog: MatDialog) { }
+  constructor(
+    private matDialog: MatDialog,
+    private toolService: ToolService
+  ) { }
 
   listings: MyListingBrief[];
 
   ngOnInit(): void {
+    this.toolService.getLoggedUserTools().subscribe( tools => {
+      this.listings = tools;
+    });
+
     // Add mock data
-    const listing1 = new MyListingBrief();
+    /*const listing1 = new MyListingBrief();
     listing1.name = 'Cement mixer';
     listing1.category = 'Heavy machinery';
     listing1.price = 55;
@@ -35,7 +43,7 @@ export class MyListingsComponent implements OnInit {
     listing3.price = 30;
     listing3.pricePeriod = 1;
     listing3.status = 1;
-    this.listings = [listing1, listing2, listing3];
+    this.listings = [listing1, listing2, listing3];*/
   }
 
   addNewListing(): void {

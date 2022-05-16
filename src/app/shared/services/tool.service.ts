@@ -8,6 +8,7 @@ import {ObjectUtils} from '../utils/object-utils';
 import {ToolResponse} from '../models/tool-response';
 import {ToolsRequest} from '../models/tools-request';
 import {BorrowLogEntryResponse} from 'src/app/shared/models/borrow-log-entry-response.module';
+import {MyListingBrief} from '../models/my-listing-brief';
 
 @Injectable({
   providedIn: 'root'
@@ -64,5 +65,10 @@ export class ToolService {
   getBorrowHistory(): Observable<BorrowLogEntryResponse[]> {
     const url = AppConfigService.config.backUrl + '/tool/history';
     return this.httpClient.get<BorrowLogEntryResponse[]>(url);
+  }
+
+  getLoggedUserTools(): Observable<MyListingBrief[]> {
+    const url = AppConfigService.config.backUrl + '/tool/my';
+    return this.httpClient.get<MyListingBrief[]>(url);
   }
 }
