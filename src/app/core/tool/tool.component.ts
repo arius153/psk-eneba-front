@@ -84,7 +84,12 @@ export class ToolComponent implements OnInit {
         return false;
       }
     }
-    return true;
+
+    let isOnAvailableDay = false;
+    for (const day of this.tool.availableDays) {
+      isOnAvailableDay = isOnAvailableDay || (day === date.getDay());
+    }
+    return isOnAvailableDay;
   }
 
   setMinMax(): void {

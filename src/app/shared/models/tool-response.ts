@@ -31,4 +31,5 @@ export class ToolResponse {
 
   simplifiedUserDTO: SimplifiedUserDto;
 
+  availableDays: number[];
 }
