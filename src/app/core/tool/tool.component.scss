@@ -13,3 +13,19 @@
   padding-left: 120px;
   padding-right: 120px;
 }
+
+.user-info-window {
+  border: 1px solid black;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 1rem;
+  background: white;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.checked {
+  color: orange;
+}

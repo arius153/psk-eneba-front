@@ -6,6 +6,9 @@ import {GoogleMapsStyle} from 'src/app/shared/utils/google-maps-style';
 import {BorrowRequest} from '../../shared/models/borrow-request';
 import {ToolUnavailableTimeResponse} from '../../shared/models/tool-unavailable-time-response';
 import {ToastrService} from 'ngx-toastr';
+import {MatDialog} from '@angular/material/dialog';
+import {UserInfoComponent} from '../user-info/user-info.component';
+import {AppConstants} from '../../shared/constants/app-constants';
 
 @Component({
   selector: 'app-tool',
@@ -13,6 +16,8 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./tool.component.scss']
 })
 export class ToolComponent implements OnInit {
+
+  Math = Math;
 
   borrowModel = new BorrowRequest();
   toolUnavailableTimeslots: ToolUnavailableTimeResponse[] = [];
@@ -36,7 +41,8 @@ export class ToolComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private toolService: ToolService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private matDialog: MatDialog
   ) {
   }
 
@@ -45,14 +51,12 @@ export class ToolComponent implements OnInit {
     this.borrowModel.toolId = this.id;
     this.toolService.getToolDetailed(this.id).subscribe(data => {
       this.options.center = {lat: data.geoCordX, lng: data.geoCordY};
-
       this.tool = data;
-
+      this.tool.simplifiedUserDTO.roundedReviewAverage = Math.round(this.tool.simplifiedUserDTO.reviewAverage);
       this.markerPosition = {lat: this.tool.geoCordX, lng: this.tool.geoCordY};
     });
     this.toolService.getToolUnavailableTimeslots(this.id).subscribe(data => {
       this.toolUnavailableTimeslots = data;
-      console.log(data);
     });
     this.minDate = new Date();
     this.maxDate = new Date();
@@ -91,27 +95,30 @@ export class ToolComponent implements OnInit {
     return isOnAvailableDay;
   }
 
-  setMinMax(): void{
+  setMinMax(): void {
     this.minDate = this.borrowModel.borrowedAt;
     let nextUnavailableStart = this.maxDate;
-    console.log(nextUnavailableStart);
     for (const timeslot of this.toolUnavailableTimeslots) {
       if (new Date(timeslot.unavailableFrom).getTime() > this.borrowModel.borrowedAt.getTime()) {
         if (new Date(timeslot.unavailableFrom).getTime() <= nextUnavailableStart.getTime()) {
-          console.log('Something changed here');
           nextUnavailableStart = new Date(timeslot.unavailableFrom);
         }
       }
     }
-    this.maxDate =  nextUnavailableStart;
-    console.log(this.maxDate);
+    this.maxDate = nextUnavailableStart;
   }
 
-  resetMinMax(): void{
+  resetMinMax(): void {
     if (this.borrowModel.returnedAt != null) {
       this.minDate = new Date();
       this.maxDate = new Date();
       this.maxDate.setDate(this.minDate.getDate() + 30);
     }
+  }
+
+  openUserDialog(): void {
+    const dialogConfig = AppConstants.baseDialogConfig();
+    dialogConfig.data = {userId: this.tool.simplifiedUserDTO.userId};
+    this.matDialog.open(UserInfoComponent, dialogConfig);
   }
 }

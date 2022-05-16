@@ -19,7 +19,6 @@ export class BorrowHistoryComponent implements OnInit {
   ngOnInit(): void {
     this.toolService.getBorrowHistory().subscribe(data => {
       this.history = data;
-      console.log(this.history);
     });
   }
 

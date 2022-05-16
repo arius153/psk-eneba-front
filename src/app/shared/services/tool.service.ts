@@ -10,6 +10,7 @@ import {ToolsRequest} from '../models/tools-request';
 import {BorrowLogEntryResponse} from 'src/app/shared/models/borrow-log-entry-response.module';
 import {BorrowRequest} from '../models/borrow-request';
 import {ToolUnavailableTimeResponse} from '../models/tool-unavailable-time-response';
+import {MyListingBrief} from '../models/my-listing-brief';
 
 @Injectable({
   providedIn: 'root'
@@ -76,5 +77,10 @@ export class ToolService {
   getBorrowHistory(): Observable<BorrowLogEntryResponse[]> {
     const url = AppConfigService.config.backUrl + '/tool/history';
     return this.httpClient.get<BorrowLogEntryResponse[]>(url);
+  }
+
+  getToolListByUserId(userId: number): Observable<MyListingBrief[]> {
+    const url = AppConfigService.config.backUrl + `/tool/user/${userId}`;
+    return this.httpClient.get<MyListingBrief[]>(url);
   }
 }

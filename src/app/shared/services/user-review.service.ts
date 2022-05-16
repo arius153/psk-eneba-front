@@ -20,6 +20,11 @@ export class UserReviewService {
     return this.httpClient.get<UserReviewsResponse[]>(url);
   }
 
+  getUserReviewsById(userId: number): Observable<UserReviewsResponse[]> {
+    const url = AppConfigService.config.backUrl + `/user-reviews/${userId}`;
+    return this.httpClient.get<UserReviewsResponse[]>(url);
+  }
+
   rateUser(ratingRequest: RatingRequest): Observable<any> {
     const url = AppConfigService.config.backUrl + '/user-reviews/rate';
     return this.httpClient.post(url, ratingRequest);
