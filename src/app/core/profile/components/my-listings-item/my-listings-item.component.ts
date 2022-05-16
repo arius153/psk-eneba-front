@@ -10,6 +10,9 @@ export class MyListingsItemComponent implements OnInit {
 
   constructor() { }
 
+  @Input()
+  outerDivClass: string;
+
   @Input() listing: MyListingBrief;
 
   ngOnInit(): void {

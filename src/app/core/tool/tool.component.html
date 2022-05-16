@@ -6,7 +6,7 @@
   <div class="container-fluid p-x-120">
     <div class="user-info-window" (click)="openUserDialog()">
       <h2 class="mb-0 text-end">{{tool.simplifiedUserDTO.fullName}}</h2>
-      <div class="review-card-stars text-end">
+      <div class="text-end">
         <span class="fa fa-star checked" *ngFor="let item of [].constructor(tool.simplifiedUserDTO.roundedReviewAverage); let i = index"></span>
         <span class="fa fa-star" *ngFor="let item of [].constructor(5 - tool.simplifiedUserDTO.roundedReviewAverage); let i = index"></span>
         <span>({{tool.simplifiedUserDTO.reviewAverage}})</span> |

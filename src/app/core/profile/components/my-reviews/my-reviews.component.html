@@ -1,5 +1,6 @@
 <div class="review-container">
   <h1>My reviews</h1>
+  <hr class="m-0">
   <div class="review-card" *ngFor="let userReview of userReviews">
     <div class="review-card-stars">
       <span class="fa fa-star checked" *ngFor="let item of [].constructor(userReview.rating); let i = index"></span>

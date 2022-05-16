@@ -59,7 +59,6 @@ input[type="text"], input[type="password"], input[type="number"], select, input[
 
 .modal-base-panel-class .mat-dialog-container {
   @extend .px-6rem;
-  background-color: $modal-background;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -329,3 +328,4 @@ input[type="number"] {
     background-color: rgb(239, 224, 220);
   }
 }
+

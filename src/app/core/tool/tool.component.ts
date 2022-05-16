@@ -6,6 +6,9 @@ import {GoogleMapsStyle} from 'src/app/shared/utils/google-maps-style';
 import {BorrowRequest} from '../../shared/models/borrow-request';
 import {ToolUnavailableTimeResponse} from '../../shared/models/tool-unavailable-time-response';
 import {ToastrService} from 'ngx-toastr';
+import {MatDialog} from '@angular/material/dialog';
+import {UserInfoComponent} from '../user-info/user-info.component';
+import {AppConstants} from '../../shared/constants/app-constants';
 
 @Component({
   selector: 'app-tool',
@@ -38,7 +41,8 @@ export class ToolComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private toolService: ToolService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private matDialog: MatDialog
   ) {
   }
 
@@ -48,7 +52,6 @@ export class ToolComponent implements OnInit {
     this.toolService.getToolDetailed(this.id).subscribe(data => {
       this.options.center = {lat: data.geoCordX, lng: data.geoCordY};
       this.tool = data;
-      console.log(this.tool);
       this.tool.simplifiedUserDTO.roundedReviewAverage = Math.round(this.tool.simplifiedUserDTO.reviewAverage);
       this.markerPosition = {lat: this.tool.geoCordX, lng: this.tool.geoCordY};
     });
@@ -95,17 +98,14 @@ export class ToolComponent implements OnInit {
   setMinMax(): void {
     this.minDate = this.borrowModel.borrowedAt;
     let nextUnavailableStart = this.maxDate;
-    console.log(nextUnavailableStart);
     for (const timeslot of this.toolUnavailableTimeslots) {
       if (new Date(timeslot.unavailableFrom).getTime() > this.borrowModel.borrowedAt.getTime()) {
         if (new Date(timeslot.unavailableFrom).getTime() <= nextUnavailableStart.getTime()) {
-          console.log('Something changed here');
           nextUnavailableStart = new Date(timeslot.unavailableFrom);
         }
       }
     }
     this.maxDate = nextUnavailableStart;
-    console.log(this.maxDate);
   }
 
   resetMinMax(): void {
@@ -117,6 +117,8 @@ export class ToolComponent implements OnInit {
   }
 
   openUserDialog(): void {
-    //  TODO: open user dialog
+    const dialogConfig = AppConstants.baseDialogConfig();
+    dialogConfig.data = {userId: this.tool.simplifiedUserDTO.userId};
+    this.matDialog.open(UserInfoComponent, dialogConfig);
   }
 }
