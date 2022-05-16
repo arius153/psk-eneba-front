@@ -1,5 +1,4 @@
 .my-listings-separator {
-  width: calc(100% - 40px);
   height: 1px;
   margin: auto;
   background-color: #C4C4C4;
@@ -15,11 +14,48 @@ h1 {
   line-height: 80px;
   font-size: 28pt;
   color: #444444;
-  margin-left: 20px;
   margin-bottom: 0;
 }
 
 .list-items {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.round-border {
+  box-shadow: 0 0 2px #888888;
+  border-radius: 12px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.rent-items p {
+  line-height: 20px;
+  font-size: 14pt;
+  font-style: italic;
+  color: #666666;
+  margin: 0 0 5px 10px;
+}
+
+.rent-items h1 {
+  line-height: 30px;
+  font-size: 20pt;
+  color: #222222;
+  margin: 5px 0 0 10px;
+}
+
+.padding-0 {
+  padding: 0;
+}
+
+h1 {
+  width: 100%;
+  line-height: 80px;
+  font-size: 28pt;
+  color: #444444;
+  margin-bottom: 0;
+}
+
+.background-color-white {
+  background-color: white;
 }
