@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MyListingBrief} from '../../../../shared/models/my-listing-brief';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-my-listings-item',
@@ -8,12 +9,18 @@ import {MyListingBrief} from '../../../../shared/models/my-listing-brief';
 })
 export class MyListingsItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   @Input()
   outerDivClass: string;
 
   @Input() listing: MyListingBrief;
+
+  listingClicked(): void {
+    this.router.navigate(['/tool/' + this.listing.id]);
+  }
 
   ngOnInit(): void {
   }
