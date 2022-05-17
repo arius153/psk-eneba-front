@@ -5,24 +5,16 @@
       <div class="profile-side-separator"></div>
       <app-side-button #profile_my_listings [startSelected]=true text="My listings"
                        (selected)="myListingsSelected()"></app-side-button>
-      <app-side-button #profile_my_locations text="My locations" (selected)="myLocationsSelected()"></app-side-button>
       <app-side-button #profile_account text="Account" (selected)="accountSelected()"></app-side-button>
       <app-side-button #profile_my_reviews text="My reviews" (selected)="myReviewsSelected()"></app-side-button>
       <app-side-button #profile_borrowed_tools_history text="Borrowing history" (selected)="borrowedToolsHistorySelected()"></app-side-button>
       <div class="profile-side-separator"></div>
-      <app-side-button #profile_site_settings text="Site settings"
-                       (selected)="siteSettingsSelected()"></app-side-button>
-      <app-side-button #profile_help text="Help" (selected)="helpSelected()"></app-side-button>
-      <div class="profile-side-separator"></div>
     </div>
 
     <app-my-listings *ngIf="showMyListings"></app-my-listings>
-    <app-my-locations *ngIf="showMyLocations"></app-my-locations>
     <app-account-page *ngIf="showAccount"></app-account-page>
     <app-my-reviews *ngIf="showMyReviews"></app-my-reviews>
     <app-borrow-history *ngIf="showBorrowHistory"></app-borrow-history>
-    <app-site-settings *ngIf="showSiteSettings"></app-site-settings>
-    <app-help-page *ngIf="showHelp"></app-help-page>
   </div>
 
 </div>
