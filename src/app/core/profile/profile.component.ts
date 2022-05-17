@@ -52,6 +52,12 @@ export class ProfileComponent implements OnInit {
     this.showMyReviews = true;
   }
 
+  borrowedToolsHistorySelected(): void {
+    this.hideAll();
+    this.deselectAllExcept(this.borrowedToolsHistoryButton);
+    this.showBorrowHistory = true;
+  }
+
   siteSettingsSelected(): void {
     this.hideAll();
     this.deselectAllExcept(this.siteSettingsButton);
@@ -84,11 +90,5 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  borrowedToolsHistorySelected(): void {
-    this.hideAll();
-    this.deselectAllExcept(this.borrowedToolsHistoryButton);
-    this.showBorrowHistory = true;
   }
 }

@@ -1,3 +1,7 @@
+.content-panel {
+  height: calc(100% - 50px);
+}
+
 .logout-btn {
   font-size: 42px;
 
@@ -12,12 +16,4 @@
     cursor: pointer;
     color: #333333;
   }
-}
-
-.side-menu {
-  position: absolute;
-  top: 1rem;
-  right: 10px;
-  display: flex;
-  flex-direction: column;
 }

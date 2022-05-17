@@ -17,14 +17,16 @@ import {MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TopMenuComponent} from './components/top-menu/top-menu.component';
 
 @NgModule({
-  declarations: [
-    FormGroupComponent,
-    ImageUploaderComponent,
-    WeekdaySelectorComponent,
-    SafeHtmlPipe
-  ],
+    declarations: [
+        FormGroupComponent,
+        ImageUploaderComponent,
+        WeekdaySelectorComponent,
+        SafeHtmlPipe,
+        TopMenuComponent
+    ],
   imports: [
     CommonModule,
     FormsModule,
@@ -41,24 +43,25 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
     BrowserAnimationsModule
   ],
-  exports: [
-    CommonModule,
-    TranslateModule,
-    FormsModule,
-    FormGroupComponent,
-    MatDialogModule,
-    ImageUploaderComponent,
-    MatIconModule,
-    MatNativeDateModule,
-    MatInputModule,
-    GoogleMapsModule,
-    MatDatepickerModule,
-    WeekdaySelectorComponent,
-    MatFormFieldModule,
-    RouterModule,
-    SafeHtmlPipe,
-    BrowserAnimationsModule
-  ],
+    exports: [
+        CommonModule,
+        TranslateModule,
+        FormsModule,
+        FormGroupComponent,
+        MatDialogModule,
+        ImageUploaderComponent,
+        MatIconModule,
+        MatNativeDateModule,
+        MatInputModule,
+        GoogleMapsModule,
+        MatDatepickerModule,
+        WeekdaySelectorComponent,
+        MatFormFieldModule,
+        RouterModule,
+        SafeHtmlPipe,
+        BrowserAnimationsModule,
+        TopMenuComponent
+    ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
   ]

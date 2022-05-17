@@ -1,0 +1,17 @@
+<div class="top-menu-div">
+  <div class="left-side">
+    <div class="home-button" [routerLink]="'/'"><mat-icon>home</mat-icon></div>
+    <button class="all-listings-button">All listings</button>
+  </div>
+  <div class="center">
+    <span>Eneba</span>
+  </div>
+  <div class="right-side">
+    <div class="symmetry-div"></div>
+    <div (click)="logout()" class="logout-button">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </div>
+    <div [routerLink]="'/profile'" class="profile-button"><mat-icon>account_circle</mat-icon></div>
+  </div>
+</div>
