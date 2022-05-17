@@ -329,3 +329,15 @@ input[type="number"] {
   }
 }
 
+.go-back-button {
+  width: 100%;
+  border: none;
+  font-size: 2rem;
+  color: #212529;
+  height: 3rem;
+
+  &:hover {
+    background-color: #01A6B00F;
+  }
+}
+
