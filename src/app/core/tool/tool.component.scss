@@ -29,3 +29,15 @@
 .checked {
   color: orange;
 }
+
+.go-back-button {
+  width: 100%;
+  border: none;
+  font-size: 2rem;
+  color: #212529;
+  height: 3rem;
+}
+
+.go-back-button:hover {
+  background-color: #01A6B00F;
+}
