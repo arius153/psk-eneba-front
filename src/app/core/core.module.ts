@@ -7,11 +7,8 @@ import { NewListingComponent } from './home/components/new-listing/new-listing.c
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileSideButtonComponent } from './profile/components/profile-side-button/profile-side-button.component';
 import { MyListingsComponent } from './profile/components/my-listings/my-listings.component';
-import { MyLocationsComponent } from './profile/components/my-locations/my-locations.component';
 import { MyReviewsComponent } from './profile/components/my-reviews/my-reviews.component';
 import { AccountPageComponent } from './profile/components/account-page/account-page.component';
-import { SiteSettingsComponent } from './profile/components/site-settings/site-settings.component';
-import { HelpPageComponent } from './profile/components/help-page/help-page.component';
 import { MyListingsItemComponent } from './profile/components/my-listings-item/my-listings-item.component';
 import { RatingComponent } from './home/components/rating/rating.component';
 import {RatingModule} from 'ngx-bootstrap/rating';
@@ -29,11 +26,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     ProfileComponent,
     ProfileSideButtonComponent,
     MyListingsComponent,
-    MyLocationsComponent,
     MyReviewsComponent,
     AccountPageComponent,
-    SiteSettingsComponent,
-    HelpPageComponent,
     MyListingsItemComponent,
     ToolComponent,
     BorrowHistoryComponent,
