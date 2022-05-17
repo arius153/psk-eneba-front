@@ -1,4 +1,4 @@
-<div class="outer-div" [class.available]="listing.status == 1" [class.taken]="listing.status == 2" (click)="listingClicked()">
+<div class="outer-div" [class]="outerDivClass" [class.available]="listing.status == 1" [class.taken]="listing.status == 2" (click)="listingClicked()">
   <div class="item-name-div">
     <h1>{{listing.name}}</h1>
     <p>{{listing.category}}</p>
