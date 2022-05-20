@@ -52,7 +52,7 @@ export class NewListingComponent implements OnInit {
       return;
     }
     this.toolService.addTool(this.model).subscribe(result => {
-      this.dialogRef.close(true);
+      this.dialogRef.close(result);
     });
   }
 

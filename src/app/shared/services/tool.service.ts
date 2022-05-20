@@ -25,10 +25,10 @@ export class ToolService {
     return this.httpClient.get<CategoryResponse[]>(url);
   }
 
-  addTool(model: NewListingRequest): Observable<number> {
+  addTool(model: NewListingRequest): Observable<MyListingBrief> {
     const url = AppConfigService.config.backUrl + '/tool';
     const formData = ObjectUtils.extractFormData(model, 'data', 'files');
-    return this.httpClient.post<number>(url, formData);
+    return this.httpClient.post<MyListingBrief>(url, formData);
   }
 
   borrow(model: BorrowRequest): Observable<void> {
