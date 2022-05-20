@@ -48,11 +48,13 @@ export class NewListingComponent implements OnInit {
   }
 
   doSave(form: NgForm): void {
+    console.log('ČIA DO SAVE new-listing');
     if (!form.valid) {
       return;
     }
     this.toolService.addTool(this.model).subscribe(result => {
-      this.dialogRef.close(true);
+      console.log('ČIA DO SAVE new-listing po subscribe');
+      this.dialogRef.close(result);
     });
   }
 
