@@ -9,7 +9,7 @@
     <br>
     <span class="review-card-comments">"{{userReview.comments}}"</span>
     <div class="review-card-footer">
-      <span class="flex-item">{{userReview.reviewedBy}}, {{userReview.reviewedAt | date}}</span>
+      <span class="flex-item">{{userReview.reviewedBy}}, {{userReview.reviewedAt | date}} borrowed: {{userReview.toolName}}</span>
     </div>
     <hr class="review-card-hr-space">
     <div *ngFor="let answer of userReview.answers" class="ps-5">

@@ -8,4 +8,5 @@ export class UserReviewsResponse {
   reviewedAt: Date;
   answers: UserReviewAnswerResponse[];
   answer: string;
+  toolName: string;
 }
