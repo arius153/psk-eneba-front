@@ -7,7 +7,7 @@ import {ToolService} from '../../shared/services/tool.service';
 import {ToolsRequest} from '../../shared/models/tools-request';
 import {AuthenticationService} from '../../shared/services/authentication.service';
 import {Router} from '@angular/router';
-import {GoogleMap} from '@angular/google-maps';
+import {GoogleMap, MapInfoWindow} from '@angular/google-maps';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,6 @@ import {GoogleMap} from '@angular/google-maps';
 export class HomeComponent implements OnInit {
 
   options: google.maps.MapOptions = {
-    zoom: 12,
     center: {lat: 54.700859, lng: 25.247475},
     fullscreenControl: false,
     streetViewControl: false,
@@ -26,6 +25,7 @@ export class HomeComponent implements OnInit {
   };
 
   @ViewChild(GoogleMap, {static: false}) map: GoogleMap;
+  @ViewChild(MapInfoWindow) infoWindow: MapInfoWindow;
 
   markerOptions: google.maps.MarkerOptions = {draggable: false};
   markerPositions: google.maps.LatLngLiteral[] = [];
@@ -35,8 +35,9 @@ export class HomeComponent implements OnInit {
   toolsRequest = new ToolsRequest();
   showSort: boolean;
   showFilters: boolean;
-
   showProfile: boolean;
+  zoom: number;
+  toolDetailsInfoWindow: ToolResponse;
 
   constructor(
     private toolService: ToolService,
@@ -55,6 +56,7 @@ export class HomeComponent implements OnInit {
     this.toolService.getCategories().subscribe(data => {
       this.categories = data;
     });
+    this.zoom = 13;
   }
 
   toggleFilters(): void {
@@ -97,8 +99,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  centerTool(tool): void {
-    this.map.panTo({lat: tool.geoCordX, lng: tool.geoCordY});
+  toolClicked(tool): void {
+    this.centerTool(tool);
+    this.toolDetailsInfoWindow = tool;
+    this.infoWindow.infoWindow.setPosition({lat: tool.geoCordX + 0.001, lng: tool.geoCordY});
+    this.infoWindow.open();
+  }
 
+  centerTool(tool): void {
+    this.changeMapZoom(15.5);
+    this.map.panTo({lat: tool.geoCordX, lng: (tool.geoCordY)});
+  }
+
+  changeMapZoom(e: any): any {
+    this.zoom = e;
   }
 }
