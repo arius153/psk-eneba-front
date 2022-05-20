@@ -29,8 +29,6 @@ export class MyListingsComponent implements OnInit {
     this.matDialog.open(NewListingComponent, AppConstants.baseDialogConfig())
       .afterClosed()
       .subscribe(result => {
-        console.log('CIA PO DIALOGO UZDARYMO');
-        console.log(result);
         if (result) {
           this.listings.push(result);
         }
