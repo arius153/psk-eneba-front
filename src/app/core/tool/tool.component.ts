@@ -25,6 +25,8 @@ export class ToolComponent implements OnInit {
   id: number;
   minDate: Date;
   maxDate: Date;
+  priceCalculable = false;
+  totalPrice = 0;
 
   options: google.maps.MapOptions = {
     zoom: 12,
@@ -76,7 +78,7 @@ export class ToolComponent implements OnInit {
       this.borrowModel.returnedAt.getHours(),
       this.borrowModel.returnedAt.getMinutes() - this.borrowModel.returnedAt.getTimezoneOffset());
     this.toolService.borrow(this.borrowModel).subscribe(() => {
-      this.toastr.success('Successfuly borrowed tool!');
+      this.toastr.success('Successfully borrowed tool!');
       this.router.navigateByUrl('/');
     });
   }
@@ -106,6 +108,7 @@ export class ToolComponent implements OnInit {
       }
     }
     this.maxDate = nextUnavailableStart;
+    this.priceCalculable = false;
   }
 
   resetMinMax(): void {
@@ -113,6 +116,11 @@ export class ToolComponent implements OnInit {
       this.minDate = new Date();
       this.maxDate = new Date();
       this.maxDate.setDate(this.minDate.getDate() + 30);
+      this.calculateTotalPrice();
+      this.priceCalculable = true;
+    }
+    else {
+      this.priceCalculable = false;
     }
   }
 
@@ -120,5 +128,11 @@ export class ToolComponent implements OnInit {
     const dialogConfig = AppConstants.baseDialogConfig();
     dialogConfig.data = {userId: this.tool.simplifiedUserDTO.userId};
     this.matDialog.open(UserInfoComponent, dialogConfig);
+  }
+
+  calculateTotalPrice(): void {
+    const diff = Math.abs(this.borrowModel.returnedAt.getTime() - this.borrowModel.borrowedAt.getTime());
+    const diffDays = Math.ceil(diff / (1000 * 3600 * 24));
+    this.totalPrice = (diffDays + 1) * this.tool.price;
   }
 }
