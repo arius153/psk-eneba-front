@@ -9,6 +9,9 @@
       <p>Tool location: {{borrowing.toolPlace}}</p>
       <p>Rent period: {{borrowing.borrowedAtDate}} - {{borrowing.returnedAtDate}}</p>
       <p>Paid: {{borrowing.pricePaid}}€ ({{borrowing.toolPrice}}€/24h)</p>
+      <div class="text-center">
+        <button class="btn btn-outline-primary mb-3" (click)="doRate(borrowing.ownerId, borrowing.toolId)">Leave review</button>
+      </div>
     </li>
   </ul>
 </div>

@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {RatingRequest} from '../../../../shared/models/rating-request';
+import {RatingRequest} from 'src/app/shared/models/rating-request';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {UserReviewService} from '../../../../shared/services/user-review.service';
+import {UserReviewService} from 'src/app/shared/services/user-review.service';
 
 @Component({
   selector: 'app-rating',
@@ -24,6 +24,7 @@ export class RatingComponent implements OnInit {
 
   ngOnInit(): void {
     this.ratingRequest.userToRateId = this.data.userToRateId;
+    this.ratingRequest.toolToRateId = this.data.toolToRateId;
   }
 
   doRate(): void {
