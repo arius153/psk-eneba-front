@@ -1,99 +1,74 @@
 <app-top-menu></app-top-menu>
 <div class="d-flex content-panel">
   <div class="listings-panel" id="listings-panel">
-    <div class="panel-header">
-      <span style="width: 100%; height: 100%;"> Nearest tech </span>
-    </div>
-    <hr>
-    <div class="searchOptionsRow">
-      <button id="sort" class="horizontal icon filter" (click)="toggleSort()">
-        Sort
-      </button>
-      <button id="filter" class="horizontal icon sort" (click)="toggleFilters()">
-        Filter
-      </button>
-    </div>
-    <ng-container *ngIf="showSort">
-      <div class="search-container">
-        <span class="search-header searchOptionsRow">Sort</span>
-
-        <span class="searchOptionsRow">
-          <input type="radio" value="false" name="sortReversed" [(ngModel)]="toolsRequest.sortReversed"> Ascending
-          <input type="radio" value="true" name="sortReversed" checked [(ngModel)]="toolsRequest.sortReversed"> Descending
-        </span>
-
-        <hr/>
-
-        <span class="optionsList">
-          <span>
-            <input type="radio" value="price" name="sort" [(ngModel)]="toolsRequest.sortBy"> Price
-          </span>
-          <span>
-            <input type="radio" value="category" name="sort" [(ngModel)]="toolsRequest.sortBy"> Category
-          </span>
-          <span>
-            <input type="radio" value="name" name="sort" [(ngModel)]="toolsRequest.sortBy"> Name
-          </span>
-        </span>
-
-        <span class="searchOptionsRow">
-          <button id="submitSort" class="submitButton" (click)="submitSort()">
-            Sort
-          </button>
-        </span>
+    <div class="listings-top-half">
+      <div class="listings-header">
+        <h1>Nearest tech</h1>
       </div>
-    </ng-container>
-
-    <ng-container *ngIf="showFilters">
-      <div class="search-container ">
-        <span class="search-header searchOptionsRow">Filter</span>
-
-        <div class="searchOptionsRow">
-          <h2>Price</h2>
-          <span>
-            <input class="priceInput" type="number" name="minPrice" min="0" placeholder="From"
-                   [(ngModel)]="toolsRequest.minPrice">
-          </span>
-          <span>
-            <input class="priceInput" type="number" name="maxPrice" min="0" placeholder="To"
-                   [(ngModel)]="toolsRequest.maxPrice">
-          </span>
-        </div>
-        <hr/>
-        <div class="searchOptionsRow">
-          <h2>Category</h2>
-          <ul class="no-list-style-type">
-            <li class="categoryOption" *ngFor="let category of categories">
-              <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event)"/>{{category.name}}
-            </li>
-          </ul>
-        </div>
-        <span class="searchOptionsRow">
-          <button id="submitFilter" class="submitButton" (click)="submitSort()">
-            Filter
-          </button>
-        </span>
-      </div>
-    </ng-container>
-    <div>
-      <ul class="tool-list">
-        <li *ngFor="let tool of tools" class="listing-row mt-1">
-          <div class="listing" (click)="centerTool(tool)">
-
-            <span class="circle" [ngClass]="{'available': tool.available}"></span>
-            <img src="../assets/icons/{{tool.toolCategory}}.png" class="category-icon"/>
-            <div class="listing-name">
-            <span>
-              {{tool.name}}
-            </span>
-              <div class="listing-price">
-                {{tool.price}}€/d.
-              </div>
-            </div>
+      <div class="listings-separator"></div>
+      <div class="sort-filter-panel">
+        <div class="sort-filter-buttons">
+          <div class="sort-button" [class.selected]="showSort" (click)="toggleSort()">
+            <div class="sort-icon"></div>
+            <span>Sort</span>
           </div>
-          <a class="open-arrow" routerLink="/tool/{{tool.id}}"></a>
-        </li>
-      </ul>
+          <div class="filter-button" [class.selected]="showFilters" (click)="toggleFilters()">
+            <div class="filter-icon"></div>
+            <span>Filter</span>
+          </div>
+        </div>
+        <div class="sort-filter-display" [class.sort-opened]="showSort" [class.filter-opened]="showFilters">
+          <div class="sort-panel" *ngIf="showSort">
+            <div class="sort-order-input">
+              <input type="radio" value="false" name="sort-order" [(ngModel)]="toolsRequest.sortReversed"> Ascending
+              <input type="radio" value="true" name="sort-order" checked [(ngModel)]="toolsRequest.sortReversed"> Descending
+            </div>
+            <div class="sort-by-input">
+              <input type="radio" value="price" name="sort-by" [(ngModel)]="toolsRequest.sortBy"> By price <br/>
+              <input type="radio" value="category" name="sort-by" [(ngModel)]="toolsRequest.sortBy"> By category <br/>
+              <input type="radio" value="name" name="sort-by" [(ngModel)]="toolsRequest.sortBy"> By name <br/>
+            </div>
+            <button class="apply-sort styled-button" (click)="submitSort()">Apply</button>
+          </div>
+          <div class="filter-panel" *ngIf="showFilters">
+            <div class="price-filter-input">
+              <span>
+                <input class="price-input" type="number" name="minPrice" min="0" placeholder="Min price"
+                       [(ngModel)]="toolsRequest.minPrice">
+                <input class="price-input" type="number" name="maxPrice" min="0" placeholder="Max price"
+                       [(ngModel)]="toolsRequest.maxPrice">
+              </span>
+            </div>
+            <div class="category-filter-input">
+              <div class="categories-header">Categories:</div>
+              <div *ngFor="let category of categories">
+                <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event)"/> {{category.name}}
+              </div>
+
+              <!--<ul class="no-list-style-type">
+                <li class="categoryOption" *ngFor="let category of categories">
+                  <input type="checkbox" [value]="category.id" (change)="onCheckboxChange($event)"/> {{category.name}}
+                </li>
+              </ul>-->
+            </div>
+            <button class="apply-filter styled-button" (click)="submitSort()">Apply</button>
+          </div>
+        </div>
+      </div>
+      <div class="listings-separator"></div>
+    </div>
+    <div class="listings-bottom-half">
+      <div class="tool-list-panel">
+        <div *ngFor="let tool of tools" class="listing-item" (click)="centerTool(tool)">
+          <div class="availability-bar" [class.available]="tool.available"></div>
+          <img class="category-icon" src="../assets/icons/{{tool.toolCategory}}.png"/>
+          <div class="listing-text">
+            <h1>{{tool.name}}</h1>
+            <p>{{tool.toolCategory}}</p>
+          </div>
+          <p class="details-button" routerLink="/tool/{{tool.id}}">Details</p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="flex-grow-1">
