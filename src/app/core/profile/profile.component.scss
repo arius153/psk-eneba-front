@@ -1,14 +1,15 @@
 #profile-background {
   background-color: #f0f0f0;
   width: 100%;
-  height: 100%;
+  height: calc(100% - 50px);
+  overflow-y: scroll;
 }
 
 #profile-center-panel {
   background-color: #f8f8f8;
   margin: auto;
   width: 900px;
-  min-height: calc(100% - 50px);
+  min-height: 100%;
   padding-bottom: 1rem;
   box-shadow: 0 0 5px #444444;
 }
@@ -22,7 +23,7 @@
 }
 
 #profile-side-panel {
-  position: absolute;
+  position: fixed;
   margin-left: -380px;
   margin-top: 60px;
   //border: 1px solid #888888;
