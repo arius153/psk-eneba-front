@@ -14,7 +14,6 @@ h1 {
   line-height: 80px;
   font-size: 28pt;
   color: #444444;
-  margin-bottom: 0;
 }
 
 .list-items {
@@ -23,15 +22,15 @@ h1 {
 }
 
 .round-border {
+  border-radius: 5px;
   box-shadow: 0 0 2px #888888;
-  border-radius: 12px;
   padding: 5px;
   margin-top: 10px;
 }
 
 .rent-items p {
-  line-height: 20px;
-  font-size: 14pt;
+  line-height: 15px;
+  font-size: 11pt;
   font-style: italic;
   color: #666666;
   margin: 0 0 5px 10px;
@@ -41,19 +40,18 @@ h1 {
   line-height: 30px;
   font-size: 20pt;
   color: #222222;
-  margin: 5px 0 0 10px;
+  margin: 5px 0 5px 10px;
+}
+
+.rent-items button {
+  height: 38px;
+  font-size: 12pt;
+  padding: 0 10px;
+  margin: 10px;
 }
 
 .padding-0 {
   padding: 0;
-}
-
-h1 {
-  width: 100%;
-  line-height: 80px;
-  font-size: 28pt;
-  color: #444444;
-  margin-bottom: 0;
 }
 
 .background-color-white {
