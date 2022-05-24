@@ -7,39 +7,5 @@ h1 {
 }
 
 .review-container {
-  padding: 0 20px 20px;
-}
-
-.review-card {
-  border-style: solid;
-  border-width: 3px;
-  border-color: gray;
-  margin: 30px 0;
-  border-radius: 25px;
-  padding: 20px 10px 5px 20px;
-  font-size: 20px;
-}
-
-.review-card-hr-space {
-  margin-top: 0;
-}
-
-.review-card-comments {
-  font-style: italic;
-}
-
-.review-card-footer {
-  display: flex;
-}
-
-.checked {
-  color: orange;
-}
-
-.flex-item {
-  width: 100%;
-  text-align: right;
-  color: gray;
-  font-size: 16px;
-  padding: 0 15px
+  padding: 0 20px;
 }
