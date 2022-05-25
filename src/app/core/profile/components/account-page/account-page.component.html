@@ -1,45 +1,47 @@
 <div>
   <h1>Account</h1>
   <div class="account-page-separator"></div>
-  <div class="account-page-entry">
-    <p class="entry-name">Full name:</p>
-    <p class="entry-data">{{user.fullName}}</p>
-  </div>
-  <div class="account-page-entry">
-    <p class="entry-name">National ID number:</p>
-    <p class="entry-data">{{user.natIdNumber}}</p>
-  </div>
-  <div class="account-page-separator"></div>
-  <div class="account-page-entry">
-    <p class="entry-name">Email:</p>
-    <p class="entry-data">{{user.email}}</p>
-  </div>
-  <div class="account-page-entry">
-    <p class="entry-name">Phone number:</p>
-    <p class="entry-data phone-number-data">{{user.phoneNumber}}</p>
-    <button *ngIf="!changingNumber" class="styled-button" (click)="showChangeNumber()">Change</button>
-  </div>
-  <div *ngIf="changingNumber" class="account-page-entry">
-    <p class="entry-name entry-inverted">New phone number:</p>
-    <input class="number-change" type="text" [(ngModel)]="newPhoneNumber"/>
-    <button class="styled-button number-change" (click)="changeNumber()">Update</button>
-    <button class="styled-button number-change" (click)="cancelNumberChange()">Cancel</button>
-  </div>
-  <div class="account-page-entry">
-    <p class="entry-name">Password:</p>
-    <button *ngIf="!changingPassword" class="styled-button" (click)="showChangePassword()">Change</button>
-  </div>
-  <div *ngIf="changingPassword" class="account-page-entry">
-    <p class="entry-name entry-inverted">New password:</p>
-    <input class="password-change" type="password" autocomplete="new-password" [(ngModel)]="newPassword"/>
-  </div>
-  <div *ngIf="changingPassword" class="account-page-entry">
-    <p class="entry-name entry-inverted">Repeat new password:</p>
-    <input class="password-change" type="password" autocomplete="new-password" [(ngModel)]="newPasswordRepeated"/>
-  </div>
-  <div *ngIf="changingPassword" class="account-page-entry">
-    <p class="entry-name entry-inverted"></p>
-    <button class="styled-button password-change" (click)="changePassword()">Update</button>
-    <button class="styled-button password-change" (click)="cancelPasswordChange()">Cancel</button>
-  </div>
+  <ng-container *ngIf="user">
+    <div class="account-page-entry">
+      <p class="entry-name">Full name:</p>
+      <p class="entry-data">{{user.fullName}}</p>
+    </div>
+    <div class="account-page-entry">
+      <p class="entry-name">National ID number:</p>
+      <p class="entry-data">{{user.natIdNumber}}</p>
+    </div>
+    <div class="account-page-separator"></div>
+    <div class="account-page-entry">
+      <p class="entry-name">Email:</p>
+      <p class="entry-data">{{user.email}}</p>
+    </div>
+    <div class="account-page-entry">
+      <p class="entry-name">Phone number:</p>
+      <p class="entry-data phone-number-data">{{user.phoneNumber}}</p>
+      <button *ngIf="!changingNumber" class="styled-button" (click)="showChangeNumber()">Change</button>
+    </div>
+    <div *ngIf="changingNumber" class="account-page-entry">
+      <p class="entry-name entry-inverted">New phone number:</p>
+      <input class="number-change" type="text" [(ngModel)]="newPhoneNumber"/>
+      <button class="styled-button number-change" (click)="changeNumber()">Update</button>
+      <button class="styled-button number-change" (click)="cancelNumberChange()">Cancel</button>
+    </div>
+    <div class="account-page-entry">
+      <p class="entry-name">Password:</p>
+      <button *ngIf="!changingPassword" class="styled-button" (click)="showChangePassword()">Change</button>
+    </div>
+    <div *ngIf="changingPassword" class="account-page-entry">
+      <p class="entry-name entry-inverted">New password:</p>
+      <input class="password-change" type="password" autocomplete="new-password" [(ngModel)]="newPassword"/>
+    </div>
+    <div *ngIf="changingPassword" class="account-page-entry">
+      <p class="entry-name entry-inverted">Repeat new password:</p>
+      <input class="password-change" type="password" autocomplete="new-password" [(ngModel)]="newPasswordRepeated"/>
+    </div>
+    <div *ngIf="changingPassword" class="account-page-entry">
+      <p class="entry-name entry-inverted"></p>
+      <button class="styled-button password-change" (click)="changePassword()">Update</button>
+      <button class="styled-button password-change" (click)="cancelPasswordChange()">Cancel</button>
+    </div>
+  </ng-container>
 </div>

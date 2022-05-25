@@ -1,7 +1,8 @@
 <div class="review-container">
   <h1>My reviews</h1>
   <hr class="m-0">
-  <div class="review-card" *ngFor="let userReview of userReviews">
+  <app-my-reviews-item *ngFor="let userReview of userReviews" [review]="userReview"></app-my-reviews-item>
+  <!--<div class="review-card" *ngFor="let userReview of userReviews">
     <div class="review-card-stars">
       <span class="fa fa-star checked" *ngFor="let item of [].constructor(userReview.rating); let i = index"></span>
       <span class="fa fa-star" *ngFor="let item of [].constructor(5 - userReview.rating); let i = index"></span>
@@ -9,7 +10,7 @@
     <br>
     <span class="review-card-comments">"{{userReview.comments}}"</span>
     <div class="review-card-footer">
-      <span class="flex-item">{{userReview.reviewedBy}}, {{userReview.reviewedAt | date}}</span>
+      <span class="flex-item">{{userReview.reviewedBy}}, {{userReview.reviewedAt | date}} borrowed: {{userReview.toolName}}</span>
     </div>
     <hr class="review-card-hr-space">
     <div *ngFor="let answer of userReview.answers" class="ps-5">
@@ -23,5 +24,5 @@
       <textarea class="w-100" [(ngModel)]="userReview.answer"></textarea>
       <button class="btn btn-basic my-3" (click)="addReply(userReview)">Reply</button>
     </div>
-  </div>
+  </div>-->
 </div>

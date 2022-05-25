@@ -1,5 +1,7 @@
 export class BorrowLogEntryResponse {
+  ownerId: number;
   toolName: string;
+  toolId: number;
   ownerName: string;
   ownerLastName: string;
   borrowedAtDate: string;

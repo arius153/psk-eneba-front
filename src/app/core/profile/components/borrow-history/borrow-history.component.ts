@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ToolService} from 'src/app/shared/services/tool.service';
 import {BorrowLogEntryResponse} from 'src/app/shared/models/borrow-log-entry-response.module';
+import {MatDialog} from '@angular/material/dialog';
+import {RatingComponent} from 'src/app/core/home/components/rating/rating.component';
 
 @Component({
   selector: 'app-borrow-history',
@@ -12,7 +14,8 @@ export class BorrowHistoryComponent implements OnInit {
   history: BorrowLogEntryResponse[];
 
   constructor(
-    private toolService: ToolService
+    private toolService: ToolService,
+    private myDialog: MatDialog
   ) {
   }
 
@@ -20,6 +23,17 @@ export class BorrowHistoryComponent implements OnInit {
     this.toolService.getBorrowHistory().subscribe(data => {
       this.history = data;
     });
+  }
+
+  doRate(userId, toolId): void {
+    this.myDialog.open(RatingComponent,
+      {
+        data: {
+          userToRateId: userId,
+          toolToRateId: toolId
+        }
+      }
+    );
   }
 
 }

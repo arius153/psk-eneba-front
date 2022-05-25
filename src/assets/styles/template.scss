@@ -21,7 +21,7 @@ input[type="text"], input[type="password"], input[type="number"], select, input[
   border-radius: 5px;
   border: #333333 solid 1px;
   height: 40px;
-  font-size: x-large;
+  font-size: 16pt;
   padding-left: 4px;
 
   &:focus-visible {
@@ -326,6 +326,22 @@ input[type="number"] {
 
   &:active {
     background-color: rgb(239, 224, 220);
+  }
+}
+
+.styled-button.no-color {
+  border: 1px solid #666666;
+  border-radius: 5px;
+  background-color: #ffffff;
+  transition: background-color 50ms;
+  font-size: 14pt;
+
+  &:hover {
+    background-color: #eeeeee;
+  }
+
+  &:active {
+    background-color: #dddddd;
   }
 }
 

@@ -1,31 +1,228 @@
-.img-container {
-  width: 300px;
-  object-fit: cover;
-  border: 1px solid black;
+.tool-main-content {
+  height: calc(100% - 50px);
+  overflow-y: auto;
 }
 
-.tool-name {
-  font-size: 5rem !important; /*😊*/
-  margin-top: 3rem;
+.tool-center-panel {
+  background-color: #f8f8f8;
+  margin: auto;
+  width: 900px;
+  min-height: 100%;
+  box-shadow: 0 0 5px #444444;
 }
 
-.p-x-120 {
-  padding-left: 120px;
-  padding-right: 120px;
-}
+///
+// HEADER
 
-.user-info-window {
-  border: 1px solid black;
-  border-radius: 3px;
-  display: inline-block;
-  padding: 1rem;
-  background: white;
+.tool-header {
+  padding: 16px 20px 8px;
 
-  &:hover {
-    cursor: pointer;
+  h1 {
+    width: 100%;
+    font-size: 24pt;
+    color: #444444;
+    margin-bottom: 5px;
+  }
+
+  p {
+     width: 100%;
+     font-size: 16pt;
+     font-style: italic;
+     color: #666666;
   }
 }
 
-.checked {
-  color: orange;
+.tool-header-separator {
+  width: calc(100% - 40px);
+  height: 1px;
+  margin: auto;
+  background-color: #C4C4C4;
+}
+
+///
+// MAIN INFO PANEL
+
+.tool-main-info-panel {
+  width: calc(100% - 40px);
+  margin: 8px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.borrow-info {
+  display: flex;
+}
+
+.price-text {
+  border-left: 3px solid rgb(255, 119, 76);
+  padding-left: 5px;
+}
+
+.button-price {
+  margin-right: 10px;
+
+  button {
+    width: 130px;
+    height: 53px;
+  }
+
+  p {
+    line-height: 24px;
+    font-size: 16pt;
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
+}
+
+.date-price {
+  mat-form-field {
+    background-color: #EEEEEE;
+    border-radius: 5px;
+  }
+
+  p {
+    line-height: 24px;
+    font-size: 16pt;
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
+}
+
+:host ::ng-deep .date-price .mat-form-field-wrapper{
+  margin: 0 !important;
+  padding: 0;
+}
+
+.lender-header {
+  font-size: 14pt;
+  color: #444444;
+  text-align: end;
+  margin-bottom: 8px;
+}
+
+.lender-name {
+  font-size: 14pt;
+  color: #444444;
+  text-align: end;
+  margin-bottom: 0;
+}
+
+.lender-rating {
+  height: 20px;
+  display: flex;
+  align-items: center;
+
+  .fa-user {
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+  }
+
+  .rating-separator {
+    width: 1px;
+    height: 15px;
+    margin: 0 5px;
+    background-color: #C0C0C0;
+  }
+
+  .checked {
+    color: orange;
+  }
+}
+
+.lender-more-info {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+.lender-more-info p {
+  color: #888888;
+  font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+///
+// SPLIT PANEL
+
+.tool-split-panel {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 20px 20px 20px;
+  width: 100%;
+}
+
+.section-header {
+  margin-bottom: 8px;
+  width: 100%;
+
+  h1 {
+    font-size: 16pt;
+    color: #444444;
+    margin-bottom: 0;
+  }
+
+  // Separator
+  div {
+    width: 100%;
+    height: 1px;
+    background-color: #C8C8C8;
+  }
+}
+
+.section-header.left h1 {
+  text-align: start;
+}
+
+.section-header.right h1 {
+  text-align: end;
+}
+
+///
+// LEFT SIDE
+
+.tool-left-panel {
+  width: 500px;
+}
+
+.tool-description-panel {
+  width: 100%;
+
+  p {
+    font-size: 11pt;
+  }
+}
+
+///
+// RIGHT SIDE
+
+.tool-right-panel {
+  width: 300px;
+}
+
+.tool-pickup-panel {
+  width: 100%;
+
+  p {
+    margin-bottom: 2px;
+  }
+
+  .time-range {
+    color: #004499;
+  }
+}
+
+.tool-images-panel {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.img-container {
+  width: 300px;
+  object-fit: cover;
+  box-shadow: 0 0 3px #444444;
+  margin-bottom: 8px;
 }
