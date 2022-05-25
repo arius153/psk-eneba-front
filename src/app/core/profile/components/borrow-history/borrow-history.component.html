@@ -5,13 +5,11 @@
   <ul class="no-list-style-type list-items padding-0">
     <li *ngFor="let borrowing of history" class="round-border rent-items background-color-white">
       <h1 class="mt-1">{{borrowing.toolName}}</h1>
-      <p>Owner full name: {{borrowing.ownerName}} {{borrowing.ownerLastName}}</p>
-      <p>Tool location: {{borrowing.toolPlace}}</p>
-      <p>Rent period: {{borrowing.borrowedAtDate}} - {{borrowing.returnedAtDate}}</p>
-      <p>Paid: {{borrowing.pricePaid}}€ ({{borrowing.toolPrice}}€/24h)</p>
-      <div class="text-center">
-        <button class="btn btn-outline-primary mb-3" (click)="doRate(borrowing.ownerId, borrowing.toolId)">Leave review</button>
-      </div>
+      <p>Owner full name:&nbsp; &nbsp;{{borrowing.ownerName}} {{borrowing.ownerLastName}}</p>
+      <p>Tool location:&nbsp; &nbsp;{{borrowing.toolPlace}}</p>
+      <p>Rent period:&nbsp; &nbsp;{{borrowing.borrowedAtDate}} - {{borrowing.returnedAtDate}}</p>
+      <p>Paid:&nbsp; &nbsp;{{borrowing.pricePaid}}€ ({{borrowing.toolPrice}}€/day)</p>
+      <button class="styled-button" (click)="doRate(borrowing.ownerId, borrowing.toolId)">Leave review</button>
     </li>
   </ul>
 </div>

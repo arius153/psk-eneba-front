@@ -16,6 +16,7 @@ import {RouterModule} from '@angular/router';
 import { ToolComponent } from './tool/tool.component';
 import { BorrowHistoryComponent } from './profile/components/borrow-history/borrow-history.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { MyReviewsItemComponent } from './profile/components/my-reviews-item/my-reviews-item.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     MyListingsItemComponent,
     ToolComponent,
     BorrowHistoryComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    MyReviewsItemComponent
   ],
   imports: [
     SharedModule,

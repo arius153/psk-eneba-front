@@ -329,6 +329,22 @@ input[type="number"] {
   }
 }
 
+.styled-button.no-color {
+  border: 1px solid #666666;
+  border-radius: 5px;
+  background-color: #ffffff;
+  transition: background-color 50ms;
+  font-size: 14pt;
+
+  &:hover {
+    background-color: #eeeeee;
+  }
+
+  &:active {
+    background-color: #dddddd;
+  }
+}
+
 .go-back-button {
   width: 100%;
   border: none;
