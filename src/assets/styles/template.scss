@@ -357,3 +357,34 @@ input[type="number"] {
   }
 }
 
+.info-window-container{
+  span {
+    font-size: 16px;
+    font-style: italic;
+  }
+
+  h1 {
+    margin: 0 0 5px;
+  }
+
+  .info-window-button {
+    display: flex;
+    align-items: center;
+  }
+
+  a {
+    border-width: 2px;
+    border-style: solid;
+    border-color: #ff774c;
+    border-radius: 5px;
+    padding: 10px 30% 10px;
+    margin: auto;
+    color: black;
+    text-decoration: none;
+  }
+}
+
+.gm-style-iw-d{
+  min-height: 130px;
+}
+
