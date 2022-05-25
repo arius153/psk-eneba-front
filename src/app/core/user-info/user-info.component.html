@@ -30,17 +30,17 @@
             <span class="fa fa-star checked"
                   *ngFor="let item of [].constructor(userReview.rating); let i = index"></span>
             <span class="fa fa-star" *ngFor="let item of [].constructor(5 - userReview.rating); let i = index"></span>
+            <span class="ms-3">Tool: {{userReview.toolName}}</span>
           </div>
-          <br>
-          <span class="review-card-comments">"{{userReview.comments}}"</span>
+          <span class="review-card-comments">{{userReview.comments}}</span>
           <div class="review-card-footer">
-            <span class="flex-item">{{userReview.reviewedBy}}, {{userReview.reviewedAt | date}} borrowed: {{userReview.toolName}}</span>
+            <span class="flex-item">{{userReview.reviewedBy}}&nbsp;&nbsp;<i>{{userReview.reviewedAt | date}}</i></span>
           </div>
           <hr class="review-card-hr-space">
           <div *ngFor="let answer of userReview.answers" class="ps-5">
-            <span class="review-card-comments">"{{answer.answer}}"</span>
+            <span class="review-card-comments">{{answer.answer}}</span>
             <div class="review-card-footer">
-              <span class="flex-item">Answered by: {{answer.answeredBy}}, {{answer.answeredAt | date}}</span>
+              <span class="flex-item">{{answer.answeredBy}}&nbsp;&nbsp;<i>{{answer.answeredAt | date}}</i></span>
             </div>
             <hr class="review-card-hr-space">
           </div>

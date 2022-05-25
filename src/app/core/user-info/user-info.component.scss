@@ -1,20 +1,20 @@
 
 .account-page-entry {
-  margin: 10px auto;
-  height: 40px;
+  margin: 5px auto;
+  height: 30px;
   display: flex;
-  line-height: 40px;
+  line-height: 30px;
   color: #333333;
 }
 
 .account-page-entry .entry-name {
   width: 250px;
-  font-size: 16pt;
+  font-size: 14pt;
 }
 
 .account-page-entry .entry-data {
   width: 250px;
-  font-size: 14pt;
+  font-size: 12pt;
 }
 
 .accordion-button {
@@ -58,28 +58,38 @@
 //  font-size: 20px;
 //}
 
+.review-card {
+  margin-bottom: 24px;
+}
+
+.review-card-stars {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
 .review-card-hr-space {
   margin-top: 0;
 }
 
 .review-card-comments {
-  font-style: italic;
-  font-size: 16px;
+  font-size: 14pt;
 }
 
 .review-card-footer {
   display: flex;
+
+  span {
+    width: 100%;
+    color: gray;
+    font-size: 11pt;
+
+    i {
+      font-size: 10pt;
+    }
+  }
 }
 
 .checked {
   color: orange;
-}
-
-.flex-item {
-  width: 100%;
-  text-align: right;
-  color: gray;
-  font-size: 14px;
-  padding: 0 15px
 }
 
