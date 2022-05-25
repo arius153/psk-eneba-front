@@ -58,7 +58,6 @@ export class HomeComponent implements OnInit {
     this.toolService.getCategories().subscribe(data => {
       this.categories = data;
     });
-    this.zoom = 13;
   }
 
   toggleFilters(): void {
