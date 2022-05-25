@@ -59,7 +59,7 @@
     </div>
     <div class="listings-bottom-half">
       <div class="tool-list-panel">
-        <div *ngFor="let tool of tools" class="listing-item" (click)="centerTool(tool)">
+        <div *ngFor="let tool of tools" class="listing-item" (click)="toolClicked(tool)">
           <div class="availability-bar" [class.available]="tool.available"></div>
           <img class="category-icon" src="../assets/icons/{{tool.toolCategory}}.png"/>
           <div class="listing-text">
@@ -72,10 +72,14 @@
     </div>
   </div>
   <div class="flex-grow-1">
-    <google-map [options]="options" class="fullscreen" *ngIf="!showProfile">
-      <map-marker *ngFor="let markerPosition of markerPositions"
-                  [position]="markerPosition"
-                  [options]="markerOptions"></map-marker>
+    <google-map [zoom]="zoom" (zoomChanged)="changeMapZoom($event)" [options]="options" class="fullscreen" *ngIf="!showProfile">
+      <map-marker *ngFor="let toolMarker of toolMarkers"
+                  [position]="toolMarker.marker"
+                  [options]="markerOptions"
+                  (mapClick)="openInfoWindow(toolMarker.tool, marker)"
+                  #marker="mapMarker">
+      </map-marker>
+      <map-info-window [innerHTML]="infoWindowContent">info window</map-info-window>
     </google-map>
   </div>
 </div>
