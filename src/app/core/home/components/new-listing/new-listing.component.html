@@ -1,4 +1,4 @@
-<h1 class="text-center">{{'component.newListing.title' | translate}}</h1>
+<h1 class="text-center">{{editMode ? 'Edit listing' : 'Add a new listing'}}</h1>
 <form #form="ngForm" (ngSubmit)="doSave(form)">
   <app-form-group [form]="form" controlId="name" [label]="'component.newListing.label.name' | translate">
     <input type="text" name="name" [(ngModel)]="model.name" class="w-100" required>
@@ -45,6 +45,6 @@
   </google-map>
   <div class="text-center mt-3">
     <button type="submit"
-            class="btn btn-basic active-border-color">{{'component.newListing.button.add' | translate}}</button>
+            class="styled-button px-3 py-2">{{editMode ? 'Edit' : 'Add'}}</button>
   </div>
 </form>

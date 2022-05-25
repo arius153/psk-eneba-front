@@ -9,6 +9,7 @@ import {ToastrService} from 'ngx-toastr';
 import {MatDialog} from '@angular/material/dialog';
 import {UserInfoComponent} from '../user-info/user-info.component';
 import {AppConstants} from '../../shared/constants/app-constants';
+import {NewListingComponent} from '../home/components/new-listing/new-listing.component';
 
 @Component({
   selector: 'app-tool',
@@ -118,8 +119,7 @@ export class ToolComponent implements OnInit {
       this.maxDate.setDate(this.minDate.getDate() + 30);
       this.calculateTotalPrice();
       this.priceCalculable = true;
-    }
-    else {
+    } else {
       this.priceCalculable = false;
     }
   }
@@ -134,5 +134,18 @@ export class ToolComponent implements OnInit {
     const diff = Math.abs(this.borrowModel.returnedAt.getTime() - this.borrowModel.borrowedAt.getTime());
     const diffDays = Math.ceil(diff / (1000 * 3600 * 24));
     this.totalPrice = (diffDays + 1) * this.tool.price;
+  }
+
+  editTool(): void {
+    const dialogConfig = AppConstants.baseDialogConfig();
+    dialogConfig.data = {toolId: this.id};
+    this.matDialog.open(NewListingComponent, dialogConfig)
+      .afterClosed()
+      .subscribe(result => {
+        if (result) {
+          this.tool = result;
+          this.tool.simplifiedUserDTO.roundedReviewAverage = Math.round(this.tool.simplifiedUserDTO.reviewAverage);
+        }
+      });
   }
 }

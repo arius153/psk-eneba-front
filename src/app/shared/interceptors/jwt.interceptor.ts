@@ -43,6 +43,6 @@ export class JwtInterceptor implements HttpInterceptor {
 
       return of(error.message);
     }
-    return of(error);
+    throw error;
   }
 }

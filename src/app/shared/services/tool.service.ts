@@ -31,6 +31,13 @@ export class ToolService {
     return this.httpClient.post<MyListingBrief>(url, formData);
   }
 
+
+  editTool(model: NewListingRequest): Observable<ToolResponse> {
+    const url = AppConfigService.config.backUrl + `/tool/${model.id}`;
+    const formData = ObjectUtils.extractFormData(model, 'data', 'files');
+    return this.httpClient.put<ToolResponse>(url, formData);
+  }
+
   borrow(model: BorrowRequest): Observable<void> {
     const url = `${AppConfigService.config.backUrl}/tool/borrow`;
     return this.httpClient.post<void>(url, model);
@@ -87,5 +94,10 @@ export class ToolService {
   getToolListByUserId(userId: number): Observable<MyListingBrief[]> {
     const url = AppConfigService.config.backUrl + `/tool/user/${userId}`;
     return this.httpClient.get<MyListingBrief[]>(url);
+  }
+
+  getToolForEditing(toolId: number): Observable<NewListingRequest> {
+    const url = AppConfigService.config.backUrl + `/tool/get-edit/${toolId}`;
+    return this.httpClient.get<NewListingRequest>(url);
   }
 }

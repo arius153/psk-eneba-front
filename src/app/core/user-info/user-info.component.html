@@ -34,13 +34,15 @@
           </div>
           <span class="review-card-comments">{{userReview.comments}}</span>
           <div class="review-card-footer">
-            <span class="flex-item">{{userReview.reviewedBy}}&nbsp;&nbsp;<i>{{userReview.reviewedAt | date}}</i></span>
+            <span class="text-end"><span
+              class="me-2">{{userReview.reviewedBy}}</span><i>{{userReview.reviewedAt | date}}</i></span>
           </div>
           <hr class="review-card-hr-space">
           <div *ngFor="let answer of userReview.answers" class="ps-5">
             <span class="review-card-comments">{{answer.answer}}</span>
             <div class="review-card-footer">
-              <span class="flex-item">{{answer.answeredBy}}&nbsp;&nbsp;<i>{{answer.answeredAt | date}}</i></span>
+              <span class="text-end"><span
+                class="me-2">{{answer.answeredBy}}</span><i>{{answer.answeredAt | date}}</i></span>
             </div>
             <hr class="review-card-hr-space">
           </div>

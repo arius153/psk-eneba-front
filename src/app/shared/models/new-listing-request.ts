@@ -1,4 +1,5 @@
 export class NewListingRequest {
+  id: number;
   name: string;
   category: number;
   price: number;
@@ -6,10 +7,11 @@ export class NewListingRequest {
   assistedTransportation: string;
   description: string;
   address: string;
-  // Image upload komponentas neemitina reikšmės nepadavus inicijuotuos reikšmės
-  files: File[] = [];
+  files: File[] | string[] = [];
   lat: number;
   lng: number;
   pickUpTimeWeekend: string;
   pickUpTimeWorkDay: string;
+  version: number;
+  override: boolean;
 }

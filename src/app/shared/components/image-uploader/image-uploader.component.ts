@@ -21,14 +21,29 @@ export class ImageUploaderComponent implements ControlValueAccessor {
   required: boolean;
 
   imagesToDisplay: { index: number, imageString: string, file: File }[] = [];
-  imagesToSaveExternal: File[] = [];
+  imagesToSaveExternal: File[] | string[] = [];
 
   propagateChange = (_: any) => {
   }
 
-  writeValue(value: File[]): void {
+  writeValue(value: File[] | string[]): void {
+    this.imagesToSaveExternal = value;
+    const imageName = 'namePng.png';
+    const imageType = 'image/png';
     if (value) {
-      this.imagesToSaveExternal = value;
+      for (const image of value) {
+        const imageString = 'data:image/png;base64,' + image;
+        this.urltoFile(imageString, imageName, imageType).then(result => {
+          // @ts-ignore
+          this.imagesToSaveExternal.push(result);
+          this.imagesToDisplay.push({
+            index: this.generateIndex(),
+            imageString: 'data:image/png;base64,' + image,
+            file: result
+          });
+          this.registerOnChange(this.imagesToSaveExternal);
+        });
+      }
     }
   }
 
@@ -44,6 +59,7 @@ export class ImageUploaderComponent implements ControlValueAccessor {
       this.readAsDataURL(event.target).then(results => {
         results.forEach(result => {
           this.imagesToDisplay.push({index: this.generateIndex(), imageString: result.imageString, file: result.image});
+          // @ts-ignore
           this.imagesToSaveExternal.push(result.image);
         });
         event.target.value = '';
@@ -71,6 +87,7 @@ export class ImageUploaderComponent implements ControlValueAccessor {
     const image = this.imagesToDisplay.find(obj => obj.index === index);
     if (image !== undefined) {
       this.imagesToDisplay.splice(this.imagesToDisplay.indexOf(image), 1);
+      // @ts-ignore
       this.imagesToSaveExternal.splice(this.imagesToSaveExternal.indexOf(image.file), 1);
       this.registerOnChange(this.imagesToSaveExternal);
     }
@@ -85,5 +102,16 @@ export class ImageUploaderComponent implements ControlValueAccessor {
       }
       i++;
     }
+  }
+
+  private urltoFile(url, filename, mimeType): Promise<File> {
+    return (fetch(url)
+        .then((res) => {
+          return res.arrayBuffer();
+        })
+        .then((buf) => {
+          return new File([buf], filename, {type: mimeType});
+        })
+    );
   }
 }
