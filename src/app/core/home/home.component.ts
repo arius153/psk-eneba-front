@@ -110,15 +110,14 @@ export class HomeComponent implements OnInit {
 
   public openInfoWindow(tool: ToolResponse, marker: MapMarker): void {
     this.centerTool(tool);
-    this.infoWindowContent = `<div class="info-window-container">
-                                <h1>${tool.name} ${tool.price}€/Day</h1>
-                                <span>${tool.toolCategory}</span>
-                                <br>
-                                <br>
-                                <div class="info-window-button">
-                                    <a href="/tool/${tool.id}">Details</a>
-                                </div>
-                              </div>`;
+    this.infoWindowContent =
+        `<div class="info-window-container">
+          <h1>${tool.name}</h1>
+          <span>${tool.price}€/day</span>
+          <br>
+          <br>
+          <div class="styled-button"><a href="/tool/${tool.id}">Details</a></div>
+        </div>`;
     this.infoWindow.open(marker);
   }
 
