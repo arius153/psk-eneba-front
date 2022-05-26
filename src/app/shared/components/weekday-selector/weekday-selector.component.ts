@@ -44,6 +44,10 @@ export class WeekdaySelectorComponent implements ControlValueAccessor {
   writeValue(value: number[]): void {
     if (value) {
       this.selectedDays = value;
+      for (const day of value) {
+        const foundDay = this.weekDays.find(weekDay => weekDay.day === day);
+        foundDay.selected = true;
+      }
     }
   }
 

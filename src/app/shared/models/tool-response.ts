@@ -33,5 +33,7 @@ export class ToolResponse {
 
   availableDays: number[];
 
+  owner: boolean;
+
   mapMarkerId: number;
 }
