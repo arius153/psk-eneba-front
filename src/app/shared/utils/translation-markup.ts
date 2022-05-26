@@ -3,7 +3,8 @@ import {marker} from '@biesbjerg/ngx-translate-extract-marker';
 
 marker([
   'validation.error.required',
-  'validation.error.noAccount'
+  'validation.error.noAccount',
+  'validation.error.emailAlreadyExists'
 ]);
 
 marker([

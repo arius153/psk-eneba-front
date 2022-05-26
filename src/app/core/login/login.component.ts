@@ -6,6 +6,7 @@ import {AuthenticationService} from '../../shared/services/authentication.servic
 import {FormUtils} from '../../shared/utils/form-utils';
 import {Router} from '@angular/router';
 import {UserRegistrationRequest} from '../../shared/models/user-registration-request';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {
   }
 
@@ -35,7 +37,7 @@ export class LoginComponent implements OnInit {
 
 
   doLogin(form: NgForm): void {
-    if (!form.valid) {
+    if (!this.loginModel.email || !this.loginModel.password) {
       return;
     }
     this.authenticationService.login(this.loginModel).subscribe(result => {
@@ -52,8 +54,13 @@ export class LoginComponent implements OnInit {
     }
     this.authenticationService.register(this.registrationModel).subscribe(() => {
       this.registration = false;
-    }, () => {
-      FormUtils.handleFormErrors(form, 'registerPassword', 'couldNotRegistrate');
+      this.toastrService.success('User registered success');
+    }, (error) => {
+      if (error.status === 409) {
+        FormUtils.handleFormErrors(form, 'registerPassword', 'emailAlreadyExists');
+      } else {
+        FormUtils.handleFormErrors(form, 'registerPassword', 'couldNotRegistrate');
+      }
     });
   }
 
