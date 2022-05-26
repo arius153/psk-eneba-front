@@ -14,12 +14,14 @@ export class ProfileComponent implements OnInit {
   @ViewChild('profile_account') accountButton: ProfileSideButtonComponent;
   @ViewChild('profile_my_reviews') myReviewsButton: ProfileSideButtonComponent;
   @ViewChild('profile_borrowed_tools_history') borrowedToolsHistoryButton: ProfileSideButtonComponent;
+  @ViewChild('profile_currently_rented') currentlyRentedButton: ProfileSideButtonComponent;
   @ViewChildren(ProfileSideButtonComponent) sideButtons: QueryList<ProfileSideButtonComponent>;
 
   showMyListings = true;
   showAccount = false;
   showMyReviews = false;
   showBorrowHistory = false;
+  showCurrentlyRented = false;
 
   myListingsSelected(): void {
     this.hideAll();
@@ -45,12 +47,19 @@ export class ProfileComponent implements OnInit {
     this.showBorrowHistory = true;
   }
 
+  currentlyRentedSelected(): void {
+    this.hideAll();
+    this.deselectAllExcept(this.currentlyRentedButton);
+    this.showCurrentlyRented = true;
+  }
+
   hideAll(): void {
     this.showMyListings = false;
     this.showAccount = false;
     this.showMyReviews = false;
     this.showBorrowHistory = false;
     this.showMyReviews = false;
+    this.showCurrentlyRented = false;
   }
 
   deselectAllExcept(exceptButton: ProfileSideButtonComponent): void {

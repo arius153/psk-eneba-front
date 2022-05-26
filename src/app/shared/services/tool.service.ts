@@ -11,6 +11,7 @@ import {BorrowLogEntryResponse} from 'src/app/shared/models/borrow-log-entry-res
 import {MyListingBrief} from '../models/my-listing-brief';
 import {BorrowRequest} from '../models/borrow-request';
 import {ToolUnavailableTimeResponse} from '../models/tool-unavailable-time-response';
+import {ReservedToolResponse} from '../models/reserved-tool-response';
 
 @Injectable({
   providedIn: 'root'
@@ -99,5 +100,10 @@ export class ToolService {
   getToolForEditing(toolId: number): Observable<NewListingRequest> {
     const url = AppConfigService.config.backUrl + `/tool/get-edit/${toolId}`;
     return this.httpClient.get<NewListingRequest>(url);
+  }
+
+  getCurrentlyRentedTools(): Observable<ReservedToolResponse[]> {
+    const url = AppConfigService.config.backUrl + '/tool/currently-rented';
+    return this.httpClient.get<ReservedToolResponse[]>(url);
   }
 }

@@ -1,0 +1,13 @@
+<div class="profile-outer-padding">
+  <h1>Lending history</h1>
+  <div class="my-listings-separator"></div>
+
+  <ul class="no-list-style-type list-items padding-0">
+    <li *ngFor="let currentlyRentedTool of currentlyRentedTools" class="round-border rent-items background-color-white">
+      <h1 class="mt-1 cursor-hover-pointer" (click)="openTool(currentlyRentedTool.toolId)">{{currentlyRentedTool.toolName}}</h1>
+      <p>Borrower full name:&nbsp; &nbsp;{{currentlyRentedTool.borrowerFullName}}</p>
+      <p>Borrower email:&nbsp; &nbsp;{{currentlyRentedTool.borrowerEmail}}</p>
+      <p>Rent period:&nbsp; &nbsp;{{currentlyRentedTool.date}}</p>
+    </li>
+  </ul>
+</div>

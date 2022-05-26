@@ -8,6 +8,7 @@
       <app-side-button #profile_account text="Account" (selected)="accountSelected()"></app-side-button>
       <app-side-button #profile_my_reviews text="My reviews" (selected)="myReviewsSelected()"></app-side-button>
       <app-side-button #profile_borrowed_tools_history text="Borrowing history" (selected)="borrowedToolsHistorySelected()"></app-side-button>
+      <app-side-button #profile_currently_rented text="Lending history" (selected)="currentlyRentedSelected()"></app-side-button>
       <div class="profile-side-separator"></div>
     </div>
 
@@ -15,6 +16,7 @@
     <app-account-page *ngIf="showAccount"></app-account-page>
     <app-my-reviews *ngIf="showMyReviews"></app-my-reviews>
     <app-borrow-history *ngIf="showBorrowHistory"></app-borrow-history>
+    <app-currently-rented *ngIf="showCurrentlyRented"></app-currently-rented>
   </div>
 
 </div>

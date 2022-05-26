@@ -17,6 +17,7 @@ import { ToolComponent } from './tool/tool.component';
 import { BorrowHistoryComponent } from './profile/components/borrow-history/borrow-history.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { MyReviewsItemComponent } from './profile/components/my-reviews-item/my-reviews-item.component';
+import { LendingHistoryComponent } from './profile/components/currently-rented/lending-history.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MyReviewsItemComponent } from './profile/components/my-reviews-item/my-
     ToolComponent,
     BorrowHistoryComponent,
     UserInfoComponent,
-    MyReviewsItemComponent
+    MyReviewsItemComponent,
+    LendingHistoryComponent
   ],
   imports: [
     SharedModule,
