@@ -327,23 +327,29 @@ input[type="number"] {
   &:active {
     background-color: rgb(239, 224, 220);
   }
-}
 
-.styled-button.no-color {
-  border: 1px solid #666666;
-  border-radius: 5px;
-  background-color: #ffffff;
-  transition: background-color 50ms;
-  font-size: 14pt;
+  &.no-color {
+    border: 1px solid #666666;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: background-color 50ms;
+    font-size: 14pt;
 
-  &:hover {
-    background-color: #eeeeee;
+    &:hover {
+      background-color: #eeeeee;
+    }
+
+    &:active {
+      background-color: #dddddd;
+    }
   }
 
-  &:active {
-    background-color: #dddddd;
+  &.danger {
+    border: 1px solid red;
+    color: red;
   }
 }
+
 
 .go-back-button {
   width: 100%;

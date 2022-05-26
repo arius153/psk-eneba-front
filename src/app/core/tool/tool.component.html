@@ -2,37 +2,43 @@
 <div class="tool-main-content">
   <div class="tool-center-panel">
     <ng-container *ngIf="tool">
-      <div class="tool-header">
-        <h1>{{tool.name}}</h1>
-        <p>{{tool.toolCategory}}</p>
+      <div class="tool-header mb-2 d-flex justify-content-between align-items-center">
+        <div>
+          <h1>{{tool.name}}</h1>
+          <p class="m-0">{{tool.toolCategory}}</p>
+        </div>
+        <button *ngIf="tool.owner" (click)="editTool()" class="styled-button p-3">Edit</button>
       </div>
       <div class="tool-header-separator"></div>
       <div class="tool-main-info-panel">
         <div class="borrow-info">
           <div class="button-price">
-            <button class="styled-button" (click)="doBorrow()">Borrow tool</button>
+            <button class="styled-button" [disabled]="tool.owner" (click)="doBorrow()">Borrow tool</button>
             <p class="price-text">{{tool.price}}€/day</p>
           </div>
           <div class="date-price">
             <mat-form-field appearance="fill">
               <mat-label>Enter a date range</mat-label>
-              <mat-date-range-input [rangePicker]="picker" [dateFilter]="toolTimeslotFilter" [min]="minDate" [max]="maxDate">
-                <input (dateChange)="setMinMax()" name="borrowedAt" [(ngModel)]="borrowModel.borrowedAt" type=""  matStartDate placeholder="Start date" disabled>
-                <input (dateChange)="resetMinMax()" name="returnedAt" [(ngModel)]="borrowModel.returnedAt" type="" matEndDate placeholder="End date" disabled>
+              <mat-date-range-input [rangePicker]="picker" [dateFilter]="toolTimeslotFilter" [min]="minDate"
+                                    [max]="maxDate">
+                <input (dateChange)="setMinMax()" name="borrowedAt" [(ngModel)]="borrowModel.borrowedAt" type=""
+                       matStartDate placeholder="Start date" disabled>
+                <input (dateChange)="resetMinMax()" name="returnedAt" [(ngModel)]="borrowModel.returnedAt" type=""
+                       matEndDate placeholder="End date" disabled>
               </mat-date-range-input>
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+              <mat-datepicker-toggle [disabled]="tool.owner" matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker [disabled]="tool.owner" #picker disabled="false"></mat-date-range-picker>
             </mat-form-field>
-            <!--<p *ngIf="!priceCalculable" class="price-display-placeholder">Enter borrow dates to show price</p>-->
             <p *ngIf="priceCalculable" class="price-text">Total price: {{totalPrice}}€</p>
           </div>
         </div>
         <div class="lender-info">
-          <!--<p class="lender-header">Lender:</p>-->
           <p class="lender-name">{{tool.simplifiedUserDTO.fullName}}</p>
           <div class="lender-rating">
-            <span class="fa fa-star checked" *ngFor="let item of [].constructor(tool.simplifiedUserDTO.roundedReviewAverage); let i = index"></span>
-            <span class="fa fa-star" *ngFor="let item of [].constructor(5 - tool.simplifiedUserDTO.roundedReviewAverage); let i = index"></span>
+            <span class="fa fa-star checked"
+                  *ngFor="let item of [].constructor(tool.simplifiedUserDTO.roundedReviewAverage); let i = index"></span>
+            <span class="fa fa-star"
+                  *ngFor="let item of [].constructor(5 - tool.simplifiedUserDTO.roundedReviewAverage); let i = index"></span>
             <span class="ms-1">({{tool.simplifiedUserDTO.reviewAverage}})</span>
             <div class="rating-separator"></div>
             <span class="fa fa-user"></span>
